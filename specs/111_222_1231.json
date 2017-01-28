@@ -1,6 +1,6 @@
 {
     "patient": {
-        "uid": "111_222_1231.json",
+        "uid": "111_222_1231",
         "name": "John Roberts",
         "dob": "1947-03-02",
         "ward": "j12",
