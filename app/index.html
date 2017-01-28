@@ -120,10 +120,24 @@
   </div>
 
 </div>
+    <div>
+        <button type="button" class="btn btn-primary" id="primary">Primary</button>
+    </div>
+
 
 </form>
 
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      $(() => {
+        const { getFile } = remoteRequire('./app/getFile');
+        $('#primary').click(() => {
+          console.log(getFile);
+            getFile('yarn.lock').then((c) => console.log(c));
+        });
+      });
+    </script>
   </body>
 </html>
