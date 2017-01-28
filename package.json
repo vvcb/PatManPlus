@@ -5,6 +5,7 @@
   "description": "Just do it!",
   "author": "me",
   "build": {},
+  "license": "MIT",
   "scripts": {
     "dev": "electron . --enable-logging",
     "clean": "rm -rf ./dist",
@@ -27,8 +28,8 @@
   },
   "dependencies": {
     "elasticlunr": "^0.9.5",
+    "jquery": "^3.1.1",
     "lockfile": "^1.0.3",
-    "sqlite3": "^3.1.8",
     "tmp": "0.0.31"
   }
 }
