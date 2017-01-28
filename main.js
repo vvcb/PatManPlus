@@ -1,7 +1,7 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
-const db = require('./app/database')
+const db = require('./app/records')
 
 
 // Keep a global reference of the window object, if you don't, the window will
