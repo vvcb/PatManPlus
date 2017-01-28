@@ -1,0 +1,22 @@
+{
+	"patient": {
+		"uid": "999_888_6666",
+		"name": "Alexander Starlord",
+		"dob": "1957-03-02",
+		"ward": "8",
+		"bed": "02",
+		"team": "HPB",
+		"consultant": "RDES",
+		"adm_date": "2017-01-13",
+		"dis_date": "",
+		"is_discharged": "no",
+		"problem": "Colorectal liver mets",
+		"details": "Rectal cancer resected 2 years ago; Now has Sg7 mets",
+		"past_medical_history": "No comorbidity. Guardian of the Galaxy. Serious attitude issues.",
+		"tests": "Probe test - NAD; CT - single met in Sg7",
+		"jobs": "[]Discharge summary\n[]Stop epidural",
+		"treatment": "Sg7 metastetectomy",
+		"treatment_date": "2017-01-14",
+		"adverse_events": "Wound infection"
+	}
+}

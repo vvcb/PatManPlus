@@ -1,0 +1,22 @@
+{
+	"patient": {
+		"uid": "999_888_7777",
+		"name": "Alex Duffy",
+		"dob": "1947-03-02",
+		"ward": "8",
+		"bed": "01",
+		"team": "HPB",
+		"consultant": "RDES",
+		"adm_date": "2017-01-15",
+		"dis_date": "",
+		"is_discharged": "no",
+		"problem": "Pancreatic ductal adenocarcinoma",
+		"details": "HOP mass. Jaundice, Weight loss. Had ERCP at Whythenshaw. \\nMetal Stent in situ.",
+		"past_medical_history": "HTN IHD, Diabetes",
+		"tests": "CPET - Anaerobic threshold = 11.0; CRP 150; \\nCT - no collections",
+		"jobs": "[]Change antibiotics\\n[]Stop epidural",
+		"treatment": "Whipple procedure",
+		"treatment_date": "2017-01-16",
+		"adverse_events": "Pancreatic fistula - Grade A"
+	}
+}

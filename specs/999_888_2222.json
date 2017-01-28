@@ -1,0 +1,22 @@
+{
+	"patient": {
+		"uid": "999_888_2222",
+		"name": "Black Widow",
+		"dob": "1995-11-02",
+		"ward": "12",
+		"bed": "16",
+		"team": "General Surgery",
+		"consultant": "ASN",
+		"adm_date": "2017-01-15",
+		"dis_date": "2017-01-21",
+		"is_discharged": "No",
+		"problem": "Non-specific abdo pain",
+		"details": "RIF pain. No other symptoms.No gynae history.",
+		"past_medical_history": "No previous history. ",
+		"tests": "CRP:2, WCC-8\nUSS - no abnormality",
+		"jobs": "[]Repeat bloods\n[]Discharge if bloods NAD",
+		"treatment": "Conservative",
+		"treatment_date": "",
+		"adverse_events": "No complications"
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"patient": {
+		"uid": "999_888_3333",
+		"name": "Wonder Woman",
+		"dob": "1995-03-02",
+		"ward": "10",
+		"bed": "06",
+		"team": "Colorectal",
+		"consultant": "ASN",
+		"adm_date": "2017-01-15",
+		"dis_date": "2017-01-21",
+		"is_discharged": "No",
+		"problem": "Acute appendicitis",
+		"details": "RIF pain with anorexia for 3 days. No gynae history.",
+		"past_medical_history": "No previous history. ",
+		"tests": "CRP:120, WCC-13\nUSS - thick-walled appendix with some fluid; normal adnexae",
+		"jobs": "[]Fit for home\n[]No follow-up",
+		"treatment": "Lap appendicectomy",
+		"treatment_date": "2017-01-18",
+		"adverse_events": "No complications"
+	}
+}
