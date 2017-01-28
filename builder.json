@@ -1,0 +1,8 @@
+{
+  "osx" : {
+    "title": "NHS Hack Day - OSX"
+  },
+  "win" : {
+    "title" : "NHS Hack Day - Windows"
+  }
+}

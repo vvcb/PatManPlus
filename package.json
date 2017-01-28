@@ -1,0 +1,28 @@
+{
+	"name": "nhs-hack-day",
+  	"version": "0.1.0",
+  	"main": "main.js",
+  	"scripts": {
+    	"dev": "electron . --enable-logging",
+
+    	"clean": "rm -rf ./dist",
+    	"clean:osx": "rm -rf ./dist/osx",
+    	"clean:win": "rm -rf ./dist/win",
+
+    	"pack": "npm run clean && npm run pack:osx && npm run pack:win",
+    	"pack:osx": "npm run clean:osx && electron-packager . \"NHS Hack Day - OSX\" --out=dist/osx --platform=darwin --arch=x64 --version=0.36.2 --icon=assets/osx/logo.icns --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
+    	"pack:win": "npm run clean:win && electron-packager . \"NHS Hack Day - Windows\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.2 --icon=assets/win/logo.ico --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
+
+    	"build": "npm run build:osx && npm run build:win",
+    	"build:osx": "npm run pack:osx && electron-builder \"dist/osx/NHS-Hack-Day-darwin-x64/NHS-Hack-Day.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
+    	"build:win": "npm run pack:win && electron-builder \"dist/win/NHS-Hack-Day-Todo-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json"
+  	},
+  	"devDependencies": {
+    	"electron": "^1.4.15",
+    	"electron-packager": "^8.5.1",
+    	"mocha": "^3.2.0"
+  	},
+  	"dependencies": {
+    	"sqlite3": "^3.1.8"
+  	}
+}
