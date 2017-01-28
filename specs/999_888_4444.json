@@ -1,0 +1,22 @@
+{
+	"patient": {
+		"uid": "999_888_4444",
+		"name": "Super Man",
+		"dob": "1975-03-02",
+		"ward": "8",
+		"bed": "03",
+		"team": "HPB",
+		"consultant": "TSAT",
+		"adm_date": "2017-01-15",
+		"dis_date": "2017-01-20",
+		"is_discharged": "No",
+		"problem": "Rectal bleeding",
+		"details": "Likely haemorrhoidal bleeding. Previous admissions with similar hx. ",
+		"past_medical_history": "Likes kryptonite.",
+		"tests": "Flexible sigmoidoscopy- small piles; nil else\nHb-120",
+		"jobs": "[]Monitor bloods\n[]Outpatient colonoscopy",
+		"treatment": "Flexi Sig",
+		"treatment_date": "2017-01-17",
+		"adverse_events": "No complications"
+	}
+}
