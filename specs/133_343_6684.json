@@ -1,0 +1,22 @@
+{
+    "patient": {
+        "uid": "111_333_1234",
+        "name": "John Smith",
+        "dob": "1954-04-10",
+        "ward": "J4",
+        "bed":"2",
+        "team":"Gastro",
+        "consultant":"RAO",
+        "adm_date":"2017-01-12",
+        "dis_date":"",
+        "is_discharged":"no",
+        "problem":"Pneumonia",
+        "details":"Admitted with SOB and collapse. Prolonged period on floor at home",
+        "past_medical_history":"Asthma, Dementia",
+        "tests":"18.1: CRP 67 (120) , WBC 13",
+        "jobs":"Repeat xray",
+        "treatment":"Day 3 IV antibiotics",
+        "treatment_date":"Chest drain",
+        "adverse_events"
+    }
+}
