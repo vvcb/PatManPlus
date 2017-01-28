@@ -1,38 +1,53 @@
 var fs = require('fs');
 var jsonfiles = require('./backends/jsonfiles');
-var jsonfile = require('jsonfile')
-var path = require('path')
-var lockFile = require('lockfile')
-var elasticlunr = require('elasticlunr')
+var jsonfile = require('jsonfile');
+var path = require('path');
+var lockFile = require('lockfile');
+var elasticlunr = require('elasticlunr');
+
+function configureLucene() {
+	this.addField('name');
+	this.addField('ward');
+	this.setRef('uid');
+	this.addField('team');
+	this.addField('consultant');
+	this.addField('details');
+	this.addField('past_medical_history');
+	this.addField('tests');
+	this.addField('adverse_events');
+}
 
 module.exports = {
 
 	RECORDS_HOME_DIRECTORY: '/tmp/nhs-hack-day',
 
+	lucene: null,
+
 	index: null,
 
+	findInIndex: function(field) {
+
+	},
+
+	removeFromIndex: function(id) {
+
+	},
+
+	addToIndex: function(data) {
+
+	},
+
 	init: function() {
-		this.index = elasticlunr(function () {
-			this.addField('name');
-			this.addField('ward');
-			this.setRef('uid');
-			this.addField('team');
-			this.addField('consultant');
-			this.addField('details');
-			this.addField('past_medical_history');
-			this.addField('tests');
-			this.addField('adverse_events');
-		});
-
+		this.lucene = elasticlunr(this.configureLucene);
 		var results = this.fetchAll();
-
 		results.forEach(item => {
-			index.addDoc(item);
+			this.lucene.addDoc(item);
+			this.addToIndex(item);
 		});
 	},
 
 	search: function(searchTerms) {
-		return this.index.search(searchTerms);
+		return this.lucene.search(searchTerms);
 	},
 
 	update: function(id, data) {
@@ -44,6 +59,7 @@ module.exports = {
 			} else {
 				lockFile.lockSync();
 				jsonfile.writeFileSync(path, data);
+				this.addToIndex(id, data);
 				lockFile.unlockSync(`${path}.lock`);
 			}
 		} else {
@@ -52,6 +68,7 @@ module.exports = {
 	},
 
 	insert: function(id, data) {
+		this.addToIndex(data)
 		return jsonfiles.writeRecord(this.RECORDS_HOME_DIRECTORY, id, data)
 	},
 
@@ -59,6 +76,7 @@ module.exports = {
 		var path = jsonfiles.getRecordPath(this.RECORDS_HOME_DIRECTORY, id);
 		if (fs.existsSync(path)) {
 			fs.unlinkSync(path);
+			this.removeFromIndex(id);
 		} else {
 			throw new Error(`The record with ID ${id} does not exist`);
 		}

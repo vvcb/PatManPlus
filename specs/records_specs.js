@@ -10,6 +10,8 @@ describe('records', function() {
 
 	beforeEach(() => {
 		records.RECORDS_HOME_DIRECTORY = tmp.dirSync().name;
+		records.lucene = null;
+		records.index = null;
 	});
 
 	describe('#insert', function() {
@@ -21,6 +23,41 @@ describe('records', function() {
 			fs.existsSync('/tmp/testing/234/2347231212.json').should.be.true;
 		})
 	})
+
+	describe("#init", function() {
+		it("initializes the index", function() {
+			records.insert('99900001', {
+				patient: {
+					id: '99900001',
+					name: 'John'
+				}
+			});
+			records.insert('99800002', {
+				patient: {
+					id: '99800002',
+					name: 'Elsa'
+				}
+			});
+			records.init();
+			console.log(records.index);
+		});
+		it("initializes lucene", function() {
+			records.insert('99900001', {
+				patient: {
+					id: '99900001',
+					name: 'John'
+				}
+			});
+			records.insert('99800002', {
+				patient: {
+					id: '99800002',
+					name: 'Elsa'
+				}
+			});
+			records.init();
+			console.log(records.lucene);
+		})
+	});
 
 	describe('#update', function() {
 
