@@ -6,20 +6,15 @@ var path = require('path');
 
 module.exports = {
 
-	ensureHomeDirectoryExists: function() {
-
-	},
-
 	getRecordPath: function(root, id) {
 		return root + '/' + id.substring(0, 3) +'/' + id + '.json';
 	},
 
-	writeRecord: function(root, id, data, cb) {
+	writeRecord: function(root, id, data) {
 		var filename = this.getRecordPath(root, id);
 		var directory = path.dirname(filename);
-		mkdirp(directory, function (err) {
-		    if (err) console.error(err)
-		    else jsonfile.writeFile(filename, data, cb);
-		});
+		mkdirp.sync(directory);
+		jsonfile.writeFileSync(filename, data);
+		return filename;
 	}
 }

@@ -26,6 +26,7 @@
     "should": "^11.2.0"
   },
   "dependencies": {
+    "elasticlunr": "^0.9.5",
     "lockfile": "^1.0.3",
     "sqlite3": "^3.1.8",
     "tmp": "0.0.31"

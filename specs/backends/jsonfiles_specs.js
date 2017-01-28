@@ -18,9 +18,8 @@ describe('jsonfiles', function() {
 	describe('writeRecord', function() {
 
 		it("creates the record", function() {
-			jsonfiles.writeRecord('/tmp/testing', '128473', {name: 'some random patient'}, function (err) {
-			  console.error(err)
-			});
+			result = jsonfiles.writeRecord('/tmp/testing', '128473', {name: 'some random patient'})
+		 	result.should.equal('/tmp/testing/128/128473.json');
 		})
 	});
 })
