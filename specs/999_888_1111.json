@@ -1,0 +1,22 @@
+{
+	"patient": {
+		"uid": "999_888_1111",
+		"name": "Rajini Kanth",
+		"dob": "1956-03-02",
+		"ward": "8",
+		"bed": "02",
+		"team": "HPB",
+		"consultant": "AKSI",
+		"adm_date": "2017-01-12",
+		"dis_date": "2017-01-15",
+		"is_discharged": "yes",
+		"problem": "Intestinal onstruction",
+		"details": "Gallstones on USS. ",
+		"past_medical_history": "Very fit. Very smart. Good looking guy.",
+		"tests": "USS - gallstones; LFTs - NAD. CRP 30",
+		"jobs": "[]Discharge summary\n[]No follow-up",
+		"treatment": "Lap Cholecystectomy",
+		"treatment_date": "2017-01-13",
+		"adverse_events": "No complications"
+	}
+}
