@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: The Ward Round
 menu_order: 02
 ---
