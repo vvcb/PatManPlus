@@ -15,9 +15,9 @@ $(() => {
   	backend.initialize(shared_folder)
 
   	var searchCriteria = {
-		availableWards: backend.wards.fetchAll(),
-		availableConsultants: backend.consultants.fetchAll(),
-		availableTeams: backend.teams.fetchAll(),
+		availableWards: backend.wards.fetchAll().concat({name: null}),
+		availableConsultants: backend.consultants.fetchAll().concat({name: null, initials: null}),
+		availableTeams: backend.teams.fetchAll().concat({name: null, code: null}),
 		availableSpecialities: null,
 		uid: null,
 		name: null,
@@ -49,6 +49,15 @@ $(() => {
 			addPatient: function() {
 				backend.patients.insert(this.newPatient);
 				this.patients =  backend.patients.search(searchCriteria);
+			},
+			togglePatientList: function() {
+				$("#patient-list-panel").toggle();
+			},
+			toggleNewPatient: function() {
+				$("#new-patient-panel").toggle();
+			},
+			toggleFilters: function() {
+				$("#filters-panel").toggle();
 			}
 		}
 	});
