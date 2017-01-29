@@ -8,13 +8,10 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-  <div id="app">
-      <p>{{ message }}</p>
-  </div>
 
-  <div class="container-fluid"">
+  <div class="container-fluid">
 
-    <h1>Patient list</h1>
+    <h1>Patient List</h1>
 
     <form>
 
@@ -126,30 +123,18 @@
     <div>
         <button type="button" class="btn btn-primary" id="primary">Primary</button>
     </div>
-
+    <div id="app-7">
+        <ol>
+            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
 
 </form>
 
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
     <script src="../node_modules/vue/dist/vue.min.js"></script>
-    <script>
-      $(() => {
-        const { getFile } = remoteRequire('./app/getFile');
-        $('#primary').click(() => {
-          console.log(getFile);
-            getFile('yarn.lock').then((c) => console.log(c));
-        });
-          new Vue({
-              el: '#app',
-              data: {
-                  message: 'Hello Vue.js!'
-              }
-          })
-      });
-    </script>
-
-
+    <script src="components/patient.component.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
