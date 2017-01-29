@@ -21,7 +21,6 @@ $(() => {
 		availableSpecialities: null,
 		uid: null,
 		name: null,
-		newPatient: {},
 		filters: {
 			ward: null,
 			consultant: null,
@@ -37,7 +36,8 @@ $(() => {
   		el: '#app',
   		data: {
 			searchCriteria: searchCriteria,
-    		patients: patients
+    		patients: patients,
+			newPatient: {}
   		},
 		methods: {
 			search: function() {
