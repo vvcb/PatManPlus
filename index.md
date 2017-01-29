@@ -64,10 +64,10 @@ Obviously there are various restrictions in place within hospitals in terms of s
 
 All features that are required have been listed within _Issues_. Please read through these, if you can contribute to these features then this would be fantastic. Please can you follow the process below
 
-- open the _issue_ that relates to the feature you wish to work on
-- in this _issue_ please comment that you would like to work on it
-- one of the maintainers will label the issue as being _worked on_
-- you are then free to work on the feature and submit a pull request referencing the issue
+-  open the _issue_ that relates to the feature you wish to work on
+-  in this _issue_ please comment that you would like to work on it
+-  one of the maintainers will label the issue as being _worked on_
+-  you are then free to work on the feature and submit a pull request referencing the issue
 
 You can also get further clarification by requesting to join the <a href="https://patmanplus.slack.com/messages/general/">Slack message group</a> for this project.
 
@@ -75,16 +75,16 @@ You can also get further clarification by requesting to join the <a href="https:
 
 Before you suggest a new feature please read through the _issue_ lists of to see if your feature isn't already in place or in development. If you decide the feature is new then please follow the steps below
 
-- raise your feature as an _issue_ through GitHub
-- these will be reviewed to decide upon the suitability for the hospital environment
-- if accepted label the issue as being _worked on_
-- it will then be assigned to you accordingly if accepted.
+-  raise your feature as an _issue_ through GitHub
+-  these will be reviewed to decide upon the suitability for the hospital environment
+-  if accepted the label of  the _issue_ will be changed to _worked on_
+-  it will then be assigned to you accordingly if accepted.
 
 ## Bugs
 
 When reporting a bug through a new _issue_ please put the detail below and respond in line accordingly
 
-- what is the current behavior?
-- if the current behavior is a bug, please provide the steps to reproduce.
-- what is the expected behavior?
-- please mention your operating system version and the version of PatManPlus.
+-  what is the current behavior?
+-  if the current behavior is a bug, please provide the steps to reproduce.
+-  what is the expected behavior?
+-  please mention your operating system version and the version of PatManPlus.
