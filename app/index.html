@@ -34,7 +34,7 @@
 
 	 <div>
 		 <label>Ward</label>
-		 <select name="wards" v-model="searchCriteria.filters.ward">
+		 <select @change="search" name="wards" v-model="searchCriteria.filters.ward">
 			 <option v-for="ward in searchCriteria.availableWards" v-bind:value="ward.name">
 		       {{ ward.name }}
 		     </option>
@@ -43,7 +43,7 @@
 
 	<div>
 		 <label>Consultant</label>
-		 <select name="consultants" v-model="searchCriteria.filters.consultant">
+		 <select @change="search" name="consultants" v-model="searchCriteria.filters.consultant">
 			 <option v-for="consultant in searchCriteria.availableConsultants" v-bind:value="consultant.initials">
 		       {{ consultant.name }}
 		     </option>
@@ -52,7 +52,7 @@
 
 	<div>
 		 <label>Speciality</label>
-		 <select name="specialities" v-model="searchCriteria.filters.speciality">
+		 <select @change="search" name="specialities" v-model="searchCriteria.filters.speciality">
 			 <option v-for="speciality in searchCriteria.availableSpecialities" v-bind:value="speciality.name">
 			   {{ speciality.name }}
 			 </option>
@@ -61,7 +61,7 @@
 
  	<div>
 		 <label>Teams</label>
-		 <select name="team" v-model="searchCriteria.filters.team">
+		 <select @change="search" name="team" v-model="searchCriteria.filters.team">
 			 <option v-for="team in searchCriteria.availableTeams" v-bind:value="team.code">
 		       {{ team.name }}
 		     </option>

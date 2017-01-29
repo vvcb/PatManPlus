@@ -9,7 +9,10 @@ log.appName = 'nhs-hack-day';
 $(() => {
   	const backend = remoteRequire('./app/backend/app');;
 
-  	backend.initialize('/tmp/nhs-hack-day/integration-test')
+	var shared_folder = '/tmp/nhs-hack-day/integration-test'
+
+	console.log("Using the following shared folder: ", shared_folder);
+  	backend.initialize(shared_folder)
 
   	var searchCriteria = {
 		availableWards: backend.wards.fetchAll(),
@@ -27,6 +30,7 @@ $(() => {
 	};
 
 	var patients = backend.patients.fetchAll();
+	console.log("All the patients have been fetched from the database");
 
 	var electronApp = new Vue({
   		el: '#app',
@@ -36,7 +40,8 @@ $(() => {
   		},
 		methods: {
 			search: function() {
-				console.log('hello');
+				console.log("Searching for patients using the following criteria", searchCriteria);
+				this.patients = backend.patients.search(searchCriteria);
 			},
 			saveFile: function (patient) {
 				backend.patients.update(patient);

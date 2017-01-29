@@ -17,21 +17,20 @@ module.exports = {
 		}
 	},
 
-	search: function(term, filters) {
-		this.lock();
+	search: function(searchCriteria) {
 		var sql = "SELECT * FROM patients WHERE 1 = 1"
 		if (term) {
-			sql = sql + ` AND (name LIKE '%${term}%' OR uid LIKE '%${term}%')`
+			sql = sql + ` AND (name LIKE '%${searchCriteria.name}%' OR uid LIKE '%${searchCriteria.uid}%')`
 		}
 		if (filters) {
-			if (filters.team) {
-				sql = sql + ` AND team = '${filters.team}'`;
+			if (searchCriteria.team) {
+				sql = sql + ` AND team = '${searchCriteria.team}'`;
 			}
-			if (filters.consultant) {
-				sql = sql + ` AND consultant = '${filters.consultant}'`;
+			if (searchCriteria.consultant) {
+				sql = sql + ` AND consultant = '${searchCriteria.consultant}'`;
 			}
-			if (filters.ward) {
-				sql = sql + ` AND ward = '${filters.ward}'`
+			if (searchCriteria.ward) {
+				sql = sql + ` AND ward = '${searchCriteria.ward}'`
 			}
 		}
 		var result = sqlite.run(sql);
