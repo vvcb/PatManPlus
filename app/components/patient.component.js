@@ -5,11 +5,15 @@ template: `<div>
 <div class="patient">
 
 <div class="row">
+
 <div class="col-md-2" id="PatientDetails">
+
       <div class="row">
+ 
         <div class="col-md-6">
           <input type="text" v-model="item.war" class="form-control" id="patman-" placeholder="Ward">
         </div>
+
         <div class="col-md-6">
           <input type="text" v-model="item.bed" class="form-control" id="patman-" placeholder="Bed">
         </div>
@@ -62,14 +66,15 @@ template: `<div>
   </div>
   
   <div class="row" id="PresentHistory">
+
     <div class="col-md-12">
-      <input type="text" v-model="item.details" class="form-control" id="patman-" placeholder="PresentHistory">
+      <textarea v-model="item.details" class="form-control" rows="6" id="patman-" placeholder="PresentHistory"></textarea>
     </div>
   </div>
   
   <div class="row" id="PastHistory">
     <div class="col-md-12">
-      <input type="text" v-model="item.past_medical_history" class="form-control" id="patman-" placeholder="PastHistory">
+      <textarea v-model="item.past_medical_history" class="form-control" rows="2" id="patman-" placeholder="PastHistory"></textarea>
     </div>
   </div>
 </div>
@@ -86,7 +91,7 @@ template: `<div>
   
   <div class="row" id="Tests">
     <div class="col-md-12">
-      <input type="text" v-model="item.tests" class="form-control" id="patman-" placeholder="Tests">
+      <textarea v-model="item.tests" class="form-control" rows="9" id="patman-" placeholder="Tests"></textarea>
       </div>
     </div>
   </div>
@@ -94,7 +99,7 @@ template: `<div>
   <div class="col-md-3" id="Jobs-AdverseEvents">
     <div class="row" id="Jobs">
       <div class="col-md-12">
-        <input type="text" v-model="item.jobs" class="form-control" id="patman-" placeholder="Jobs">
+        <textarea v-model="item.jobs" class="form-control" rows="9" id="patman-" placeholder="Jobs"></textarea>
       </div>
     </div>
     
@@ -117,3 +122,5 @@ template: `<div>
   }
   },
   });
+  
+  
