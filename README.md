@@ -1,6 +1,8 @@
 # PatManPlus
 
-This is a patient list manager for medical personnel.
+The software is designed to allow junior doctors to manage their patient lists to provide an efficient way to complete a ward round and also manage the various jobs assigned to that ward. It replaces more archaic systems currently in place. Such as MS Word documents, MS Excel spreadsheets, MS Access databases and paper based alternatives.
+
+PatManPlus is a program that will be stored on the network drive of a hospital, it is accessed using an exe file. It has been created using Electron, JavaScript, HTML, CSS and SQLite. This allows it to be serverless which is one of the main requirements.
 
 ## Overview
 
