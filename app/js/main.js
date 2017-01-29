@@ -9,7 +9,7 @@ log.appName = 'nhs-hack-day';
 $(() => {
   	const backend = remoteRequire('./app/backend/app');;
 
-	var shared_folder = '/tmp/nhs-hack-day/integration-test'
+	var shared_folder = './fixtures/sample/'
 
 	console.log("Using the following shared folder: ", shared_folder);
   	backend.initialize(shared_folder)
