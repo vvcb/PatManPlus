@@ -112,15 +112,5 @@ module.exports = {
 			var x = sqlite.run(`SELECT * FROM patients WHERE uid = '${uid}'`);
 			return x[0];
 		});
-	},
-
-	/**
-	 * Fetchs all available patient records.
-	 * @returns {Array} Patient records.
-	 */
-	fetchAll: function() {
-		return this.runLockingSqliteCommand(function() {
-			return sqlite.run("SELECT * FROM patients");
-		});
 	}
 }
