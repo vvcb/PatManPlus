@@ -13,11 +13,11 @@ The software is designed to allow junior doctors to manage their patient lists t
 
 An MVP has been developed to allow replication of the current system. There are further features and improvements that have been identified that can be accessed through the trello board for the project.
 
-PatManPlus is a program that will be stored on the network drive of a hospital, it is accessed using <i>exe</i> file. It has been created using Electron, JavaScript, HTML, CSS and SQLite.
+PatManPlus is a program that will be stored on the network drive of a hospital, it is accessed using an _exe_ file. It has been created using Electron, JavaScript, HTML, CSS and SQLite.
 
 If you wish to contribute then please see the <a href="contribution.md">contribution</a> file.
 
-The team
+*The team*
 - Vishnu  
 - Richard  
 - Olivier  
