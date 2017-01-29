@@ -34,7 +34,7 @@ $(() => {
 
 	$("#new-patient-panel").toggle();
 	$("#filters-panel").toggle();
-	
+
 	var electronApp = new Vue({
   		el: '#app',
   		data: {
@@ -52,6 +52,8 @@ $(() => {
 			addPatient: function() {
 				backend.patients.insert(this.newPatient);
 				this.patients =  backend.patients.search(searchCriteria);
+				$("#new-patient-panel").toggle();
+				this.newPatient = {};
 			},
 			togglePatientList: function() {
 				$("#patient-list-panel").toggle();
