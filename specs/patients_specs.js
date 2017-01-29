@@ -28,21 +28,25 @@ describe('records', function() {
 		it("allows searching by name", () => {
 			records.insert({uid: '99900001', name: 'John Smith'});
 			records.insert({uid: '99800002', name: 'Elsa Smith'});
-			var search = records.search("oh");
+			var search = records.search({
+				name: "oh"
+			});
 			search.length.should.eql(1);
 			search[0].uid.should.eql('99900001');
 		});
 		it("allows searching by uid", () => {
 			records.insert({uid: '99900001', name: 'John Smith'});
 			records.insert({uid: '99800002', name: 'Elsa Smith'});
-			var search = records.search("998");
+			var search = records.search({
+				uid: "998"
+			});
 			search.length.should.eql(1);
 			search[0].uid.should.eql('99800002');
 		});
 		it("allows filtering by consultant", () => {
 			records.insert({uid: '99900001', name: 'John Smith', consultant: "Tommy"});
 			records.insert({uid: '99800002', name: 'Elsa Smith', consultant: "Linda"});
-			var search = records.search(null, {
+			var search = records.search({
 				consultant: 'Tommy'
 			});
 			search.length.should.eql(1);
@@ -51,7 +55,7 @@ describe('records', function() {
 		it("allows filtering by ward", () => {
 			records.insert({uid: '99900001', name: 'John Smith', ward: "1A"});
 			records.insert({uid: '99800002', name: 'Elsa Smith', ward: "3C"});
-			var search = records.search(null, {
+			var search = records.search({
 				ward: '1A'
 			});
 			search.length.should.eql(1);
@@ -60,7 +64,7 @@ describe('records', function() {
 		it("allows filtering by team", () => {
 			records.insert({uid: '99900001', name: 'John Smith', team: "L.A. Lakers"});
 			records.insert({uid: '99800002', name: 'Elsa Smith', team: "Boston Celtics"});
-			var search = records.search(null, {
+			var search = records.search({
 				team: 'Boston Celtics'
 			});
 			search.length.should.eql(1);

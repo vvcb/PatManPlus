@@ -19,36 +19,39 @@ module.exports = {
 
 	search: function(searchCriteria) {
 		var sql = "SELECT * FROM patients WHERE 1 = 1"
-		if (term) {
+		if (searchCriteria.name || searchCriteria.uid) {
 			sql = sql + ` AND (name LIKE '%${searchCriteria.name}%' OR uid LIKE '%${searchCriteria.uid}%')`
 		}
-		if (filters) {
-			if (searchCriteria.team) {
-				sql = sql + ` AND team = '${searchCriteria.team}'`;
-			}
-			if (searchCriteria.consultant) {
-				sql = sql + ` AND consultant = '${searchCriteria.consultant}'`;
-			}
-			if (searchCriteria.ward) {
-				sql = sql + ` AND ward = '${searchCriteria.ward}'`
-			}
+		if (searchCriteria.team) {
+			sql = sql + ` AND team = '${searchCriteria.team}'`;
 		}
-		var result = sqlite.run(sql);
-		return this.ensureSuccess(result, x => {
-			return x;
+		if (searchCriteria.consultant) {
+			sql = sql + ` AND consultant = '${searchCriteria.consultant}'`;
+		}
+		if (searchCriteria.ward) {
+			sql = sql + ` AND ward = '${searchCriteria.ward}'`
+		}
+
+		return this.runLockingSqliteCommand(function() {
+			return sqlite.run(sql);;
 		});
 	},
 
-	ensureDatabaseUnlocked: function() {
+	runLockingSqliteCommand: function(cb) {
 		if (fs.existsSync(this.lockPath())) {
 			throw new Error(`The database is currently locked by another user`);
 		}
-	},
-
-	lock: function() {
-		this.ensureDatabaseUnlocked();
 		lockFile.lockSync(this.lockPath());
 		sqlite.connect(`${this.SQLITE_DB}`);
+		try
+		{
+			var result = cb();
+			if (result.error)
+				throw result.error;
+		} finally {
+			this.unlock();
+		}
+		return result;
 	},
 
 	unlock: function() {
@@ -66,20 +69,9 @@ module.exports = {
 	 * @param {Object} data The patient's record details.
 	 */
 	update: function(data) {
-		this.lock();
-		var result = sqlite.update("patients", data, {uid: data.uid});
-		return this.ensureSuccess(result);
-	},
-
-	ensureSuccess: function(result, cb) {
-		if (result.error) {
-			this.unlock();
-			throw result.error;
-		} else {
-			this.unlock();
-			if (cb)
-				return cb(result);
-		}
+		return this.runLockingSqliteCommand(function() {
+			return sqlite.update("patients", data, {uid: data.uid});
+		});
 	},
 
 	/**
@@ -88,14 +80,9 @@ module.exports = {
 	 * @param {Object} data The patient's record details.
 	 */
 	insert: function(data) {
-		this.lock();
-		var results = sqlite.insert("patients", data);
-		if (results.error) {
-			this.unlock();
-			throw results.error;
-		} else {
-			this.unlock();
-		}
+		return this.runLockingSqliteCommand(function() {
+			return sqlite.insert("patients", data);
+		});
 	},
 
 	/**
@@ -103,9 +90,9 @@ module.exports = {
 	 * @param {string} uid The unique identifier for a patient.
 	 */
 	delete: function(uid) {
-		this.lock();
-		var result = sqlite.run(`DELETE FROM patients WHERE uid = '${uid}'`);
-		this.ensureSuccess(result);
+		return this.runLockingSqliteCommand(function() {
+			return sqlite.run(`DELETE FROM patients WHERE uid = '${uid}'`);
+		});
 	},
 
 	/**
@@ -114,9 +101,8 @@ module.exports = {
 	 * @returns {Object} Patient record.
 	 */
 	fetch: function(uid) {
-		this.lock();
-		var result = sqlite.run(`SELECT * FROM patients WHERE uid = '${uid}'`);
-		return this.ensureSuccess(result, x => {
+		return this.runLockingSqliteCommand(function() {
+			var x = sqlite.run(`SELECT * FROM patients WHERE uid = '${uid}'`);
 			return x[0];
 		});
 	},
@@ -126,10 +112,8 @@ module.exports = {
 	 * @returns {Array} Patient records.
 	 */
 	fetchAll: function() {
-		this.lock();
-		var result = sqlite.run("SELECT * FROM patients");
-		return this.ensureSuccess(result, x => {
-			return x;
+		return this.runLockingSqliteCommand(function() {
+			return sqlite.run("SELECT * FROM patients");
 		});
 	}
 }
