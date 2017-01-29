@@ -13,7 +13,7 @@
 	  <h1 style="padding: 30px; font-weight: bold; background-color: #333; color: white; margin: 0">PatMan</h1>
 
 	<div id="app">
-	<h1 @click="toggleFilters()" style="padding: 10px 30px; margin: 0; background-color: #555; color: white; font-size: 18px">Filters</h1>
+	<h1 @click="toggleFilters()" style="cursor: pointer; padding: 10px 30px; margin: 0; background-color: #555; color: white; font-size: 18px">Filters</h1>
 
 
 		<div id="filters-panel"  style="border: 1px solid #bce8f1; background-color: #d9edf7; padding: 10px 30px">
@@ -67,7 +67,7 @@
 
 		</div>
 
-			<h1  @click="togglePatientList()"  style="padding: 10px 30px; margin: 0; background-color: #555; color: white; font-size: 18px">Patient List - {{patients.length}} results</h1>
+			<h1  @click="togglePatientList()"  style="cursor: pointer; padding: 10px 30px; margin: 0; background-color: #555; color: white; font-size: 18px">Patient List - {{patients.length}} results</h1>
 
 		<div id="patient-list-panel" class="container-fluid">
 
@@ -83,7 +83,7 @@
 	    </div>
 
 
-				<h1  @click="toggleNewPatient()"  style="padding: 10px 30px; margin: 0; background-color: #555; color: white; font-size: 18px">Add Patient</h1>
+				<h1  @click="toggleNewPatient()"  style="padding: 10px 30px; cursor: pointer; margin: 0; background-color: #555; color: white; font-size: 18px">Add Patient</h1>
 
 
 				<div id="new-patient-panel" style="border: 1px solid #d6e9c6; background-color: #dff0d8; padding: 30px">
