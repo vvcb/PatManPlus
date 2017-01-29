@@ -87,17 +87,6 @@ describe('records', function() {
 			var record = records.fetch('99800002');
 			record.uid.should.equal('99800002');
 		})
-	})
-
-	describe('#fetchAll', function() {
-		it("fetches all records", () => {
-			records.insert({uid: '99900001', name: 'John Smith'});
-			records.insert({uid: '99800002', name: 'Elsa Smith'});
-			records.insert({uid: '99900005', name: 'John Smith'});
-			records.insert({uid: '99800004', name: 'Elsa Smith'});
-			var results = records.fetchAll()
-			results[0].uid.should.equal('99900001');
-		});
 	});
 
 	describe('#delete', function() {
