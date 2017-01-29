@@ -1,5 +1,4 @@
 {
-    "patient": {
         "uid": "111_222_3333",
         "name": "Janey Johnson",
         "dob": "1933-01-03",
@@ -18,5 +17,4 @@
         "treatment":"Day 8 post PCI, UTI on ward - had abx",
         "treatment_date":"",
         "adverse_events":""
-    }
 }

@@ -1,5 +1,4 @@
 {
-	"patient": {
 		"uid": "999_888_1111",
 		"name": "Rajini Kanth",
 		"dob": "1956-03-02",
@@ -18,5 +17,4 @@
 		"treatment": "Lap Cholecystectomy",
 		"treatment_date": "2017-01-13",
 		"adverse_events": "No complications"
-	}
 }

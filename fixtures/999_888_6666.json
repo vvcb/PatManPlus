@@ -1,5 +1,4 @@
 {
-	"patient": {
 		"uid": "999_888_6666",
 		"name": "Alexander Starlord",
 		"dob": "1957-03-02",
@@ -18,5 +17,5 @@
 		"treatment": "Sg7 metastetectomy",
 		"treatment_date": "2017-01-14",
 		"adverse_events": "Wound infection"
-	}
+
 }

@@ -1,5 +1,4 @@
 {
-    "patient": {
         "uid": "111_343_6684",
         "name": "John Smith",
         "dob": "1954-04-10",
@@ -18,5 +17,4 @@
         "treatment":"Day 3 IV antibiotics",
         "treatment_date":"Chest drain",
         "adverse_events":""
-    }
 }

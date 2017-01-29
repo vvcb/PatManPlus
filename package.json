@@ -7,6 +7,7 @@
   "build": {},
   "license": "MIT",
   "scripts": {
+	"test:integration": "node tests/integration/scenario.js",
     "dev": "electron . --enable-logging",
     "clean": "rm -rf ./dist",
     "clean:osx": "rm -rf ./dist/osx",

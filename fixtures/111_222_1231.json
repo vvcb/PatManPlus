@@ -1,5 +1,4 @@
 {
-    "patient": {
         "uid": "111_222_1231",
         "name": "John Roberts",
         "dob": "1947-03-02",
@@ -18,5 +17,4 @@
         "treatment":"",
         "treatment_date":"",
         "adverse_events":""
-    }
 }
