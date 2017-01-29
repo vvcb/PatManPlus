@@ -38,3 +38,4 @@ jspm_packages
 
 .nhs-hack-day-linux-ia32
 dist
+.idea
