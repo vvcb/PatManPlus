@@ -15,6 +15,15 @@ function createMenuTemplate(window) {
           role: 'dev_tools',
           accelerator: 'Shift+CommandOrControl+I',
           click() { window.webContents.openDevTools(); }
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Quit',
+          role: 'quit',
+          accelerator: 'CommandOrControl+Q',
+          click() { window.webContents.openDevTools(); }
         }
       ]
     }
