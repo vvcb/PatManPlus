@@ -26,3 +26,16 @@ div > .patient {
 .row { 
 margin-top:10px;
 }
+
+.container-fluid {
+	margin-top:20px;
+}
+
+button {
+background-color:#ff7575;
+color:white;
+border:none;
+padding:7px 20px;
+border-radius:3px;
+margin:10px 0;
+}	
