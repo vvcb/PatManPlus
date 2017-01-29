@@ -79,3 +79,12 @@ Before you suggest a new feature please read through the _issue_ lists of to see
 - These will be reviewed to decide upon the suitability for the hospital environment
 - if accepted label the issue as being _worked on_
 - it will then be assigned to you accordingly if accepted.
+
+## Bugs
+
+When reporting a bug through a new _issue_ please put the detail below and respond in line accorindlgy
+
+- What is the current behavior?
+- If the current behavior is a bug, please provide the steps to reproduce.
+- What is the expected behavior?
+- Please mention your operating system version and the version of PatManPlus.
