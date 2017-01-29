@@ -14,7 +14,7 @@ This will change the life of every junior doctor in the NHS.
 ## Purpose
 The software is designed to allow junior doctors to manage their patient lists to provide an efficient way to complete a ward round and also manage the various jobs assigned to that ward. It replaces more archaic systems currently in place. Such as MS Word documents, MS Excel spreadsheets, MS Access databases and paper based alternatives. To find out more about the way this is managed see [The Ward Round](#WardRound).
 
-##MVP
+## MVP
 An MVP has been developed to allow replication of the current system. There are further features and improvements that have been identified within *issues*.
 
 ## Technology
@@ -58,7 +58,7 @@ Firstly thank you so much for considering to contribute on this project. Before 
 
 ## Restrictions of a Hospital
 
-Obviously there are various restrictions in place within hospitals in terms of security and the ability to install and access software. Please be aware of this, read through the detail within <a href="The Ward Round.md">The Ward Round</a> to fully understand the current problem. Also note it is not always possible to install new software on hospital servers. The system needs to be accessible on a shared network drive but accessible through a simple interface. This is why the approach has been taken to produce an _exe_ file that can be accessed through the network drives in a hospital. Note that the system will be standalone for each ward that wishes to use it. There is no need have them talk to each other.
+Obviously there are various restrictions in place within hospitals in terms of security and the ability to install and access software. Please be aware of this, read through the detail within [The Ward Round](#WardRound) to fully understand the current problem. Also note it is not always possible to install new software on hospital servers. The system needs to be accessible on a shared network drive but accessible through a simple interface. This is why the approach has been taken to produce an _exe_ file that can be accessed through the network drives in a hospital. Note that the system will be standalone for each ward that wishes to use it. There is no need have them talk to each other.
 
 ## Features required
 
