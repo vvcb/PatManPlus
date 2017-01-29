@@ -7,11 +7,13 @@ function createMenuTemplate(window) {
         {
           label: 'Print',
           role: 'print',
+          accelerator: 'CommandOrControl+P',
           click() { window.webContents.print(); }
         },
         {
           label: 'Open Dev Tools',
           role: 'dev_tools',
+          accelerator: 'Shift+CommandOrControl+I',
           click() { window.webContents.openDevTools(); }
         }
       ]
