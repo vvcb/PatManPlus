@@ -7,21 +7,17 @@ log.transports.console.level = 'debug';
 log.appName = 'nhs-hack-day';
 
 $(() => {
-  	const backend = remoteRequire('./app/backend/app');;
+  const backend = remoteRequire('./app/backend/app');
 
-  	backend.initialize('/tmp/nhs-hack-day/integration-test')
-
-  	console.log(backend.patients.fetchAll());
+  backend.initialize('./fixtures/sample/')
 
 	var electronApp = new Vue({
-  		el: '#app',
-  		data: {
-    		patients: backend.patients.fetchAll()
-  		},
+    el: '#app',
+    data: {
+      patients: backend.patients.fetchAll()
+    },
     methods: {
-      saveFile: function () {
-        debugger;
-        console.log(file);
+      saveFile: function (patient) {
         console.log(patient);
       }
     }

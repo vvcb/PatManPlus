@@ -113,7 +113,7 @@ Vue.component('patient', {
 `,
   methods: {
     updateClick: function () {
-      this.$emit('test');
+      this.$emit('update-click', this.item);
     }
   },
 });

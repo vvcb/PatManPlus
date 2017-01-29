@@ -15,7 +15,7 @@
 
       <form>
         <div id="app">
-          <patient v-for="item in patients" v-bind:item="item" v-on:test="saveFile"></patient>
+          <patient v-for="item in patients" v-bind:item="item" v-on:update-click="saveFile"></patient>
         </div>
       </form>
     </div>
