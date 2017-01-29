@@ -1,18 +1,17 @@
 var jsonfile = require('jsonfile')
 	fs = require('fs');
 
-module.exports = {
-
-	filename: null,
-
-	initialize: function(filename){
+class JsonSource {
+	constructor(filename) {
 		this.filename = filename;
 		if (!fs.existsSync(filename)) {
 			jsonfile.writeFileSync(filename, [])
 		}
-	},
+	}
 
-	fetchAll: function() {
+	fetchAll() {
 		return jsonfile.readFileSync(this.filename)
 	}
 }
+
+module.exports = JsonSource;

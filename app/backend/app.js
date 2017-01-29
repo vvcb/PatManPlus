@@ -1,5 +1,6 @@
 var path = require('path'),
 	mkdirp = require('mkdirp'),
+	JsonSource = require('./json_source')
  	fs = require('fs');
 
 module.exports = {
@@ -21,17 +22,13 @@ module.exports = {
 		this.patients = require('./patients');
 		this.patients.initialize(path.join(shared_folder, 'patients.sqlite3'));
 
-		this.consultants = require('./json_source');
 		var consultants_file = path.join(shared_folder, 'consultants.json');
-		this.consultants.initialize(path.join(shared_folder, 'consultants.json'));
+		this.consultants = new JsonSource(consultants_file);
 
-		this.wards = require('./json_source');
 		var wards_file = path.join(shared_folder, 'wards.json');
-		this.wards.initialize(wards_file);
+		this.wards = new JsonSource(wards_file);
 
-
-		this.teams = require('./json_source');
 		var teams_file = path.join(shared_folder, 'teams.json');
-		this.teams.initialize(path.join(shared_folder, 'teams.json'));
+		this.teams = new JsonSource(teams_file);
 	}
 }
