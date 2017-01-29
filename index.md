@@ -18,9 +18,10 @@ An MVP has been developed to allow replication of the current system. There are 
 ### Technology
 PatManPlus is a program that will be stored on the network drive of a hospital, it is accessed using an _exe_ file. It has been created using Electron, JavaScript, HTML, CSS and SQLite. This allows it to be serverless which is one of the main requirements.
 
+### Contribution
 If you wish to contribute then please see the <a href="contribution.md">contribution</a> file.
 
-To communicate with the contributors please join <a href="https://patmanplus.slack.com/messages/general/">Slack conversation</a>
+To communicate with the contributors please join the <a href="https://patmanplus.slack.com/messages/general/">Slack conversation</a>
 
 GitHub: https://github.com/vvcb/PatManPlus
 
