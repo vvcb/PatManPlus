@@ -4,7 +4,7 @@ function remoteRequire(module) {
 
 $(() => {
   // example communication between main and render process
-  const { getFile } = remoteRequire('./app/getFile');
+  const { getFile, writeFile } = remoteRequire('./app/getFile');
   var files = [
     '111_212_2341.json',
     '111_222_1231.json',
@@ -28,6 +28,13 @@ $(() => {
       el: '#app',
       data: {
         patients: patientData
+      },
+      methods: {
+        saveFile: function () {
+          debugger;
+          console.log(file);
+          console.log(patient);
+        }
       }
     });
   });

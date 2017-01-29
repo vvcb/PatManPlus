@@ -15,13 +15,14 @@
 
       <form>
         <div id="app">
-          <patient v-for="item in patients" v-bind:item="item"></patient>
+          <patient v-for="item in patients" v-bind:item="item" v-on:test="saveFile"></patient>
         </div>
       </form>
     </div>
 
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/lodash/lodash.min.js"></script>
     <script src="../node_modules/vue/dist/vue.min.js"></script>
     <script src="components/patient.component.js"></script>
     <script src="js/main.js"></script>
