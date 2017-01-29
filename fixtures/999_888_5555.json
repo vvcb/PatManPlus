@@ -1,5 +1,4 @@
 {
-	"patient": {
 		"uid": "999_888_5555",
 		"name": "Captain America",
 		"dob": "1976-03-02",
@@ -18,5 +17,5 @@
 		"treatment": "Lap Cholecystectomy",
 		"treatment_date": "2017-01-13",
 		"adverse_events": "No complications"
-	}
+
 }

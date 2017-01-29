@@ -1,5 +1,4 @@
 {
-    "patient": {
         "uid": "132_232_1231.json",
         "name": "Bobby Moore",
         "dob": "1943-03-02",
@@ -18,5 +17,4 @@
         "treatment":"Lorem ipsum dolor sit amet.",
         "treatment_date":"",
         "adverse_events": "Lorem ipsum dolor sit amet."
-    }
 }

@@ -1,5 +1,4 @@
 {
-	"patient": {
 		"uid": "999_888_2222",
 		"name": "Black Widow",
 		"dob": "1995-11-02",
@@ -18,5 +17,4 @@
 		"treatment": "Conservative",
 		"treatment_date": "",
 		"adverse_events": "No complications"
-	}
 }

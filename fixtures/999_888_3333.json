@@ -1,5 +1,4 @@
 {
-	"patient": {
 		"uid": "999_888_3333",
 		"name": "Wonder Woman",
 		"dob": "1995-03-02",
@@ -18,5 +17,4 @@
 		"treatment": "Lap appendicectomy",
 		"treatment_date": "2017-01-18",
 		"adverse_events": "No complications"
-	}
 }

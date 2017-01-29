@@ -8,8 +8,7 @@ module.exports = {
 	initialize: function(filename) {
 		this.SQLITE_DB = filename;
 		sqlite.connect(`${this.SQLITE_DB}`);
-		// Check if table already exists first!!!!!!!!!
-		var result = sqlite.run("CREATE TABLE patients(uid TEXT PRIMARY KEY, name TEXT NOT NULL, dob TEXT NULL, ward TEXT, bed TEXT, team TEXT, consultant TEXT, adm_date TEXT, dis_date TEXT, is_discharged TEXT, problem TEXT, details TEXT, past_medical_history TEXT, tests TEXT, jobs TEXT, treatment TEXT, treatement_date TEXT, adverse_events TEXT);");
+		var result = sqlite.run("CREATE TABLE IF NOT EXISTS patients(uid TEXT PRIMARY KEY, name TEXT NOT NULL, dob TEXT NULL, ward TEXT, bed TEXT, team TEXT, consultant TEXT, adm_date TEXT, dis_date TEXT, is_discharged TEXT, problem TEXT, details TEXT, past_medical_history TEXT, tests TEXT, jobs TEXT, treatment TEXT, treatment_date TEXT, adverse_events TEXT);");
 		if (result.error) {
 			sqlite.close();
 			throw result.error;

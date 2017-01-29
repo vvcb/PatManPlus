@@ -1,5 +1,4 @@
 {
-	"patient": {
 		"uid": "999_888_7777",
 		"name": "Alex Duffy",
 		"dob": "1947-03-02",
@@ -18,5 +17,5 @@
 		"treatment": "Whipple procedure",
 		"treatment_date": "2017-01-16",
 		"adverse_events": "Pancreatic fistula - Grade A"
-	}
+
 }
