@@ -19,7 +19,7 @@ describe('records', function() {
 		it("creates the record in the database", function() {
 			records.insert({uid: '99900001', name: 'John Smith'});
 			records.insert({uid: '99800002', name: 'Elsa Smith'});
-			var all = records.fetchAll();
+			var all = records.search(null);
 			all.length.should.eql(2);
 		})
 	})
@@ -47,7 +47,9 @@ describe('records', function() {
 			records.insert({uid: '99900001', name: 'John Smith', consultant: "Tommy"});
 			records.insert({uid: '99800002', name: 'Elsa Smith', consultant: "Linda"});
 			var search = records.search({
-				consultant: 'Tommy'
+				filters: {
+					consultant: 'Tommy'
+				}
 			});
 			search.length.should.eql(1);
 			search[0].uid.should.eql('99900001');
@@ -56,7 +58,9 @@ describe('records', function() {
 			records.insert({uid: '99900001', name: 'John Smith', ward: "1A"});
 			records.insert({uid: '99800002', name: 'Elsa Smith', ward: "3C"});
 			var search = records.search({
-				ward: '1A'
+				filters: {
+					ward: '1A'
+				}
 			});
 			search.length.should.eql(1);
 			search[0].uid.should.eql('99900001');
@@ -65,7 +69,9 @@ describe('records', function() {
 			records.insert({uid: '99900001', name: 'John Smith', team: "L.A. Lakers"});
 			records.insert({uid: '99800002', name: 'Elsa Smith', team: "Boston Celtics"});
 			var search = records.search({
-				team: 'Boston Celtics'
+				filters: {
+					team: 'Boston Celtics'
+				}
 			});
 			search.length.should.eql(1);
 			search[0].uid.should.eql('99800002');
@@ -92,9 +98,9 @@ describe('records', function() {
 	describe('#delete', function() {
 		it("deletes a record from the filesystem", function() {
 			records.insert({uid: '99800004', name: 'Elsa Smith'});
-			records.fetchAll().length.should.eql(1);
+			records.search(null).length.should.eql(1);
 			records.delete('99800004')
-			records.fetchAll().length.should.eql(0);
+			records.search(null).length.should.eql(0);
 		})
 	})
 

@@ -30,7 +30,6 @@ $(() => {
 	};
 
 	var patients = backend.patients.search(searchCriteria);
-	console.log("All the patients have been fetched from the database", patients);
 
 	$("#new-patient-panel").toggle();
 	$("#filters-panel").toggle();
@@ -44,14 +43,14 @@ $(() => {
   		},
 		methods: {
 			search: function() {
-				this.patients = backend.patients.search(searchCriteria);
+				this.patients = backend.patients.search(this.searchCriteria);
 			},
 			updatePatient: function (patient) {
 				backend.patients.update(patient);
 			},
 			addPatient: function() {
 				backend.patients.insert(this.newPatient);
-				this.patients =  backend.patients.search(searchCriteria);
+				this.patients =  backend.patients.search(this.searchCriteria);
 				$("#new-patient-panel").toggle();
 				this.newPatient = {};
 			},

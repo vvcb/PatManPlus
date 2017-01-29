@@ -5,6 +5,10 @@ var sqlite = require('sqlite-sync');
 
 module.exports = {
 
+	/**
+	 * Initialize the connection to the database, creating the database file if required.
+	 * @param {Object} filename The name of the SQLite database file.
+	 */
 	initialize: function(filename) {
 		this.SQLITE_DB = filename;
 		sqlite.connect(`${this.SQLITE_DB}`);
@@ -17,7 +21,12 @@ module.exports = {
 		}
 	},
 
+	/**
+	 * Search the patient database.
+	 * @param {Object} searchCriteria The search criteria for looking up patients.
+	 */
 	search: function(searchCriteria) {
+		searchCriteria = searchCriteria || {};
 		var sql = "SELECT * FROM patients WHERE 1 = 1"
 		if (searchCriteria.name || searchCriteria.uid) {
 			var terms = "1 = 1";
@@ -29,14 +38,16 @@ module.exports = {
 			}
 			sql = sql + ` AND (${terms})`
 		}
-		if (searchCriteria.filters.team) {
-			sql = sql + ` AND team = '${searchCriteria.filters.team}'`;
-		}
-		if (searchCriteria.filters.consultant) {
-			sql = sql + ` AND consultant = '${searchCriteria.filters.consultant}'`;
-		}
-		if (searchCriteria.filters.ward) {
-			sql = sql + ` AND ward = '${searchCriteria.filters.ward}'`
+		if (searchCriteria.filters) {
+			if (searchCriteria.filters.team) {
+				sql = sql + ` AND team = '${searchCriteria.filters.team}'`;
+			}
+			if (searchCriteria.filters.consultant) {
+				sql = sql + ` AND consultant = '${searchCriteria.filters.consultant}'`;
+			}
+			if (searchCriteria.filters.ward) {
+				sql = sql + ` AND ward = '${searchCriteria.filters.ward}'`
+			}
 		}
 
 		return this.runLockingSqliteCommand(function() {
@@ -60,8 +71,12 @@ module.exports = {
 		});
 	},
 
+	/**
+	 * Run a command against the database by creating and then removing a logging file.
+	 * @param {Function} cb The callback implementing the database call to be made.
+	 */
 	runLockingSqliteCommand: function(cb) {
-		if (fs.existsSync(this.lockPath())) {
+		if (lockFile.checkSync(this.lockPath())) {
 			throw new Error(`The database is currently locked by another user`);
 		}
 		lockFile.lockSync(this.lockPath());
@@ -77,11 +92,18 @@ module.exports = {
 		return result;
 	},
 
+	/**
+	 * Closes the databases and removes the lock file.
+	 */
 	unlock: function() {
 		sqlite.close();
 		lockFile.unlockSync(this.lockPath());
 	},
 
+	/**
+	 * Provides the name of the lockfile used for serializing access to the SQLite database.
+	 * @returns {string} The name of the lock file.
+	 */
 	lockPath: function() {
 		return `${this.SQLITE_DB}.lock`;
 	},
