@@ -1,8 +1,8 @@
 {
-  "name": "nhs-hack-day",
+  "name": "PatManPlus",
   "version": "0.1.0",
   "main": "main.js",
-  "description": "Just do it!",
+  "description": "Allows junior doctors to manage their patient lists to provide an efficient way to complete a ward round",
   "author": "me",
   "build": {},
   "license": "MIT",
