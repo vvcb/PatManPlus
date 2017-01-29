@@ -1,6 +1,9 @@
 Vue.component('patient', {
 props: ['item'],
 template: `<div>
+
+<div class="patient">
+
 <div class="row">
 <div class="col-md-2" id="PatientDetails">
       <div class="row">
@@ -106,6 +109,7 @@ template: `<div>
       <button v-on:click="updateClick">Update</button>
     </div>
   </div>
+    </div>
   `,
   methods: {
   updateClick: function () {

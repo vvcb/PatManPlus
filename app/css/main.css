@@ -16,3 +16,9 @@
 .glyphicon-refresh.spinning {
   transform-origin: 50% 49%;
 }
+
+div > .patient {
+	background-color: #f1f1f1;
+	margin-bottom:10px;
+	padding:10px;
+}
