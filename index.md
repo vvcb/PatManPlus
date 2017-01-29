@@ -5,15 +5,17 @@ menu_order: 01
 ---
 # Next-Gen Patient Lists
 
-Welcome to the next-generation patient list manager.
+Welcome to the next-generation patient list manager PatManPlus.
 
 This will change the life of every junior doctor in the NHS.
 
-This will make every ward round
+The software is designed to allow junior doctors to manage their patient lists to provide an efficient way to complete a ward round and also manage the various jobs assigned to that ward. It replaces more archaic systems currently in place. Such as word documents, spreadsheets, MS Access databases and paper based alternatives. To find out more about the way this is managed see <a href= "The Ward Round.md">The Ward Round</a> Round
 
-The software is designed to allow Junior Doctors to manage their patient lists to provide an efficient way to complete a ward round and manage the various jobs assigned to that ward.
+An MVP has been developed to allow replication of the current system. There are further features and improvements that have been identified that can be accessed through the trello board for the project.
 
-In many hospitals there are inefficient methods to control the process utilising several word documents or poorly managed spreadsheets. A system was developed to improve this through the use of an Access DB which has had positive impact on the efficiency of Dr's and Consultants within their own working environment. Together we have analysed this system to produce an MVP that would allow replace it with an application to be run from an .exe file that can be run directly from a hospitals network drive. Thus allowing easy transfer of the system from one hospital to another without the requirement of guidance/training. 
+PatManPlus is a program that will be stored on the network drive of a hospital, it is accessed using <i>exe</i> file. It has been created using Electron, JavaScript, HTML, CSS and SQLite.
+
+If you wish to contribute then please see the <a href="contribution.md">contribution</a> file.
 
 The team
 - Vishnu  
