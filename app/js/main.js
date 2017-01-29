@@ -29,7 +29,7 @@ $(() => {
 		}
 	};
 
-	var patients = backend.patients.fetchAll();
+	var patients = backend.patients.search(searchCriteria);
 	console.log("All the patients have been fetched from the database");
 
 	var electronApp = new Vue({
@@ -41,7 +41,6 @@ $(() => {
   		},
 		methods: {
 			search: function() {
-				console.log("Searching for patients using the following criteria", searchCriteria);
 				this.patients = backend.patients.search(searchCriteria);
 			},
 			updatePatient: function (patient) {
@@ -49,6 +48,7 @@ $(() => {
 			},
 			addPatient: function() {
 				backend.patients.insert(this.newPatient);
+				this.patients =  backend.patients.search(searchCriteria);
 			}
 		}
 	});
