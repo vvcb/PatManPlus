@@ -21,6 +21,7 @@ $(() => {
 		availableSpecialities: null,
 		uid: null,
 		name: null,
+		newPatient: {},
 		filters: {
 			ward: null,
 			consultant: null,
@@ -43,8 +44,11 @@ $(() => {
 				console.log("Searching for patients using the following criteria", searchCriteria);
 				this.patients = backend.patients.search(searchCriteria);
 			},
-			saveFile: function (patient) {
+			updatePatient: function (patient) {
 				backend.patients.update(patient);
+			},
+			addPatient: function(patient) {
+				console.log("addPatient");
 			}
 		}
 	});

@@ -20,16 +20,23 @@ module.exports = {
 	search: function(searchCriteria) {
 		var sql = "SELECT * FROM patients WHERE 1 = 1"
 		if (searchCriteria.name || searchCriteria.uid) {
-			sql = sql + ` AND (name LIKE '%${searchCriteria.name}%' OR uid LIKE '%${searchCriteria.uid}%')`
+			var terms = "1 = 1";
+			if (searchCriteria.name) {
+				terms = terms + ` AND name LIKE '%${searchCriteria.name}%'`;
+			}
+			if (searchCriteria.uid) {
+				terms = terms + ` AND uid LIKE '%${searchCriteria.uid}%'`;
+			}
+			sql = sql + ` AND (${terms})`
 		}
-		if (searchCriteria.team) {
-			sql = sql + ` AND team = '${searchCriteria.team}'`;
+		if (searchCriteria.filters.team) {
+			sql = sql + ` AND team = '${searchCriteria.filters.team}'`;
 		}
-		if (searchCriteria.consultant) {
-			sql = sql + ` AND consultant = '${searchCriteria.consultant}'`;
+		if (searchCriteria.filters.consultant) {
+			sql = sql + ` AND consultant = '${searchCriteria.filters.consultant}'`;
 		}
-		if (searchCriteria.ward) {
-			sql = sql + ` AND ward = '${searchCriteria.ward}'`
+		if (searchCriteria.filters.ward) {
+			sql = sql + ` AND ward = '${searchCriteria.filters.ward}'`
 		}
 
 		return this.runLockingSqliteCommand(function() {
