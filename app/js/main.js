@@ -39,7 +39,7 @@ $(() => {
 				console.log('hello');
 			},
 			saveFile: function (patient) {
-			  console.log(patient);
+				backend.patients.update(patient);
 			}
 		}
 	});
