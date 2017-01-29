@@ -5,18 +5,30 @@ function remoteRequire(module) {
 $(() => {
   // example communication between main and render process
   const { getFile } = remoteRequire('./app/getFile');
-  $('#primary').click(() => {
-    console.log(getFile);
-    getFile('yarn.lock').then((c) => console.log(c));
-  });
-  var app7 = new Vue({
-      el: '#app-7',
+  var files = [
+    '111_212_2341.json',
+    '111_222_1231.json',
+    '111_222_3333.json',
+    '111_333_1234.json',
+    '132_232_1231.json',
+    '133_343_6684.json',
+    '999_888_1111.json',
+    '999_888_2222.json',
+    '999_888_3333.json',
+    '999_888_4444.json',
+    '999_888_5555.json',
+    '999_888_6666.json',
+    '999_888_7777.json',
+    'john_doe.json'
+  ];
+
+  Promise.all(files.map((f) => getFile(`./specs/fixtures/${f}`))).then((contents) => {
+    const patientData = contents.map((c) => JSON.parse(c)).map((p) => p.patient);
+    var app7 = new Vue({
+      el: '#app',
       data: {
-          groceryList: [
-              { text: 'Vegetables' },
-              { text: 'Cheese' },
-              { text: 'Whatever else humans are supposed to eat' }
-          ]
+        patients: patientData
       }
-   });
+    });
+  });
 });

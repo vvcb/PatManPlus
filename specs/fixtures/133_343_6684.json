@@ -17,6 +17,6 @@
         "jobs":"Repeat xray",
         "treatment":"Day 3 IV antibiotics",
         "treatment_date":"Chest drain",
-        "adverse_events"
+        "adverse_events":""
     }
 }
