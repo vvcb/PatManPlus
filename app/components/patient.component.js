@@ -71,7 +71,7 @@ template: `<div>
       <div class="row">
       <div class="col-md-12">
         <label>
-          <input type="checkbox" v-model="item.is_discharged">Discharged
+          <input type="checkbox" class="discharged" v-model="item.is_discharged">Discharged
         </label>
       </div>
     </div>
