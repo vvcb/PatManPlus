@@ -32,6 +32,9 @@ $(() => {
 	var patients = backend.patients.search(searchCriteria);
 	console.log("All the patients have been fetched from the database");
 
+	$("#new-patient-panel").toggle();
+	$("#filters-panel").toggle();
+	
 	var electronApp = new Vue({
   		el: '#app',
   		data: {
