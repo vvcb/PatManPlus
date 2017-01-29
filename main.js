@@ -2,7 +2,6 @@ const {app, BrowserWindow, Menu} = require('electron')
 const electron = require('electron');
 const path = require('path')
 const url = require('url')
-const db = require('./app/records')
 const { createMenuTemplate } = require('./app/js/menu_template');
 
 

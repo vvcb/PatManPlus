@@ -22,7 +22,7 @@ $(() => {
     'john_doe.json'
   ];
 
-  Promise.all(files.map((f) => getFile(`./specs/fixtures/${f}`))).then((contents) => {
+  Promise.all(files.map((f) => getFile(`./fixtures/${f}`))).then((contents) => {
     const patientData = contents.map((c) => JSON.parse(c)).map((p) => p.patient);
     var app7 = new Vue({
       el: '#app',
