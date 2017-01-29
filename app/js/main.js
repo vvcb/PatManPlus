@@ -47,8 +47,8 @@ $(() => {
 			updatePatient: function (patient) {
 				backend.patients.update(patient);
 			},
-			addPatient: function(patient) {
-				console.log("addPatient");
+			addPatient: function() {
+				backend.patients.insert(this.newPatient);
 			}
 		}
 	});

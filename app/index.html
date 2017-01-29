@@ -72,27 +72,27 @@
 
 		      <div class="col-xs-3 col-md-1">
 		        <label for="exampleInputEmail1">Ward</label>
-		        <input type="email" v-model="newPatient.ward" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <input type="text" v-model="newPatient.ward" class="form-control" id="newPatient_ward" placeholder="Ward">
 		      </div>
 
 		      <div class="col-xs-3 col-md-1">
 		        <label for="exampleInputEmail1">Bed</label>
-		        <input type="email" v-model="newPatient.name" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <input type="text" v-model="newPatient.bed" class="form-control" id="newPatient_bed" placeholder="Bed">
 		      </div>
 
 		      <div class="col-xs-6 col-md-4">
 		        <label for="exampleInputEmail1">Problem</label>
-		        <input type="email" v-model="newPatient.problem" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <input type="text" v-model="newPatient.problem" class="form-control" id="newPatient_problem" placeholder="Problem">
 		      </div>
 
 		      <div class="col-xs-6 col-md-3">
 		          <label for="exampleInputEmail1">Treatment</label>
-		        <input type="email" v-model="newPatient.treatment" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <input type="text" v-model="newPatient.treatment" class="form-control" id="newPatient_treatment" placeholder="Treatment">
 		      </div>
 
 		      <div class="col-xs-3 col-md-2">
 		        <label for="exampleInputEmail1">Op date</label>
-		        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <input type="text" v-model="newPatient.opDate"  class="form-control" id="newPatient_op_date" placeholder="Op date">
 		      </div>
 
 		    </div>
@@ -101,49 +101,49 @@
 
 		      <div class="col-xs-6 col-md-2">
 		        <label for="exampleInputEmail1">Name</label>
-		        <input type="email" v-model="newPatient.name" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <input type="text" v-model="newPatient.name" class="form-control" id="newPatient_name" placeholder="Name">
 
 		        <div class="row">
 		              <div class="col-xs-12 col-sm-12">
 		              <label for="exampleInputEmail1">DOB</label>
-		                <input type="email" v-model="newPatient.dob" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		                <input type="text" v-model="newPatient.dob" class="form-control" id="newPatient_dob" placeholder="DOB">
 		              </div>
 		         </div>
 
 		         <div class="row">
 		              <div class="col-xs-12 col-sm-12">
 		              <label for="exampleInputEmail1">HOSP #</label>
-		                <input type="email" v-model="newPatient.uid" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		                <input type="text" v-model="newPatient.uid" class="form-control" id="newPatient_uid" placeholder="HOSP #">
 		              </div>
 		         </div>
 
 		         <div class="row">
 		              <div class="col-xs-6 col-sm-6">
 		              <label for="exampleInputEmail1">TEAM</label>
-		                <input type="email" v-model="newPatient.team" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		                <input type="text" v-model="newPatient.team" class="form-control" id="newPatient_team" placeholder="Team">
 		              </div>
 
 		              <div class="col-xs-6 col-sm-6">
-		              <label for="exampleInputEmail1">COMS</label>
-		                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		              <label for="newPatient_consultant">CONS</label>
+		                <input type="text" class="form-control" v-model="newPatient.consultant" id="newPatient_consultant" placeholder="COMS">
 		              </div>
 		         </div>
 
 		      </div>
 
 		      <div class="col-xs-6 col-md-4">
-		        <label for="exampleInputEmail1">Details</label>
-		        <input type="email" v-model="newPatient.details" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <label for="newPatient_details">Details</label>
+		        <input type="email" v-model="newPatient.details" class="form-control" id="newPatient_details" placeholder="Details">
 		      </div>
 
 		      <div class="col-xs-6 col-md-3">
-		          <label for="exampleInputEmail1">Test results</label>
-		        <input type="email" v-model="newPatient.tests" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		          <label for="newPatient_test_results">Test results</label>
+		        <input type="email" v-model="newPatient.tests" class="form-control" id="newPatient_test_results" placeholder="Test results">
 		      </div>
 
 		      <div class="col-xs-6 col-md-3">
-		        <label for="exampleInputEmail1">Jobs</label>
-		        <input type="email" v-model="newPatient.jobs" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <label for="newPatient_jobs">Jobs</label>
+		        <input type="email" v-model="newPatient.jobs" class="form-control" id="newPatient_jobs" placeholder="Jobs">
 		      </div>
 
 		    </div>
@@ -152,23 +152,23 @@
 		    <div class="row">
 
 		      <div class="col-xs-3 col-md-2">
-		        <label for="exampleInputEmail1">Admitted</label>
-		        <input type="email" v-model="newPatient.adm_date" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <label for="newPatient_adm_date">Admitted</label>
+		        <input type="text" v-model="newPatient.adm_date" class="form-control" id="newPatient_adm_date" placeholder="Admitted">
 		      </div>
 
 		      <div class="col-xs-6 col-md-4">
-		        <label for="exampleInputEmail1">PMH</label>
-		        <input type="email" v-model="newPatient.past_medical_history" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <label for="newPatient_past_medical_history">PMH</label>
+		        <input type="text" v-model="newPatient.past_medical_history" class="form-control" id="newPatient_past_medical_history" placeholder="PMH">
 		      </div>
 
 		      <div class="col-xs-6 col-md-3">
-		        <label for="exampleInputEmail1">Adverse Events</label>
-		        <input type="email" v-model="newPatient.adverse_events" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		        <label for="newPatient_adverse_events">Adverse Events</label>
+		        <input type="text" v-model="newPatient.adverse_events" class="form-control" id="newPatient_adverse_events" placeholder="Adverse Events">
 		      </div>
 
 		      <div class="col-xs-6 col-md-2">
 		      <label>
-		          <input type="checkbox"> Check me out
+		          <input type="checkbox" v-model="newPatient.is_discharged"  id="newPatient_is_discharged"> Check me out
 		        </label>
 		      </div>
 
