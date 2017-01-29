@@ -1,0 +1,30 @@
+/* Caylee's css additions :) */
+
+.form-lrg input.form-control.input-sm {
+    min-height: 170px;
+}
+
+.top {
+    background-color: #428bca;
+    margin-bottom: 25px;
+}
+
+.top h1 {
+    color: white;
+    margin: 53px 0 34px 0;
+}
+
+.filter {
+    float: right;
+    margin: -75px 0 0 0;
+}
+
+.top label {
+    color: white;
+    font-weight: normal !important;
+}
+
+.patient {
+    background-color: #f2f2f2;
+    padding:10px;
+}

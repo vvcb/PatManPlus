@@ -7,7 +7,6 @@ log.transports.console.level = 'debug';
 log.appName = 'nhs-hack-day';
 
 $(() => {
-
   	const backend = remoteRequire('./app/backend/app');;
 
   	backend.initialize('/tmp/nhs-hack-day/integration-test')
@@ -38,6 +37,9 @@ $(() => {
 		methods: {
 			search: function() {
 				console.log('hello');
+			},
+			saveFile: function (patient) {
+			  console.log(patient);
 			}
 		}
 	});

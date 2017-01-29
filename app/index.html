@@ -13,11 +13,11 @@
 
 		<h1>Patient List</h1>
 
-	      <form>
-	        <div>
-	          <patient v-for="item in patients" v-bind:item="item"></patient>
-	        </div>
-	      </form>
+		<form>
+          <div>
+            <patient v-for="item in patients" v-bind:item="item" v-on:update-click="saveFile"></patient>
+          </div>
+        </form>
 	    </div>
 
 	<h1>Filters</h1>
@@ -72,6 +72,7 @@
 
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/lodash/lodash.min.js"></script>
     <script src="../node_modules/vue/dist/vue.min.js"></script>
     <script src="components/patient.component.js"></script>
     <script src="js/main.js"></script>

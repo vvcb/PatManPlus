@@ -106,6 +106,14 @@ Vue.component('patient', {
     </div>	
   
   </div>
+  <div>
+    <button v-on:click="updateClick">Update</button>
+  </div>
 </div>
-`
+`,
+  methods: {
+    updateClick: function () {
+      this.$emit('update-click', this.item);
+    }
+  },
 });
