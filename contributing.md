@@ -31,4 +31,4 @@ Before you suggest a new feature please read through the _issue_ lists of to see
 - raise your feature as an _issue_ through GitHub
 - These will be reviewed to decide upon the suitability for the hospital environment
 - if accepted label the issue as being _worked on_
-- it will then be assigned to you accordingly if accepted.
+- you are then free to work on the feature and submit a pull request referencing the issue accepted.
