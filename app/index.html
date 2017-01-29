@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
+  <div id="app">
+      <p>{{ message }}</p>
+  </div>
+
   <div class="container-fluid"">
 
     <h1>Patient list</h1>
@@ -128,8 +131,9 @@
 </form>
 
     <script>window.$ = window.jQuery = require('jquery');</script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
     <script>
       $(() => {
         const { getFile } = remoteRequire('./app/getFile');
@@ -137,7 +141,15 @@
           console.log(getFile);
             getFile('yarn.lock').then((c) => console.log(c));
         });
+          new Vue({
+              el: '#app',
+              data: {
+                  message: 'Hello Vue.js!'
+              }
+          })
       });
     </script>
+
+
   </body>
 </html>
