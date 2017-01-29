@@ -8,7 +8,13 @@ template: `<div>
 <div class="col-md-2" id="PatientDetails">
       <div class="row">
         <div class="col-md-6">
-          <input type="text" v-model="item.war" class="form-control" id="patman-" placeholder="Ward">
+            <select class="form-control input-sm" v-model="item.ward" id="patman-" placeholder="Ward">
+              <option>J1</option>
+              <option>B2</option>
+              <option>AMU</option>
+              <option>HDU</option>
+              <option>ITU</option>
+            </select>
         </div>
         <div class="col-md-6">
           <input type="text" v-model="item.bed" class="form-control" id="patman-" placeholder="Bed">
@@ -33,16 +39,29 @@ template: `<div>
       
       <div class="row">
         <div class="col-md-6">
-          <input type="text" v-model="item.team" class="form-control" id="patman-" placeholder="Team">
+          
+          <select class="form-control input-sm" v-model="item.team" id="patman-" placeholder="Team">
+              <option>HPB</option>
+              <option>Medicine</option>
+              <option>Colorectal</option>
+              <option>Gastro</option>
+              <option>Cardio</option>
+            </select>
         </div>
         <div class="col-md-6">
-          <input type="text" v-model="item.consultant" class="form-control" id="patman-" placeholder="Consultant">
+          <select class="form-control input-sm" v-model="item.consultant" id="patman-" placeholder="Consultant">
+              <option>RDES</option>
+              <option>TSAT</option>
+              <option>AKSI</option>
+              <option>ASN</option>
+              <option>SJA</option>
+            </select>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12">
-          <input type="text" v-model="item.adm_date" class="form-control" id="patman-" placeholder="Admission Date">
+          <input type="date" v-model="item.adm_date" class="form-control" id="patman-" placeholder="Admission Date">
         </div>
       </div>
       <div class="row">
