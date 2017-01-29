@@ -3,7 +3,7 @@ layout: default
 title: About
 menu_order: 01
 ---
-[Home](#Home) | [The Ward Round](#WardRound) | [The Team](#WardRound) | [Contribute](#Contribute)
+[Home](#Home) | [The Ward Round](#WardRound) | [The Team](#Team) | [Contribute](#Contribute)
 
 # <a name="Home"></a>Next-Gen Patient Lists
 
@@ -54,6 +54,9 @@ We need a patient list that can be updated in real-time on the ward round. This 
 # <a name="Team"></a>The NHS Hack-Day Team
 
 PatManPlus was developed over a weekend fuelled with plenty of crazy enthusiasm, coffee, fruit slices and just a little bit of alcohol by a team of software developers and doctors.
+
+## The Team
+![Alt text](team.jpg "The NHS HackDay Team")
 
 In no specific order of heirarchy (unsorted), the team members are:
 
