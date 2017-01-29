@@ -40,7 +40,23 @@ module.exports = {
 		}
 
 		return this.runLockingSqliteCommand(function() {
-			return sqlite.run(sql);;
+			var results = sqlite.run(sql);
+			results.forEach(patient => {
+				if (patient.is_discharged) {
+					if (patient.is_discharged == 'no'){
+						patient.is_discharged = false;
+					}
+					if (patient.is_discharged == 'false') {
+						patient.is_discharged = false;
+					}
+					if (patient.is_discharged == 'yes'){
+						patient.is_discharged = true;
+					}
+				} else {
+					patient.is_discharged = false;
+				}
+			});
+			return results;
 		});
 	},
 

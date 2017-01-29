@@ -30,7 +30,7 @@ $(() => {
 	};
 
 	var patients = backend.patients.search(searchCriteria);
-	console.log("All the patients have been fetched from the database");
+	console.log("All the patients have been fetched from the database", patients);
 
 	$("#new-patient-panel").toggle();
 	$("#filters-panel").toggle();
