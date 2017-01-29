@@ -70,7 +70,7 @@ module.exports = {
 	update: function(data) {
 		this.lock();
 		var result = sqlite.update("patients", data, {uid: data.uid});
-		ensureSuccess(result);
+		return this.ensureSuccess(result);
 	},
 
 	ensureSuccess: function(result, cb) {

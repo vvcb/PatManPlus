@@ -69,7 +69,12 @@ describe('records', function() {
 	});
 
 	describe('#update', function() {
-
+		it("allows updating of patient records", () => {
+			records.insert({uid: '99800001', name: 'John Smith', team: "L.A. Lakers"});
+			records.update({uid: '99800001', name: 'Elsa Smith', team: "Boston Celtics"});
+			var record = records.fetch('99800001');
+			record.team.should.eql("Boston Celtics");
+		});
 	})
 
 	describe('#fetch', function() {
