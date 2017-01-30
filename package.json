@@ -7,7 +7,9 @@
   "build": {},
   "license": "MIT",
   "scripts": {
+    "test": "./node_modules/.bin/mocha specs/ && npm run test:integration",
     "test:integration": "node tests/integration/scenario.js",
+    "test:performance": "node tests/performance/scenario.js",
     "dev": "electron . --enable-logging",
     "clean": "rm -rf ./dist",
     "clean:osx": "rm -rf ./dist/osx",
