@@ -40,3 +40,4 @@ jspm_packages
 dist
 .idea
 *-win32-x64/
+.DS_Store
