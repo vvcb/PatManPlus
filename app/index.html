@@ -1,216 +1,207 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>PatMan +</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/main.css">
-	<script src="../node_modules/bootstrap-vue/build/bootstrap-vue.js" type="text/javascript"></script>
-  </head>
-  <body  style="background-color: #fff">
-
-	  <h1 style="padding: 30px; font-weight: bold; background-color: #fff; color: #ff7575; margin: 0">PatMan +</h1>
-
-	<div id="app">
-	<h1 @click="toggleFilters()" style="border-bottom: 1px solid #ff7575;cursor: pointer; padding: 10px 30px; margin: 0; background-color: #fff; color: #ff7575; font-size: 18px">Filters</h1>
-
-
-		<div id="filters-panel"  style="background-color: #fff; padding: 10px 30px">
-
-
-			<div>
-				<label>Patient UID</label>
-				<input @keyup="search" type="text" v-model="searchCriteria.uid" />
-			</div>
-
-			<div>
-				<label>Patient Name</label>
-				<input @keyup="search" type="text" v-model="searchCriteria.name" />
-			  </div>
-
-			 <div>
-				 <label>Ward</label>
-				 <select @change="search" name="wards" v-model="searchCriteria.filters.ward">
-					 <option v-for="ward in searchCriteria.availableWards" v-bind:value="ward.name">
-					   {{ ward.name }}
-					 </option>
-				 </select>
-			</div>
-
-			<div>
-				 <label>Consultant</label>
-				 <select @change="search" name="consultants" v-model="searchCriteria.filters.consultant">
-					 <option v-for="consultant in searchCriteria.availableConsultants" v-bind:value="consultant.initials">
-					   {{ consultant.name }}
-					 </option>
-				 </select>
-			</div>
-
-			<div>
-				 <label>Speciality</label>
-				 <select @change="search" name="specialities" v-model="searchCriteria.filters.speciality">
-					 <option v-for="speciality in searchCriteria.availableSpecialities" v-bind:value="speciality.name">
-					   {{ speciality.name }}
-					 </option>
-				 </select>
-			</div>
-
-			<div>
-				 <label>Teams</label>
-				 <select @change="search" name="team" v-model="searchCriteria.filters.team">
-					 <option v-for="team in searchCriteria.availableTeams" v-bind:value="team.code">
-					   {{ team.name }}
-					 </option>
-				 </select>
-			</div>
-
+	<head>
+		<meta charset="UTF-8">
+		<title>PatMan +</title>
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script src="../node_modules/bootstrap-vue/build/bootstrap-vue.js" type="text/javascript"></script>
+	</head>
+	<body  style="background-color: #fff">
+		<div class="page-header">
+			<h1>PatMan+: Arctic Royal Infirmary</h1>
+			<h3>Next-Gen Patient List Manager</h3>
 		</div>
-
-		<h1  @click="toggleNewPatient()"  style="border-bottom: 1px solid #ff7575; padding: 10px 30px; cursor: pointer; margin: 0; background-color: #fff; color: #ff7575; font-size: 18px">Add Patient</h1>
-
-		<div id="new-patient-panel" style="background-color: #fff; padding: 30px">
-
-			<div>
+		<div id="app">
 			<div class="row">
+				<div class="col-md-2">
+					<h3 @click="toggleFilters()">
+					<span class="glyphicon glyphicon-search"></span>
+					Search
+					</h3>
+				</div>
+				<div class="col-md-2">
+					<div class="row">
+						<label>Hospital Id</label>
+					</div>
+					<div class="row">
+						<input @keyup="search" type="text" v-model="searchCriteria.uid" />
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="row">
+						<label>Patient Name</label>
+					</div>
+					<div class="row">
+						<input @keyup="search" type="text" v-model="searchCriteria.name" />
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="row">
+						<label>Ward</label>
+					</div>
+					<div class="row">
+						<select @change="search" name="wards" v-model="searchCriteria.filters.ward">
+							<option v-for="ward in searchCriteria.availableWards" v-bind:value="ward.name">
+								{{ ward.name }}
+							</option>
+						</select>
+					</div>
+				</div>
 
-			  <div class="col-xs-3 col-md-1">
-				<label for="exampleInputEmail1">Ward</label>
-				<input type="text" v-model="newPatient.ward" class="form-control" id="newPatient_ward" placeholder="Ward">
-			  </div>
-
-			  <div class="col-xs-3 col-md-1">
-				<label for="exampleInputEmail1">Bed</label>
-				<input type="text" v-model="newPatient.bed" class="form-control" id="newPatient_bed" placeholder="Bed">
-			  </div>
-
-			  <div class="col-xs-6 col-md-4">
-				<label for="exampleInputEmail1">Problem</label>
-				<input type="text" v-model="newPatient.problem" class="form-control" id="newPatient_problem" placeholder="Problem">
-			  </div>
-
-			  <div class="col-xs-6 col-md-3">
-				  <label for="exampleInputEmail1">Treatment</label>
-				<input type="text" v-model="newPatient.treatment" class="form-control" id="newPatient_treatment" placeholder="Treatment">
-			  </div>
-
-			  <div class="col-xs-3 col-md-2">
-				<label for="exampleInputEmail1">Op date</label>
-				<input type="text" v-model="newPatient.opDate"  class="form-control" id="newPatient_op_date" placeholder="Op date">
-			  </div>
-
+				<div class="col-md-2">
+					<div class="row">
+						<label>Team</label>
+					</div>
+					<div class="row">
+						<select @change="search" name="team" v-model="searchCriteria.filters.team">
+							<option v-for="team in searchCriteria.availableTeams" v-bind:value="team.code">
+								{{ team.name }}
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="row">
+						<label>Consultant</label>
+					</div>
+					<div class="row">
+						<select @change="search" name="consultants" v-model="searchCriteria.filters.consultant">
+							<option v-for="consultant in searchCriteria.availableConsultants" v-bind:value="consultant.initials">
+								{{ consultant.name }}
+							</option>
+						</select>
+					</div>
+				</div>
 			</div>
+			
+			<h3  @click="toggleNewPatient()"><span class="glyphicon glyphicon-plus-sign"></span> Add Patient</h3>
+			<div id="new-patient-panel" style="background-color: #fff; padding: 30px" class="row">
+				<div class="col-md-2">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="newPatient_ward">Ward</label>
+							<input type="text" v-model="newPatient.ward" class="form-control" id="newPatient_ward" placeholder="Ward">
+						</div>
+						<div class="col-md-6">
+							<label for="exampleInputEmail1">Bed</label>
+							<input type="text" v-model="newPatient.bed" class="form-control" id="newPatient_bed" placeholder="Bed">
+						</div>
+					</div>
+				</div>
+					<div class="row">
+					<label for="exampleInputEmail1">Name</label>
+							<input type="text" v-model="newPatient.name" class="form-control" id="newPatient_name" placeholder="Name">
+					</div>
 
-			<div class="row">
+				<div class="col-md-4" id="New-Diagnosis-Present-Past">
+					<div class="row" id="New-Diagnosis">	
+					<label for="exampleInputEmail1">Problem</label>
+							<input type="text" v-model="newPatient.problem" class="form-control" id="newPatient_problem" placeholder="Problem">
+					</div>
+					<div class="row" id="New-PresentHistory">	
+					<label for="newPatient_details">Details</label>
+							<input type="email" v-model="newPatient.details" class="form-control" id="newPatient_details" placeholder="Details">
+					</div>
+					<div class="row" id="New-PastHistory">	
+					<label for="newPatient_past_medical_history">PMH</label>
+							<input type="text" v-model="newPatient.past_medical_history" class="form-control" id="newPatient_past_medical_history" placeholder="PMH">
+					</div>
+				</div>
+				
+				<div class="col-md-3" id="New-Treatment-TreatDate-Tests">
+					<div class="row" id="New-Treatment">	
+					<label for="exampleInputEmail1">Treatment</label>
+							<input type="text" v-model="newPatient.treatment" class="form-control" id="newPatient_treatment" placeholder="Treatment">
+					</div>
+					<div class="row" id="New-TreatDate">	
+					<label for="exampleInputEmail1">Op date</label>
+							<input type="text" v-model="newPatient.opDate"  class="form-control" id="newPatient_op_date" placeholder="Op date">
+					</div>
+					<div class="row" id="New-Tests">	
+					<label for="newPatient_test_results">Test results</label>
+							<input type="email" v-model="newPatient.tests" class="form-control" id="newPatient_test_results" placeholder="Test results">
+					</div>
+				</div>
+				
 
-			  <div class="col-xs-6 col-md-2">
-				<label for="exampleInputEmail1">Name</label>
-				<input type="text" v-model="newPatient.name" class="form-control" id="newPatient_name" placeholder="Name">
+		 <div class="col-md-3" id="Jobs-AdverseEvents">
+		 	<div class="row" id="New-Jobs">	
+					<label for="newPatient_jobs">Jobs</label>
+							<input type="email" v-model="newPatient.jobs" class="form-control" id="newPatient_jobs" placeholder="Jobs">
+					</div>
+					<div class="row" id="New-AdverseEvents">	
+					<label for="newPatient_adverse_events">Adverse Events</label>
+							<input type="text" v-model="newPatient.adverse_events" class="form-control" id="newPatient_adverse_events" placeholder="Adverse Events">
+					</div>
+				
 
-				<div class="row">
-					  <div class="col-xs-12 col-sm-12">
-					  <label for="exampleInputEmail1">DOB</label>
-						<input type="text" v-model="newPatient.dob" class="form-control" id="newPatient_dob" placeholder="DOB">
-					  </div>
-				 </div>
-
-				 <div class="row">
-					  <div class="col-xs-12 col-sm-12">
-					  <label for="exampleInputEmail1">HOSP #</label>
-						<input type="text" v-model="newPatient.uid" class="form-control" id="newPatient_uid" placeholder="HOSP #">
-					  </div>
-				 </div>
-
-				 <div class="row">
-					  <div class="col-xs-6 col-sm-6">
-					  <label for="exampleInputEmail1">TEAM</label>
-						<input type="text" v-model="newPatient.team" class="form-control" id="newPatient_team" placeholder="Team">
-					  </div>
-
-					  <div class="col-xs-6 col-sm-6">
-					  <label for="newPatient_consultant">CONS</label>
-						<input type="text" class="form-control" v-model="newPatient.consultant" id="newPatient_consultant" placeholder="COMS">
-					  </div>
-				 </div>
-
-			  </div>
-
-			  <div class="col-xs-6 col-md-4">
-				<label for="newPatient_details">Details</label>
-				<input type="email" v-model="newPatient.details" class="form-control" id="newPatient_details" placeholder="Details">
-			  </div>
-
-			  <div class="col-xs-6 col-md-3">
-				  <label for="newPatient_test_results">Test results</label>
-				<input type="email" v-model="newPatient.tests" class="form-control" id="newPatient_test_results" placeholder="Test results">
-			  </div>
-
-			  <div class="col-xs-6 col-md-3">
-				<label for="newPatient_jobs">Jobs</label>
-				<input type="email" v-model="newPatient.jobs" class="form-control" id="newPatient_jobs" placeholder="Jobs">
-			  </div>
-
+		 </div>
+				
+						
+					<div class="row"></div>
+						<div class="col-xs-6 col-md-2">
+							
+							<div class="row">
+								<div class="col-xs-12 col-sm-12">
+									<label for="exampleInputEmail1">DOB</label>
+									<input type="text" v-model="newPatient.dob" class="form-control" id="newPatient_dob" placeholder="DOB">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12">
+									<label for="exampleInputEmail1">HOSP #</label>
+									<input type="text" v-model="newPatient.uid" class="form-control" id="newPatient_uid" placeholder="HOSP #">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-6 col-sm-6">
+									<label for="exampleInputEmail1">TEAM</label>
+									<input type="text" v-model="newPatient.team" class="form-control" id="newPatient_team" placeholder="Team">
+								</div>
+								<div class="col-xs-6 col-sm-6">
+									<label for="newPatient_consultant">CONS</label>
+									<input type="text" class="form-control" v-model="newPatient.consultant" id="newPatient_consultant" placeholder="COMS">
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-6 col-md-3">
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3 col-md-2">
+							<label for="newPatient_adm_date">Admitted</label>
+							<input type="text" v-model="newPatient.adm_date" class="form-control" id="newPatient_adm_date" placeholder="Admitted">
+						</div>
+						
+						<div class="col-xs-6 col-md-2">
+							<label>
+								<input type="checkbox" v-model="newPatient.is_discharged"  id="newPatient_is_discharged"> Check me out
+							</label>
+						</div>
+					</div>
+					<div>
+						<button v-on:click="addPatient">Add Patient</button>
+					</div>
+				</div>
 			</div>
-
-
-			<div class="row">
-
-			  <div class="col-xs-3 col-md-2">
-				<label for="newPatient_adm_date">Admitted</label>
-				<input type="text" v-model="newPatient.adm_date" class="form-control" id="newPatient_adm_date" placeholder="Admitted">
-			  </div>
-
-			  <div class="col-xs-6 col-md-4">
-				<label for="newPatient_past_medical_history">PMH</label>
-				<input type="text" v-model="newPatient.past_medical_history" class="form-control" id="newPatient_past_medical_history" placeholder="PMH">
-			  </div>
-
-			  <div class="col-xs-6 col-md-3">
-				<label for="newPatient_adverse_events">Adverse Events</label>
-				<input type="text" v-model="newPatient.adverse_events" class="form-control" id="newPatient_adverse_events" placeholder="Adverse Events">
-			  </div>
-
-			  <div class="col-xs-6 col-md-2">
-			  <label>
-				  <input type="checkbox" v-model="newPatient.is_discharged"  id="newPatient_is_discharged"> Check me out
-				</label>
-			  </div>
-
-			</div>
-			<div>
-			  <button v-on:click="addPatient">Add Patient</button>
-			</div>
-		  </div>
-
-		</div>
-
-
 			<h1  @click="togglePatientList()"  style="border-bottom: 1px solid #ff7575; cursor: pointer; padding: 10px 30px; margin: 0; background-color: #fff; color: #ff7575; font-size: 18px">Patient List - {{patients.length}} results</h1>
-
-		<div id="patient-list-panel" class="container-fluid">
-
-
-
-
-
-		<form>
-          <div>
-            <patient v-for="item in patients" v-bind:item="item" v-on:update-click="updatePatient"></patient>
-          </div>
-        </form>
-	    </div>
-
-
-
-
-
-</div>
-
-    <script>window.$ = window.jQuery = require('jquery');</script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../node_modules/lodash/lodash.min.js"></script>
-    <script src="../node_modules/vue/dist/vue.min.js"></script>
-    <script src="components/patient.component.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+			<div id="patient-list-panel" class="container-fluid">
+				<form>
+					<div>
+					<patient v-for="item in patients" v-bind:item="item" v-on:update-click="updatePatient"></patient>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>window.$ = window.jQuery = require('jquery');</script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/lodash/lodash.min.js"></script>
+	<script src="../node_modules/vue/dist/vue.min.js"></script>
+	<script src="components/patient.component.js"></script>
+	<script src="js/main.js"></script>
+</body>
 </html>
