@@ -22,57 +22,49 @@
 					</h3>
 				</div>
 				<div class="col-md-2">
-					<div class="row">
-						<label>Hospital Id</label>
-					</div>
-					<div class="row">
-						<input @keyup="search" type="text" v-model="searchCriteria.uid" />
+					<div class="input-group input-group-sm">
+  						<span class="input-group-addon" id="sizing-addon3">Id: </span>
+  						<input @keyup="search" type="text" v-model="searchCriteria.uid" class="form-control" placeholder="Hospital Number" aria-describedby="sizing-addon3">
 					</div>
 				</div>
 				<div class="col-md-2">
-					<div class="row">
-						<label>Patient Name</label>
-					</div>
-					<div class="row">
-						<input @keyup="search" type="text" v-model="searchCriteria.name" />
+					<div class="input-group input-group-sm">
+  						<span class="input-group-addon" id="sizing-addon3">Name: </span>
+  						<input @keyup="search" type="text" v-model="searchCriteria.name" class="form-control" placeholder="Patient Name" aria-describedby="sizing-addon3">
 					</div>
 				</div>
 				<div class="col-md-2">
-					<div class="row">
-						<label>Ward</label>
-					</div>
-					<div class="row">
-						<select @change="search" name="wards" v-model="searchCriteria.filters.ward">
-							<option v-for="ward in searchCriteria.availableWards" v-bind:value="ward.name">
+					<div class="input-group input-group-sm">
+  						<span class="input-group-addon" id="sizing-addon3">Ward: </span>
+  						<select @change="search" name="wards" v-model="searchCriteria.filters.ward">
+							<option v-for="ward in searchCriteria.availableWards" v-bind:value="ward.name" aria-describedby="sizing-addon3">
 								{{ ward.name }}
 							</option>
 						</select>
 					</div>
 				</div>
+
 				<div class="col-md-2">
-					<div class="row">
-						<label>Team</label>
-					</div>
-					<div class="row">
-						<select @change="search" name="team" v-model="searchCriteria.filters.team">
-							<option v-for="team in searchCriteria.availableTeams" v-bind:value="team.code">
-								{{ team.name }}
+					<div class="input-group input-group-sm">
+  						<span class="input-group-addon" id="sizing-addon3">Team: </span>
+  						<select @change="search" name="team" v-model="searchCriteria.filters.team">
+							<option v-for="team in searchCriteria.availableTeams" v-bind:value="team.code" aria-describedby="sizing-addon3">
+								{{ team.code }}
 							</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-md-2">
-					<div class="row">
-						<label>Consultant</label>
-					</div>
-					<div class="row">
-						<select @change="search" name="consultants" v-model="searchCriteria.filters.consultant">
-							<option v-for="consultant in searchCriteria.availableConsultants" v-bind:value="consultant.initials">
-								{{ consultant.name }}
+					<div class="input-group input-group-sm">
+  						<span class="input-group-addon" id="sizing-addon3">Cons: </span>
+  						<select @change="search" name="team" v-model="searchCriteria.filters.consultant">
+							<option v-for="consultant in searchCriteria.availableConsultants" v-bind:value="consultant.initials" aria-describedby="sizing-addon3">
+								{{ consultant.initials }}
 							</option>
 						</select>
 					</div>
 				</div>
+
 			</div>
 			<h3 @click="toggleNewPatient()">
 			<span class="glyphicon glyphicon-plus-sign"></span>
