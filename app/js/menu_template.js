@@ -1,4 +1,3 @@
-
 function createMenuTemplate(window) {
   return [
     {
@@ -8,13 +7,17 @@ function createMenuTemplate(window) {
           label: 'Print',
           role: 'print',
           accelerator: 'CommandOrControl+P',
-          click() { window.webContents.print(); }
+          click() {
+            window.webContents.print();
+          }
         },
         {
           label: 'Open Dev Tools',
           role: 'dev_tools',
           accelerator: 'Shift+CommandOrControl+I',
-          click() { window.webContents.openDevTools(); }
+          click() {
+            window.webContents.openDevTools();
+          }
         },
         {
           type: 'separator'
@@ -23,11 +26,13 @@ function createMenuTemplate(window) {
           label: 'Quit',
           role: 'quit',
           accelerator: 'CommandOrControl+Q',
-          click() { window.webContents.openDevTools(); }
+          click() {
+            window.webContents.openDevTools();
+          }
         }
       ]
     }
-  ]
+  ];
 }
 
 

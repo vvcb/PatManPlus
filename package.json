@@ -7,9 +7,10 @@
   "build": {},
   "license": "GPLv3",
   "scripts": {
-    "test": "./node_modules/.bin/mocha specs/ && npm run test:integration",
+    "test": "./node_modules/.bin/mocha specs/ && npm run test:integration && npm run lint",
     "test:integration": "node tests/integration/scenario.js",
     "test:performance": "node tests/performance/scenario.js",
+    "lint": "./node_modules/.bin/eslint .",
     "dev": "electron . --enable-logging",
     "clean": "rm -rf ./dist",
     "clean:osx": "rm -rf ./dist/osx",
@@ -25,6 +26,7 @@
     "chai": "^3.5.0",
     "electron": "^1.4.15",
     "electron-packager": "^8.5.1",
+    "eslint": "^3.14.1",
     "mocha": "^3.2.0",
     "should": "^11.2.0"
   },

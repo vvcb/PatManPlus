@@ -1,51 +1,58 @@
-[{
-	"intials": "BJM",
-	"name": "Dr. Bill Murray",
-	"specialty": "General Medicine",
-	"team": "Medicine1",
-	"display_order": "01"
-}, {
-	"intials": "RDES",
-	"name": "Mr. Rahul Deshpande",
-	"specialty": "HPB Surgery",
-	"team": "HPB",
-	"display_order": "02"
-}, {
-	"initials": "TSAT",
-	"name": "Mr. Thomas Satyadas",
-	"specialty": "HPB Surgery",
-	"team": "HPB",
-	"display_order": "03"
-}, {
-	"initials": "ASN",
-	"name": "Mr. Aali Sheen",
-	"specialty": "HPB Surgery",
-	"team": "HPB",
-	"display_order": "04"
-}, {
-	"initials": "CCRG",
-	"name": "Mrs. Chris Craig",
-	"specialty": "Colorectal",
-	"team": "CR-Blue",
-	"display_order": "05"
-}, {
-	"initials": "MIMS",
-	"name": "Mr. Monty Sython",
-	"specialty": "Cardiology",
-	"team": "Cardio1",
-	"display_order": "06"
-}, {
-	"initials": "MAK",
-	"name": "Ms. Michelle Kinman",
-	"specialty": "Cardiology",
-	"team": "Cardio1",
-	"display_order": "07"
-
-}, {
-	"initials": "RAO",
-	"name": "Ms. Rhonda Oscar",
-	"specialty": "Gastroenterology",
-	"team": "Gastro",
-	"display_order": "07"
-
-}]
+[
+  {
+    "intials": "BJM",
+    "name": "Dr. Bill Murray",
+    "specialty": "General Medicine",
+    "team": "Medicine1",
+    "display_order": "01"
+  },
+  {
+    "intials": "RDES",
+    "name": "Mr. Rahul Deshpande",
+    "specialty": "HPB Surgery",
+    "team": "HPB",
+    "display_order": "02"
+  },
+  {
+    "initials": "TSAT",
+    "name": "Mr. Thomas Satyadas",
+    "specialty": "HPB Surgery",
+    "team": "HPB",
+    "display_order": "03"
+  },
+  {
+    "initials": "ASN",
+    "name": "Mr. Aali Sheen",
+    "specialty": "HPB Surgery",
+    "team": "HPB",
+    "display_order": "04"
+  },
+  {
+    "initials": "CCRG",
+    "name": "Mrs. Chris Craig",
+    "specialty": "Colorectal",
+    "team": "CR-Blue",
+    "display_order": "05"
+  },
+  {
+    "initials": "MIMS",
+    "name": "Mr. Monty Sython",
+    "specialty": "Cardiology",
+    "team": "Cardio1",
+    "display_order": "06"
+  },
+  {
+    "initials": "MAK",
+    "name": "Ms. Michelle Kinman",
+    "specialty": "Cardiology",
+    "team": "Cardio1",
+    "display_order": "07"
+  },
+  {
+    "initials": "RAO",
+    "name": "Ms. Rhonda Oscar",
+    "specialty": "Gastroenterology",
+    "team": "Gastro",
+    "display_order": "07"
+  }
+]
