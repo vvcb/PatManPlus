@@ -1,6 +1,6 @@
-Vue.component('patient', {
-props: ['item'],
-template: `<div>
+Vue.component('patient', {   // eslint-disable-line no-undef
+  props: ['item'],
+  template: `<div>
 
 <div class="patient">
 
@@ -136,8 +136,8 @@ template: `<div>
     </div>
   `,
   methods: {
-  updateClick: function () {
-  this.$emit('update-click', this.item);
-  }
+    updateClick: function () {
+      this.$emit('update-click', this.item);
+    }
   },
-  });
+});
