@@ -1,11 +1,11 @@
 [{
-	"intials": "BJM",
+	"initials": "BJM",
 	"name": "Dr. Bill Murray",
 	"specialty": "General Medicine",
 	"team": "Medicine1",
 	"display_order": "01"
 }, {
-	"intials": "RDES",
+	"initials": "RDES",
 	"name": "Mr. Rahul Deshpande",
 	"specialty": "HPB Surgery",
 	"team": "HPB",
