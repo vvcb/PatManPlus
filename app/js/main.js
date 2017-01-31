@@ -47,6 +47,7 @@ $(() => {
       },
       updatePatient: function (patient) {
         backend.patients.update(patient);
+        showToaster(`Patient '${patient.name}' updated`);   // eslint-disable-line no-undef
       },
       addPatient: function () {
         backend.patients.insert(this.newPatient);

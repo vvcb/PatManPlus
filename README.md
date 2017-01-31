@@ -93,17 +93,22 @@ When reporting a bug through a new issue please put the detail below and respond
 - what is the expected behavior?  
 - please mention your operating system version and the version of PatManPlus.  
 
-### Development on Mac OSX
+### Development setup
 
 You will need the following installed:
-- NodeJS
-- Git
+- [NodeJS](https://nodejs.org/en/download/)
+- [Git](https://git-scm.com/downloads)
+- [Yarn](https://yarnpkg.com/en/docs/install) (optional, but preferred)
+
+Checkout the project
+- `$ git clone git@github.com:vvcb/PatManPlus.git`
 
 To build the project you will need to run the following commands:
-- npm install
+- `$ cd PatManPlus`
+- `$ yarn` (preferred) or `$ npm install`
 
 To run the application, you should run the following command:
-- npm run dev
+- `$ npm run dev`
 
 ### Building and Packaging
 

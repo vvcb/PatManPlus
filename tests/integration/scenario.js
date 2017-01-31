@@ -1,7 +1,7 @@
 const fs = require('fs'),
   jsonfile = require('jsonfile');
 
-const LOCATION = '/tmp/integration-test';
+const LOCATION = '/tmp/patman-integration-test';
 
 var backend = require('./../../app/backend/app');
 backend.initialize(LOCATION);
