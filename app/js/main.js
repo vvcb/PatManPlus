@@ -4,7 +4,7 @@ function remoteRequire(module) {
 
 var log = require('electron-log');
 log.transports.console.level = 'debug';
-log.appName = 'nhs-hack-day';
+log.appName = 'PatManPlus';
 
 $(() => {
   const backend = remoteRequire('./app/backend/app');
@@ -21,6 +21,7 @@ $(() => {
     availableSpecialities: null,
     uid: null,
     name: null,
+    is_discharged: 0,
     filters: {
       ward: null,
       consultant: null,
@@ -48,6 +49,7 @@ $(() => {
       updatePatient: function (patient) {
         backend.patients.update(patient);
         showToaster(`Patient '${patient.name}' updated`);   // eslint-disable-line no-undef
+        this.patients = backend.patients.search(this.searchCriteria);
       },
       addPatient: function () {
         backend.patients.insert(this.newPatient);

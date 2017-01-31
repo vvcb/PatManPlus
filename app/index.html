@@ -64,6 +64,13 @@
 						</select>
 					</div>
 				</div>
+				<div class="col-md-2">
+					<div class="input-group input-group-sm">
+						<label>
+							<input type="checkbox" @click="search" id="is-discharged-checkbox" v-model="searchCriteria.is_discharged">Discharged
+						</label>
+					</div>
+				</div>
 
 			</div>
 			<h3 @click="toggleNewPatient()">

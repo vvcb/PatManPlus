@@ -77,7 +77,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
         <div class="row">
           <div class="col-md-8">
             
-            <input type="checkbox" aria-label="" class="discharged" v-model="item.is_discharged">Discharge
+            <input type="checkbox" aria-label="" class="discharged" v-model="item.is_discharged">Discharged
           </div>
           
           <div class="col-md-4">
