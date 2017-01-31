@@ -130,7 +130,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
   </div>
 </div>
 
-      <button v-on:click="updateClick">Update</button>
+      <button v-on:click.prevent="updateClick">Update</button>
     </div>
   </div>
     </div>

@@ -8,7 +8,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "test": "./node_modules/.bin/mocha specs/ && npm run test:integration && npm run lint",
-    "test:integration": "node tests/integration/scenario.js",
+    "test:integration": "rm -rf /tmp/patman-integration-test && node tests/integration/scenario.js",
     "test:performance": "node tests/performance/scenario.js",
     "lint": "./node_modules/.bin/eslint .",
     "dev": "electron . --enable-logging",
@@ -44,6 +44,7 @@
     "sqlite-sync": "^0.3.6",
     "sqlite3": "^3.1.8",
     "tmp": "0.0.31",
+    "toastr": "^2.1.2",
     "vue": "^2.1.10"
   }
 }
