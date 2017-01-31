@@ -1,5 +1,7 @@
 # PatManPlus
 
+[![Build Status](https://travis-ci.org/vvcb/PatManPlus.svg?branch=master)](https://travis-ci.org/vvcb/PatManPlus)
+
 ### Next-Gen Patient Lists
 Welcome to the next-generation patient list manager PatManPlus.
 

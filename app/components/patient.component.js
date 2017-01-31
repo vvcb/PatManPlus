@@ -1,4 +1,4 @@
-Vue.component('patient', {
+Vue.component('patient', {   // eslint-disable-line no-undef
 props: ['item'],
 template: `<div>
   <div class="patient">

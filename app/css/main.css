@@ -4,42 +4,50 @@
 }
 
 @keyframes spin {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1) rotate(360deg); }
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
 }
 
 @-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 .glyphicon-refresh.spinning {
-  transform-origin: 50% 49%;
+    transform-origin: 50% 49%;
 }
 
 div > .patient {
-	background-color: #f1f1f1;
-	margin-bottom:10px;
-	padding:10px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
-.row { 
-margin-top:10px;
+.row {
+    margin-top: 10px;
 }
 
 .container-fluid {
-	margin-top:20px;
+    margin-top: 20px;
 }
 
 button {
-background-color:#ff7575;
-color:white;
-border:none;
-padding:7px 20px;
-border-radius:3px;
-margin:10px 0;
+    background-color: #ff7575;
+    color: white;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 3px;
+    margin: 10px 0;
 }
 
 .discharged {
-margin-right:6px !important;
+    margin-right: 6px !important;
 }
