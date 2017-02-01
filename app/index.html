@@ -15,40 +15,43 @@
 			<h5>Next-Gen Patient List Manager</h5>
 		</div>
 		<div id="app">
+			<!-- Experimental - Tabbed view for searching and adding new patients -->
+			<!-- Search Section -->
+			
 			<div class="row" id="SearchPanel">
-				<div class="col-md-2">
-					<h3 @click="toggleFilters()">
-					<span class="glyphicon glyphicon-search"></span>
-					Search
-					</h3>
-				</div>
-				<div class="col-md-2">
+				<!--
+					<div class="col-md-2">
+									<h3 @click="toggleFilters()">
+									<span class="glyphicon glyphicon-search"></span>
+						Search
+					</div>
+				-->
+				<div class="col-md-3">
 					<div class="input-group input-group-sm">
-  						<span class="input-group-addon" id="sizing-addon3">Id: </span>
-  						<input @keyup="search" type="text" v-model="searchCriteria.uid" class="form-control" placeholder="Hospital Number" aria-describedby="sizing-addon3">
+						<span class="input-group-addon" id="sizing-addon3">Search Patient: Id </span>
+						<input @keyup="search" type="text" v-model="searchCriteria.uid" class="form-control" placeholder="Hospital Number" aria-describedby="sizing-addon3">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon" id="sizing-addon3">Name: </span>
+						<input @keyup="search" type="text" v-model="searchCriteria.name" class="form-control" placeholder="Patient Name" aria-describedby="sizing-addon3">
 					</div>
 				</div>
 				<div class="col-md-2">
 					<div class="input-group input-group-sm">
-  						<span class="input-group-addon" id="sizing-addon3">Name: </span>
-  						<input @keyup="search" type="text" v-model="searchCriteria.name" class="form-control" placeholder="Patient Name" aria-describedby="sizing-addon3">
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="input-group input-group-sm">
-  						<span class="input-group-addon" id="sizing-addon3">Ward: </span>
-  						<select @change="search" name="wards" v-model="searchCriteria.filters.ward">
+						<span class="input-group-addon" id="sizing-addon3">Ward: </span>
+						<select style="height: 30px;" @change="search" name="wards" v-model="searchCriteria.filters.ward">
 							<option v-for="ward in searchCriteria.availableWards" v-bind:value="ward.name" aria-describedby="sizing-addon3">
 								{{ ward.name }}
 							</option>
 						</select>
 					</div>
 				</div>
-
 				<div class="col-md-2">
 					<div class="input-group input-group-sm">
-  						<span class="input-group-addon" id="sizing-addon3">Team: </span>
-  						<select @change="search" name="team" v-model="searchCriteria.filters.team">
+						<span class="input-group-addon" id="sizing-addon3">Team: </span>
+						<select style="height: 30px;" @change="search" name="team" v-model="searchCriteria.filters.team">
 							<option v-for="team in searchCriteria.availableTeams" v-bind:value="team.code" aria-describedby="sizing-addon3">
 								{{ team.code }}
 							</option>
@@ -57,16 +60,17 @@
 				</div>
 				<div class="col-md-2">
 					<div class="input-group input-group-sm">
-  						<span class="input-group-addon" id="sizing-addon3">Cons: </span>
-  						<select @change="search" name="team" v-model="searchCriteria.filters.consultant">
+						<span class="input-group-addon" id="sizing-addon3">Cons: </span>
+						<select style="height: 30px;" @change="search" name="team" v-model="searchCriteria.filters.consultant">
 							<option v-for="consultant in searchCriteria.availableConsultants" v-bind:value="consultant.initials" aria-describedby="sizing-addon3">
 								{{ consultant.initials }}
 							</option>
 						</select>
 					</div>
 				</div>
-
 			</div>
+			
+			<!-- Add New Patient Section -->
 			<h3 @click="toggleNewPatient()">
 			<span class="glyphicon glyphicon-plus-sign"></span>
 			Add Patient
@@ -176,25 +180,28 @@
 			</div>
 			
 			<h3 @click="togglePatientList()">
-				<span class="glyphicon glyphicon-th-list"></span>
-				List of {{patients.length}} patients
+			<span class="glyphicon glyphicon-th-list"></span>
+			List of {{patients.length}} patients
 			</h3>
 			<div id="patient-list-panel" class="container-fluid">
 				<form>
 					<div>
-						<patient v-for="item in patients" v-bind:item="item" v-on:update-click="updatePatient"></patient>
-					</div>
-				</form>
-			</div>
+					<patient v-for="item in patients" v-bind:item="item" v-on:update-click="updatePatient"></patient>
+				</div>
+			</form>
 		</div>
-		<script>window.$ = window.jQuery = require('jquery');</script>
-		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="../node_modules/lodash/lodash.min.js"></script>
-		<script src="../node_modules/vue/dist/vue.min.js"></script>
-		<script src="../node_modules/bootstrap-vue/build/bootstrap-vue.js" type="text/javascript"></script>
-		<script src="components/patient.component.js"></script>
-		<script src="js/toastr.js"></script>
-		<script src="js/notification.js"></script>
-		<script src="js/main.js"></script>
-	</body>
+	</div>
+	<script>window.$ = window.jQuery = require('jquery');</script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/lodash/lodash.min.js"></script>
+	<script src="../node_modules/vue/dist/vue.min.js"></script>
+	<script src="../node_modules/bootstrap-vue/build/bootstrap-vue.js" type="text/javascript"></script>
+	<script src="components/patient.component.js"></script>
+	<!--
+	<script src="components/search.component.js"></script>
+	-->
+	<script src="js/toastr.js"></script>
+	<script src="js/notification.js"></script>
+	<script src="js/main.js"></script>
+</body>
 </html>
