@@ -72,6 +72,15 @@ describe('records', function () {
       search.length.should.eql(1);
       search[0].uid.should.eql('99800002');
     });
+    it('allows filtering by is_discharged', () => {
+      records.insert({uid: '99900001', name: 'John Smith', is_discharged: 1});
+      records.insert({uid: '99800002', name: 'Elsa Smith', is_discharged: 0});
+      const search = records.search({
+        is_discharged: false,
+      });
+      search.length.should.eql(1);
+      search[0].uid.should.eql('99800002');
+    });
   });
 
   describe('#update', function () {
