@@ -1,15 +1,22 @@
 const fs = require('fs'),
   jsonfile = require('jsonfile');
 
-const LOCATION = '/tmp/patman-integration-test';
+const dbFilePath = '/tmp/patman-integration-test';
 
-var backend = require('./../../app/backend/app');
-backend.initialize(LOCATION);
+const patients = require('../../app/backend/patients.js');
+let sequence = patients.initialize(dbFilePath);
 
 fs.readdirSync('fixtures').forEach(item => {
   const path = `fixtures/${item}`;
   if (fs.lstatSync(path).isDirectory())
     return;
   var patient = jsonfile.readFileSync(path);
-  backend.patients.insert(patient);
+  sequence = sequence.then(() => patients.insert(patient));
+});
+
+sequence.then(() => {
+  console.log('All records inserted!');
+}).catch((err) => {
+  console.log(err);
+  process.exit(1);
 });

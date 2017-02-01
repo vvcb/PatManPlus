@@ -8,7 +8,7 @@
 		"consultant": "ASN",
 		"adm_date": "2017-01-15",
 		"dis_date": "2017-01-21",
-		"is_discharged": "No",
+		"is_discharged": 0,
 		"problem": "Non-specific abdo pain",
 		"details": "RIF pain. No other symptoms.No gynae history.",
 		"past_medical_history": "No previous history. ",

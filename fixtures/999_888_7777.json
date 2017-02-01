@@ -8,7 +8,7 @@
 		"consultant": "RDES",
 		"adm_date": "2017-01-15",
 		"dis_date": "",
-		"is_discharged": "no",
+		"is_discharged": 0,
 		"problem": "Pancreatic ductal adenocarcinoma",
 		"details": "HOP mass. Jaundice, Weight loss. Had ERCP at Whythenshaw. \\nMetal Stent in situ.",
 		"past_medical_history": "HTN IHD, Diabetes",

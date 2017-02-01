@@ -1,8 +1,9 @@
 const {app, BrowserWindow, Menu} = require('electron');
 const path = require('path');
 const url = require('url');
-const {createMenuTemplate} = require('./app/js/menu_template');
+const { createMenuTemplate } = require('./app/js/menu_template');
 
+global.backend = require('./app/backend/app');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

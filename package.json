@@ -7,8 +7,9 @@
   "build": {},
   "license": "GPL-3.0",
   "scripts": {
-    "test": "./node_modules/.bin/mocha specs/ && npm run test:integration && npm run lint",
-    "test:integration": "rm -rf /tmp/patman-integration-test && node tests/integration/scenario.js",
+    "test": "npm run test:unit && npm run test:integration && npm run lint",
+    "test:unit": "./node_modules/.bin/mocha specs/",
+    "test:integration": "rm -f /tmp/patman-integration-test && node tests/integration/scenario.js",
     "test:performance": "node tests/performance/scenario.js",
     "lint": "./node_modules/.bin/eslint .",
     "dev": "electron . --enable-logging",
@@ -20,12 +21,14 @@
     "pack:win": "npm run clean:win && build . \"NHS Hack Day - Windows\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.2 --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
     "build": "npm run build:osx && npm run build:win",
     "build:osx": "npm run pack:osx && build \"dist/osx/NHS-Hack-Day-darwin-x64/NHS-Hack-Day.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
-    "build:win": "npm run pack:win && build \"dist/win/NHS-Hack-Day-Todo-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json"
+    "build:win": "npm run pack:win && build \"dist/win/NHS-Hack-Day-Todo-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json",
+    "rebuild": "./node_modules/.bin/electron-rebuild"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "electron": "^1.4.15",
     "electron-packager": "^8.5.1",
+    "electron-rebuild": "^1.5.7",
     "eslint": "^3.14.1",
     "mocha": "^3.2.0",
     "should": "^11.2.0"
@@ -41,7 +44,7 @@
     "lockfile": "^1.0.3",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
-    "sqlite-sync": "^0.3.6",
+    "sequelize": "^3.30.1",
     "sqlite3": "^3.1.8",
     "tmp": "0.0.31",
     "toastr": "^2.1.2",

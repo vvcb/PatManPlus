@@ -19,9 +19,6 @@ module.exports = {
       mkdirp.sync(shared_folder);
     }
 
-    this.patients = require('./patients');
-    this.patients.initialize(path.join(shared_folder, 'patients.sqlite3'));
-
     var consultants_file = path.join(shared_folder, 'consultants.json');
     this.consultants = new JsonSource(consultants_file);
 
@@ -30,5 +27,8 @@ module.exports = {
 
     var teams_file = path.join(shared_folder, 'teams.json');
     this.teams = new JsonSource(teams_file);
+
+    this.patients = require('./patients');
+    return this.patients.initialize(path.join(shared_folder, 'patients.sqlite3'));
   }
 };
