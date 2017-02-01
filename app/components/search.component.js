@@ -51,5 +51,5 @@ template: `
 			</select>
 		</div>
 	</div>
-</div>`
-})
+</div>`,
+});
