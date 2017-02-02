@@ -1,5 +1,5 @@
-Vue.component('search-patient', {  // eslint-disable-line no-undef
-
+Vue.component('search', {  // eslint-disable-line no-undef
+ props: ['searchCriteria'],
 template: `
 <div class="row patient" id="SearchPanel">
 	<!--
@@ -51,5 +51,5 @@ template: `
 			</select>
 		</div>
 	</div>
-</div>`,
+</div>`
 });
