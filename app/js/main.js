@@ -1,18 +1,15 @@
-function remoteRequire(module) {
-  return require('electron').remote.require(module);
-}
+const remote = require('electron').remote;
+const backend = remote.getGlobal('backend');
 
 var log = require('electron-log');
 log.transports.console.level = 'debug';
-log.appName = 'nhs-hack-day';
+log.appName = 'PatManPlus';
 
 $(() => {
-  const backend = remoteRequire('./app/backend/app');
-
   var shared_folder = './fixtures/sample/';
 
   console.log('Using the following shared folder: ', shared_folder);
-  backend.initialize(shared_folder);
+  let dbSequence = backend.initialize(shared_folder, { enable_logging: true });
 
   var searchCriteria = {
     availableWards: backend.wards.fetchAll().concat({name: null}),
@@ -21,6 +18,7 @@ $(() => {
     availableSpecialities: null,
     uid: null,
     name: null,
+    is_discharged: null,
     filters: {
       ward: null,
       consultant: null,
@@ -29,41 +27,48 @@ $(() => {
     }
   };
 
-  var patients = backend.patients.search(searchCriteria);
 
   $('#new-patient-panel').toggle();
   $('#filters-panel').toggle();
 
-  new Vue({   // eslint-disable-line no-undef
-    el: '#app',
-    data: {
-      searchCriteria: searchCriteria,
-      patients: patients,
-      newPatient: {}
-    },
-    methods: {
-      search: function () {
-        this.patients = backend.patients.search(this.searchCriteria);
+  dbSequence = dbSequence.then(() => backend.patients.search(searchCriteria));
+
+  dbSequence.then((patients) => {
+    new Vue({   // eslint-disable-line no-undef
+      el: '#app',
+      data: {
+        searchCriteria: searchCriteria,
+        patients: patients,
+        newPatient: {}
       },
-      updatePatient: function (patient) {
-        backend.patients.update(patient);
-        showToaster(`Patient '${patient.name}' updated`);   // eslint-disable-line no-undef
-      },
-      addPatient: function () {
-        backend.patients.insert(this.newPatient);
-        this.patients = backend.patients.search(this.searchCriteria);
-        $('#new-patient-panel').toggle();
-        this.newPatient = {};
-      },
-      togglePatientList: function () {
-        $('#patient-list-panel').toggle();
-      },
-      toggleNewPatient: function () {
-        $('#new-patient-panel').toggle();
-      },
-      toggleFilters: function () {
-        $('#filters-panel').toggle();
+      methods: {
+        search: function () {
+          backend.patients.search(this.searchCriteria).then((patients) => this.patients = patients);
+        },
+        updatePatient: function (patient) {
+          backend.patients.update(patient).then(() => {
+            return backend.patients.search(this.searchCriteria);
+          }).then((patients) => {
+            this.patients = patients;
+          });
+          showToaster(`Patient '${patient.name}' updated`);   // eslint-disable-line no-undef
+        },
+        addPatient: function () {
+          backend.patients.insert(this.newPatient);
+          this.patients = backend.patients.search(this.searchCriteria);
+          $('#new-patient-panel').toggle();
+          this.newPatient = {};
+        },
+        togglePatientList: function () {
+          $('#patient-list-panel').toggle();
+        },
+        toggleNewPatient: function () {
+          $('#new-patient-panel').toggle();
+        },
+        toggleFilters: function () {
+          $('#filters-panel').toggle();
+        }
       }
-    }
+    });
   });
 });

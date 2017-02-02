@@ -8,7 +8,7 @@
 		"consultant": "AKSI",
 		"adm_date": "2017-01-12",
 		"dis_date": "2017-01-15",
-		"is_discharged": "yes",
+		"is_discharged": 1,
 		"problem": "Cholecystitis",
 		"details": "Gallstones on USS. ",
 		"past_medical_history": "Very fit. Very smart. Good looking guy.",

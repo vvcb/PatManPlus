@@ -8,7 +8,7 @@
 		"consultant": "TSAT",
 		"adm_date": "2017-01-15",
 		"dis_date": "2017-01-20",
-		"is_discharged": "No",
+		"is_discharged": 0,
 		"problem": "Rectal bleeding",
 		"details": "Likely haemorrhoidal bleeding. Previous admissions with similar hx. ",
 		"past_medical_history": "Likes kryptonite.",
