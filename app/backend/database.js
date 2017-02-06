@@ -1,6 +1,11 @@
 const Sequelize = require('sequelize');
+var lockFile = require('lockfile');
+const Patients = require('./patients');
 
-const Patients = require('./db_models/patients');
+function optimisticUpdate(instance, options) {
+  const whereClause = { updatedAt: instance.previous('updatedAt') };
+  options.where = Object.assign((options.where || {}), whereClause);
+}
 
 class Database {
   constructor(dbFilePath, options) {
@@ -10,13 +15,16 @@ class Database {
       dialect: 'sqlite',
       storage: dbFilePath,
       define: {
-        timestamps: false
+        hooks: {
+          beforeUpdate: optimisticUpdate,
+        }
       },
       logging: options.enable_logging ? console.log : false
     });
 
-    this.patients = Patients(sequelize, Sequelize);
+    this.dbFilePath = dbFilePath;
     this.sequelize = sequelize;
+    this.patients = new Patients(this);
   }
 
   connect() {
@@ -29,6 +37,29 @@ class Database {
 
   createMissingTables() {
     return this.sequelize.sync();
+  }
+
+  runLockingSqliteCommand (cb) {
+    if (lockFile.checkSync(this.lockPath())) {
+      throw new Error('The database is currently locked by another user');
+    }
+    lockFile.lockSync(this.lockPath());
+    try {
+      return cb();
+    } catch(err) {
+      console.log(err);
+      throw err;
+    } finally {
+      this.unlock();
+    }
+  }
+
+  unlock () {
+    lockFile.unlockSync(this.lockPath());
+  }
+
+  lockPath () {
+    return `${this.dbFilePath}.lock`;
   }
 }
 

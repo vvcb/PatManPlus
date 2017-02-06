@@ -6,11 +6,6 @@ log.transports.console.level = 'debug';
 log.appName = 'PatManPlus';
 
 $(() => {
-  var shared_folder = './fixtures/sample/';
-
-  console.log('Using the following shared folder: ', shared_folder);
-  let dbSequence = backend.initialize(shared_folder, { enable_logging: true });
-
   var searchCriteria = {
     availableWards: backend.wards.fetchAll().concat({name: null}),
     availableConsultants: backend.consultants.fetchAll().concat({name: null, initials: null}),
@@ -31,7 +26,7 @@ $(() => {
   $('#new-patient-panel').toggle();
   $('#filters-panel').toggle();
 
-  dbSequence = dbSequence.then(() => backend.patients.search(searchCriteria));
+  const dbSequence = backend.patients.search(searchCriteria);
 
   dbSequence.then((patients) => {
     new Vue({   // eslint-disable-line no-undef

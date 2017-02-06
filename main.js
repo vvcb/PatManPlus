@@ -2,8 +2,13 @@ const {app, BrowserWindow, Menu} = require('electron');
 const path = require('path');
 const url = require('url');
 const { createMenuTemplate } = require('./app/js/menu_template');
+const backend = require('./app/backend/app');
 
-global.backend = require('./app/backend/app');
+const shared_folder = './fixtures/sample/';
+console.log('Using the following shared folder: ', shared_folder);
+backend.initialize(shared_folder);
+
+global.backend = backend;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

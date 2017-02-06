@@ -7,7 +7,7 @@
 		"team": "HPB",
 		"consultant": "RDES",
 		"adm_date": "2017-01-13",
-		"dis_date": "",
+		"dis_date": null,
 		"is_discharged": 0,
 		"problem": "Colorectal liver mets",
 		"details": "Rectal cancer resected 2 years ago; Now has Sg7 mets",

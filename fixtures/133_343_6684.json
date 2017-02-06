@@ -7,7 +7,7 @@
         "team":"Gastro",
         "consultant":"RAO",
         "adm_date":"2017-01-12",
-        "dis_date":"",
+        "dis_date":null,
         "is_discharged":0,
         "problem":"Pneumonia",
         "details":"Admitted with SOB and collapse. Prolonged period on floor at home",

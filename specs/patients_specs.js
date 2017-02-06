@@ -1,14 +1,20 @@
-const patients = require('./../app/backend/patients.js');
+const Database = require('./../app/backend/database.js');
 const chai = require('chai');
 const tmp = require('tmp');
+const sqlite3 = require('sqlite3').verbose();
 
 chai.should();
+
+let patients;
+let filename;
 
 describe('patients', () => {
 
   beforeEach(() => {
-    const file = tmp.fileSync();
-    return patients.initialize(file.name);
+    filename = tmp.fileSync();
+    const database = new Database(filename.name);
+    patients = database.patients;
+    return database.createMissingTables();
   });
 
   describe('#insert', () => {
@@ -90,11 +96,33 @@ describe('patients', () => {
   describe('#update', () => {
     it('allows updating of patient records', () => {
       return patients.insert({uid: '99800001', name: 'John Smith', team: 'L.A. Lakers'}).then(() => {
-        return patients.update({uid: '99800001', name: 'Elsa Smith', team: 'Boston Celtics'});
+        return patients.update({team: 'Boston Celtics'}, { uid: '99800001' });
       }).then(() => {
-        return patients.fetch('99800001');
+        return patients.search({ uid: '99800001'});
       }).then((record) => {
-        record.team.should.eql('Boston Celtics');
+        record[0].team.should.eql('Boston Celtics');
+      });
+    });
+
+    it('fails on concurrent updates to same record', () => {
+      return new Promise((resolve) => {
+        patients.insert({uid: '99800001', name: 'John Smith', team: 'L.A. Lakers'}).then(() => {
+          return patients.search({ uid: '99800001'}).then((results) => results[0]);
+        }).then((patient) => {
+          const db = new sqlite3.Database(filename.name);
+          const updatedAt = new Date().toISOString().replace('T', ' ');
+          const sql = `UPDATE \`patients\` SET \`updatedAt\` = '${updatedAt}' WHERE \`id\` = 1`;
+          db.serialize(() => {
+            db.run(sql, () => db.close());
+          });
+          return patient;
+        }).then((patient) => {
+          patient.team = 'Orlando Magic';
+          return patients.update(patient);
+        }).catch((err) => {
+          err.message.should.eql('Concurrent update error. Please reload the record');
+          resolve();
+        });
       });
     });
   });
@@ -102,9 +130,9 @@ describe('patients', () => {
   describe('#fetch',() => {
     it('fetches a record', () => {
       return patients.insert({uid: '99800002', name: 'Elsa Smith'}).then(() => {
-        return patients.fetch('99800002');
+        return patients.search({uid: '99800002'});
       }).then((record) => {
-        record.uid.should.equal('99800002');
+        record[0].uid.should.equal('99800002');
       });
     });
   });
