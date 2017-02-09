@@ -1,4 +1,4 @@
-const Database = require('./../app/backend/database.js');
+const Database = require('../../app/backend/database.js');
 const chai = require('chai');
 const tmp = require('tmp');
 const sqlite3 = require('sqlite3').verbose();
@@ -138,7 +138,7 @@ describe('patients', () => {
   });
 
   describe('#delete', () => {
-    it('deletes a record from the filesystem', function () {
+    it('deletes a record from the filesystem', () => {
       return patients.insert({uid: '99800004', name: 'Elsa Smith'}).then(() => {
         return patients.search();
       }).then((results) => {

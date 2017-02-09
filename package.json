@@ -8,8 +8,9 @@
   "license": "GPL-3.0",
   "scripts": {
     "test": "npm run test:unit && npm run test:integration && npm run lint",
-    "test:unit": "./node_modules/.bin/mocha specs/",
-    "test:integration": "rm -f /tmp/patman-integration-test && node tests/integration/scenario.js",
+    "test:unit": "NODE_ENV=test ./node_modules/.bin/mocha specs/backend/**",
+    "test:unit:watch": "NODE_ENV=test ./node_modules/.bin/mocha -w specs/backend/**",
+    "test:integration": "rm -f /tmp/patman-integration-test && node specs/integration/scenario.js",
     "test:performance": "node tests/performance/scenario.js",
     "lint": "./node_modules/.bin/eslint .",
     "dev": "electron . --enable-logging",
@@ -31,7 +32,8 @@
     "electron-rebuild": "^1.5.7",
     "eslint": "^3.15.0",
     "mocha": "^3.2.0",
-    "should": "^11.2.0"
+    "should": "^11.2.0",
+    "sinon": "^1.17.7"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
@@ -48,6 +50,7 @@
     "sqlite3": "^3.1.8",
     "tmp": "0.0.31",
     "toastr": "^2.1.2",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "winston": "^2.3.1"
   }
 }

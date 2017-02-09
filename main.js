@@ -1,14 +1,10 @@
 const {app, BrowserWindow, Menu} = require('electron');
 const path = require('path');
 const url = require('url');
-const { createMenuTemplate } = require('./app/js/menu_template');
+const { createMenuTemplate } = require('./app/backend/menu_template');
 const backend = require('./app/backend/app');
-
-const shared_folder = './fixtures/sample/';
-console.log('Using the following shared folder: ', shared_folder);
-backend.initialize(shared_folder);
-
-global.backend = backend;
+const Settings = require('./app/backend/settings');
+const logger = require('./app/backend/logger');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -21,12 +17,20 @@ function createWindow() {
   const menu = Menu.buildFromTemplate(createMenuTemplate(win));
   Menu.setApplicationMenu(menu);
 
-  // and load the index.html of the app.
-  win.loadURL(url.format({
-    pathname: path.join(__dirname, './app/index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
+  global.settings = new Settings(app, win);
+  global.settings.load().then((settings) => {
+    global.backend = backend;
+    global.backend.initialize(settings);
+
+    // load the index.html of the app.
+    win.loadURL(url.format({
+      pathname: path.join(__dirname, './app/index.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
+  }).catch((err) => {
+    logger.error(err);
+  });
 
   // Emitted when the window is closed.
   win.on('closed', () => {

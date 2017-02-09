@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
-var lockFile = require('lockfile');
+const lockFile = require('lockfile');
 const Patients = require('./patients');
+const logger = require('./logger');
 
 function optimisticUpdate(instance, options) {
   const whereClause = { updatedAt: instance.previous('updatedAt') };
@@ -9,6 +10,7 @@ function optimisticUpdate(instance, options) {
 
 class Database {
   constructor(dbFilePath, options) {
+    logger.debug(`Loading database file at '${dbFilePath}'`);
     options = options || {};
 
     const sequelize = new Sequelize({

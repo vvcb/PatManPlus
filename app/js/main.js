@@ -1,12 +1,12 @@
 const remote = require('electron').remote;
 const backend = remote.getGlobal('backend');
 
-var log = require('electron-log');
+const log = require('electron-log');
 log.transports.console.level = 'debug';
 log.appName = 'PatManPlus';
 
 $(() => {
-  var searchCriteria = {
+  const searchCriteria = {
     availableWards: backend.wards.fetchAll().concat({name: null}),
     availableConsultants: backend.consultants.fetchAll().concat({name: null, initials: null}),
     availableTeams: backend.teams.fetchAll().concat({name: null, code: null}),
