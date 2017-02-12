@@ -1,21 +1,21 @@
 [{
 	"code": "HPB",
 	"name": "Hepatobiliary Surgery",
-	"display_order": "01"
+	"display_order": 1
 }, {
 	"code": "CR-Blue",
 	"name": "Colorectal - Blue",
-	"display_order": "02"
+	"display_order": 2
 }, {
 	"code": "Cardio1",
 	"name": "Cardiology",
-	"display_order": "03"
+	"display_order": 3
 }, {
 	"code": "Gastro",
 	"name": "Gastroenterology",
-	"display_order": "04"
+	"display_order": 4
 }, {
 	"code": "Medicine1",
 	"name": "General Medicine",
-	"display_order": "04"
+	"display_order": 5
 }]

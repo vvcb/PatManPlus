@@ -58,9 +58,9 @@
 											<span class="input-group-addon" id="sizing-addon3">Ward: </span>
 											<select class="form-control input-sm"
 												@change="search" name="wards"
-												v-model="searchCriteria.filters.ward">
+												v-model="searchCriteria.filters.wardId">
 												<option v-for="ward in searchCriteria.availableWards"
-													v-bind:value="ward.name"
+													v-bind:value="ward.id"
 													aria-describedby="sizing-addon3">
 													{{ ward.name }}
 												</option>
@@ -70,9 +70,9 @@
 									<div class="col-md-4">
 										<div class="input-group input-group-sm">
 											<span class="input-group-addon" id="sizing-addon3">Team: </span>
-											<select class="form-control input-sm"  @change="search" name="team" 		v-model="searchCriteria.filters.team">
+											<select class="form-control input-sm"  @change="search" name="team" v-model="searchCriteria.filters.teamId">
 												<option v-for="team in searchCriteria.availableTeams"
-													v-bind:value="team.code" aria-describedby="sizing-addon3">
+													v-bind:value="team.id" aria-describedby="sizing-addon3">
 													{{ team.code }}
 												</option>
 											</select>
@@ -81,9 +81,9 @@
 									<div class="col-md-4">
 										<div class="input-group input-group-sm">
 											<span class="input-group-addon" id="sizing-addon3">Cons: </span>
-											<select class="form-control input-sm"  @change="search" name="team" 		v-model="searchCriteria.filters.consultant">
+											<select class="form-control input-sm"  @change="search" name="team" v-model="searchCriteria.filters.consultantId">
 												<option v-for="consultant in searchCriteria.availableConsultants"
-													v-bind:value="consultant.initials" aria-describedby="sizing-addon3">
+													v-bind:value="consultant.id" aria-describedby="sizing-addon3">
 													{{ consultant.initials }}
 												</option>
 											</select>
@@ -308,7 +308,7 @@
 		<script src="../node_modules/vue/dist/vue.min.js"></script>
 		<script src="../node_modules/bootstrap-vue/build/bootstrap-vue.js" type="text/javascript"></script>
 		<script src="components/patient.component.js"></script>
-		<script src="js/toastr.js"></script>
+		<script src="js/lib/toastr.js"></script>
 		<script src="js/notification.js"></script>
 		<script src="js/main.js"></script>
 	</body>

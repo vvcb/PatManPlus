@@ -40,5 +40,6 @@ jspm_packages
 .nhs-hack-day-linux-ia32
 dist
 .idea
+*.iml
 *-win32-x64/
 .DS_Store

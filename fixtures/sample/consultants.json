@@ -2,50 +2,50 @@
 	"initials": "BJM",
 	"name": "Dr. Bill Murray",
 	"specialty": "General Medicine",
-	"team": "Medicine1",
-	"display_order": "01"
+	"teamId": 5,
+	"display_order": 1
 }, {
 	"initials": "RDES",
 	"name": "Mr. Rahul Deshpande",
 	"specialty": "HPB Surgery",
-	"team": "HPB",
-	"display_order": "02"
+	"teamId": 1,
+	"display_order": 2
 }, {
 	"initials": "TSAT",
 	"name": "Mr. Thomas Satyadas",
 	"specialty": "HPB Surgery",
-	"team": "HPB",
-	"display_order": "03"
+	"teamId": 1,
+	"display_order": 3
 }, {
 	"initials": "ASN",
 	"name": "Mr. Aali Sheen",
 	"specialty": "HPB Surgery",
-	"team": "HPB",
-	"display_order": "04"
+	"teamId": 1,
+	"display_order": 4
 }, {
 	"initials": "CCRG",
 	"name": "Mrs. Chris Craig",
 	"specialty": "Colorectal",
-	"team": "CR-Blue",
-	"display_order": "05"
+	"teamId": 2,
+	"display_order": 5
 }, {
 	"initials": "MIMS",
 	"name": "Mr. Monty Sython",
 	"specialty": "Cardiology",
-	"team": "Cardio1",
-	"display_order": "06"
+	"teamId": 3,
+	"display_order": 6
 }, {
 	"initials": "MAK",
 	"name": "Ms. Michelle Kinman",
 	"specialty": "Cardiology",
-	"team": "Cardio1",
-	"display_order": "07"
+	"teamId": 3,
+	"display_order": 7
 
 }, {
 	"initials": "RAO",
 	"name": "Ms. Rhonda Oscar",
 	"specialty": "Gastroenterology",
-	"team": "Gastro",
-	"display_order": "07"
+	"teamId": 4,
+	"display_order": 8
 
 }]

@@ -8,9 +8,8 @@ class ConfigError extends Error {
 }
 
 class Settings {
-  constructor(app, mainWindow) {
+  constructor(app) {
     this.app = app;
-    this.mainWindow = mainWindow;
   }
 
   get path() {
@@ -35,7 +34,7 @@ class Settings {
         throw err;
 
       logger.debug(err);
-      return this.writeConfigFile();
+      return this.showDbFilePicker().then((dbFilePath) => this.writeConfigFile(dbFilePath[0]));
     });
   }
 
@@ -55,19 +54,17 @@ class Settings {
     });
   }
 
-  writeConfigFile() {
-    return this.showDbFilePicker().then((dbFilePath) => {
-      return new Promise((resolve, reject) => {
-        logger.debug(`Database file selected at '${dbFilePath[0]}'`);
-        const content = JSON.stringify({ dbFilePath: dbFilePath[0] });
-        fs.writeFile(this.path, content, (err) => {
-          if (err)
-            reject(new ConfigError(`Could not write to config file: ${this.path}`));
-          else {
-            this.setFilePaths(dbFilePath[0]);
-            resolve(this);
-          }
-        });
+  writeConfigFile(dbFilePath) {
+    return new Promise((resolve, reject) => {
+      logger.debug(`Database file selected at '${dbFilePath}'`);
+      const content = JSON.stringify({ dbFilePath: dbFilePath });
+      fs.writeFile(this.path, content, (err) => {
+        if (err)
+          reject(new ConfigError(`Could not write to config file: ${this.path}`));
+        else {
+          this.setFilePaths(dbFilePath);
+          resolve(this);
+        }
       });
     });
   }
@@ -81,10 +78,10 @@ class Settings {
         message: 'Configuration file is missing. Press Ok to configure'
       };
 
-      dialog.showMessageBox(this.mainWindow, messageBoxSettings, () => {
+      dialog.showMessageBox(messageBoxSettings, () => {
         const filePickerSettings = { properties: ['openFile'] };
 
-        dialog.showOpenDialog(this.mainWindow, filePickerSettings, (filePaths) => {
+        dialog.showOpenDialog(filePickerSettings, (filePaths) => {
           resolve(filePaths);
         });
       });
@@ -93,7 +90,6 @@ class Settings {
 
   setFilePaths(dbFilePath) {
     this.dbFilePath = dbFilePath;
-    this.sharedFolder = path.dirname(dbFilePath);
   }
 }
 

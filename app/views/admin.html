@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/toastr/build/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+  </head>
+  <body>
+    <div class="container-fluid alt-grid" role="main">
+      <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a data-target="#general" data-toggle="tab">General</a></li>
+        <li><a data-target="#consultants" data-toggle="tab">Consultants</a></li>
+        <li><a data-target="#teams" data-toggle="tab">Teams</a></li>
+        <li><a data-target="#wards" data-toggle="tab">Wards</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="general">
+          <general v-bind:settings="settings" v-on:update-click="updateDbPathClick"></general>
+        </div>
+        <div class="tab-pane" id="consultants">
+          <consultants v-bind:presenter="presenter"></consultants>
+        </div>
+        <div class="tab-pane" id="teams">
+          <teams v-bind:presenter="presenter"></teams>
+        </div>
+        <div class="tab-pane" id="wards">
+          <wards v-bind:presenter="presenter"></wards>
+        </div>
+      </div>
+
+    </div>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/lodash/lodash.min.js"></script>
+    <script src="../../node_modules/vue/dist/vue.min.js"></script>
+    <script src="../../node_modules/bootstrap-vue/build/bootstrap-vue.js" type="text/javascript"></script>
+    <script src="../components/general.component.js"></script>
+    <script src="../components/wards.component.js"></script>
+    <script src="../components/teams.component.js"></script>
+    <script src="../components/consultants.component.js"></script>
+    <script src="../js/presenters/general.presenter.js"></script>
+    <script src="../js/presenters/wards.presenter.js"></script>
+    <script src="../js/presenters/teams.presenter.js"></script>
+    <script src="../js/presenters/consultants.presenter.js"></script>
+    <script src="../js/lib/toastr.js"></script>
+    <script src="../js/notification.js"></script>
+    <script src="../js/admin.js"></script>
+  </body>
+</html>
+

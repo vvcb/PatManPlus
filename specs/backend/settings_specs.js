@@ -59,7 +59,6 @@ describe('settings', () => {
 
   describe('#load', () => {
     const dbFilePath = '/tmp/dbfile.sqlite';
-    const sharedFolder = '/tmp';
 
     beforeEach(() => {
       sinon.stub(settings, 'parse').returns(Promise.resolve({ dbFilePath: dbFilePath }));
@@ -77,7 +76,6 @@ describe('settings', () => {
       return settings.load().then((settings) => {
         settings.should.not.be.null;
         settings.dbFilePath.should.eql(dbFilePath);
-        settings.sharedFolder.should.eql(sharedFolder);
       });
     });
 
@@ -94,7 +92,6 @@ describe('settings', () => {
       return settings.load().then((settings) => {
         settings.should.not.be.null;
         settings.dbFilePath.should.eql(dbFilePath);
-        settings.sharedFolder.should.eql(sharedFolder);
         dialogExpectation.called.should.be.true;
         fileWriteExpectation.called.should.be.true;
       });

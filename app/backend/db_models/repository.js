@@ -7,7 +7,7 @@ class Repository {
     this.dbModel = dbModel(database.sequelize, Sequelize);
   }
 
-  update (data, where) {
+  update(data, where) {
     if (data.changed) {
       where = { id: data.id };
       data = lodash.pick(data, data.changed());
@@ -21,27 +21,33 @@ class Repository {
     });
   }
 
-  insert (data) {
+  insert(data) {
     return this.database.runLockingSqliteCommand(() => {
       return this.dbModel.create(data);
     });
   }
 
-  bulkInsert (data) {
+  bulkInsert(data) {
     return this.database.runLockingSqliteCommand(() => {
       return this.dbModel.bulkCreate(data);
     });
   }
 
-  delete (uid) {
+  remove(uid) {
     return this.database.runLockingSqliteCommand(() => {
       return this.dbModel.destroy({ where: { uid: uid }});
     });
   }
 
-  fetch (id) {
+  fetch(id, options) {
     return this.database.runLockingSqliteCommand(() => {
-      return this.dbModel.findById(id);
+      return this.dbModel.findById(id, options);
+    });
+  }
+
+  fetchAll(options) {
+    return this.database.runLockingSqliteCommand(() => {
+      return this.dbModel.findAll(options);
     });
   }
 }

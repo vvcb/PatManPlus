@@ -6,27 +6,36 @@ log.transports.console.level = 'debug';
 log.appName = 'PatManPlus';
 
 $(() => {
-  const searchCriteria = {
-    availableWards: backend.wards.fetchAll().concat({name: null}),
-    availableConsultants: backend.consultants.fetchAll().concat({name: null, initials: null}),
-    availableTeams: backend.teams.fetchAll().concat({name: null, code: null}),
-    availableSpecialities: null,
-    uid: null,
-    name: null,
-    is_discharged: null,
-    filters: {
-      ward: null,
-      consultant: null,
-      team: null,
-      speciality: null
-    }
-  };
 
+  let dbSequence = Promise.all([
+    backend.wards.fetchAll().then((wards) => wards.concat({name: null})),
+    backend.consultants.fetchAll().then((consultants) => consultants.concat({name: null, initials: null})),
+    backend.teams.fetchAll().then((teams) => teams.concat({name: null, code: null}))
+  ]);
 
   $('#new-patient-panel').toggle();
   $('#filters-panel').toggle();
 
-  const dbSequence = backend.patients.search(searchCriteria);
+  let searchCriteria;
+
+  dbSequence = dbSequence.then((results) => {
+    searchCriteria = {
+      availableWards: results[0],
+      availableConsultants: results[1],
+      availableTeams: results[2],
+      availableSpecialities: null,
+      uid: null,
+      name: null,
+      is_discharged: null,
+      filters: {
+        wardId: null,
+        consultantId: null,
+        teamId: null,
+      }
+    };
+
+    return backend.patients.search(searchCriteria);
+  });
 
   dbSequence.then((patients) => {
     new Vue({   // eslint-disable-line no-undef

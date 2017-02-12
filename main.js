@@ -1,43 +1,33 @@
-const {app, BrowserWindow, Menu} = require('electron');
-const path = require('path');
-const url = require('url');
-const { createMenuTemplate } = require('./app/backend/menu_template');
+const { app } = require('electron');
 const backend = require('./app/backend/app');
 const Settings = require('./app/backend/settings');
 const logger = require('./app/backend/logger');
+const MainPresenter = require('./app/backend/main_presenter');
+
+const mainPresenter = new MainPresenter();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
 function createWindow() {
-  // Create the browser window.
-  win = new BrowserWindow({width: 1024, height: 800});
-
-  const menu = Menu.buildFromTemplate(createMenuTemplate(win));
-  Menu.setApplicationMenu(menu);
-
-  global.settings = new Settings(app, win);
-  global.settings.load().then((settings) => {
+  new Settings(app).load().then((settings) => {
+    global.settings = settings;
     global.backend = backend;
     global.backend.initialize(settings);
+    global.mainPresenter = mainPresenter;
 
-    // load the index.html of the app.
-    win.loadURL(url.format({
-      pathname: path.join(__dirname, './app/index.html'),
-      protocol: 'file:',
-      slashes: true
-    }));
+    win = mainPresenter.showMainWindow();
+
+    // Emitted when the window is closed.
+    win.on('closed', () => {
+      // Dereference the window object, usually you would store windows
+      // in an array if your app supports multi windows, this is the time
+      // when you should delete the corresponding element.
+      win = null;
+    });
   }).catch((err) => {
     logger.error(err);
-  });
-
-  // Emitted when the window is closed.
-  win.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null;
   });
 }
 

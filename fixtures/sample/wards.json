@@ -1,19 +1,19 @@
 [{
 	"name": "8",
-	"display_order": "01"
+	"display_order": 1
 }, {
 	"name": "11",
-	"display_order": "02"
+	"display_order": 2
 }, {
 	"name": "12",
-	"display_order": "03"
+	"display_order": 3
 }, {
 	"name": "HDU",
-	"display_order": "04"
+	"display_order": 4
 }, {
 	"name": "ITU",
-	"display_order": "05"
+	"display_order": 5
 }, {
 	"name": "BeAware",
-	"display_order": "06"
+	"display_order": 6
 }]

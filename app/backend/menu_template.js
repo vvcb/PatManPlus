@@ -1,4 +1,6 @@
-function createMenuTemplate(window) {
+const { BrowserWindow } = require('electron');
+
+function createMenuTemplate(mainPresenter) {
   return [
     {
       label: 'File',
@@ -8,7 +10,18 @@ function createMenuTemplate(window) {
           role: 'print',
           accelerator: 'CommandOrControl+P',
           click() {
-            window.webContents.print();
+            mainPresenter.mainWindow.webContents.print();
+          }
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Settings',
+          role: 'settings',
+          accelerator: 'CommandOrControl+S',
+          click() {
+            mainPresenter.showAdmin();
           }
         },
         {
@@ -17,10 +30,7 @@ function createMenuTemplate(window) {
         {
           label: 'Quit',
           role: 'quit',
-          accelerator: 'CommandOrControl+Q',
-          click() {
-            window.webContents.openDevTools();
-          }
+          accelerator: 'CommandOrControl+Q'
         }
       ]
     },
@@ -28,11 +38,11 @@ function createMenuTemplate(window) {
       label: 'Dev',
       submenu: [
         {
-          label: 'Open Dev Tools',
+          label: 'Toggle Dev Tools',
           role: 'dev_tools',
           accelerator: 'Shift+CommandOrControl+I',
           click() {
-            window.webContents.toggleDevTools();
+            BrowserWindow.getFocusedWindow().webContents.toggleDevTools();
           }
         },
         {
@@ -40,7 +50,7 @@ function createMenuTemplate(window) {
           role: 'refresh',
           accelerator: 'CommandOrControl+R',
           click() {
-            window.webContents.reload();
+            BrowserWindow.getFocusedWindow().webContents.reload();
           }
         }
       ]
@@ -49,6 +59,4 @@ function createMenuTemplate(window) {
 }
 
 
-module.exports = {
-  createMenuTemplate: createMenuTemplate
-};
+module.exports = createMenuTemplate;

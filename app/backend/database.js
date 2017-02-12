@@ -1,6 +1,9 @@
 const Sequelize = require('sequelize');
 const lockFile = require('lockfile');
-const Patients = require('./patients');
+const Patient = require('./db_models/patient');
+const Consultant = require('./db_models/consultant');
+const Ward = require('./db_models/ward');
+const Team = require('./db_models/team');
 const logger = require('./logger');
 
 function optimisticUpdate(instance, options) {
@@ -26,7 +29,19 @@ class Database {
 
     this.dbFilePath = dbFilePath;
     this.sequelize = sequelize;
-    this.patients = new Patients(this);
+    this.patients = new Patient(this);
+    this.teams = new Team(this);
+    this.consultants = new Consultant(this);
+    this.wards = new Ward(this);
+
+    this.teams.dbModel.hasMany(this.patients.dbModel);
+    this.teams.dbModel.hasMany(this.consultants.dbModel);
+    this.wards.dbModel.hasMany(this.patients.dbModel);
+    this.consultants.dbModel.belongsTo(this.teams.dbModel);
+
+    this.patients.dbModel.belongsTo(this.wards.dbModel);
+    this.patients.dbModel.belongsTo(this.teams.dbModel);
+    this.patients.dbModel.belongsTo(this.consultants.dbModel);
   }
 
   connect() {
