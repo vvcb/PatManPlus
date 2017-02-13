@@ -81,16 +81,7 @@ template: `<div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-8">
-            
-            <input type="checkbox" aria-label="" class="discharged" v-model="item.is_discharged">Discharged
-          </div>
-          
-          <div class="col-md-4">
-            <button type="button" class="btn btn-success btn-xs" v-on:click.prevent="updateClick">Update</button>
-          </div>
-        </div>
+        
         
       </div>
       <div class="col-md-3" id="Diagnosis-Present-Past">
@@ -140,7 +131,7 @@ template: `<div>
           <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon input-sm"  id="sizing-addon3">Tests</span>
-              <textarea v-model="item.tests" class="form-control custom-control input-sm" rows="9" id="patman-" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
+              <textarea v-model="item.tests" class="form-control custom-control input-sm" rows="8" id="patman-" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
@@ -150,7 +141,7 @@ template: `<div>
           <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon input-sm"  id="sizing-addon3">Jobs</span>
-              <textarea v-model="item.jobs" class="form-control custom-control input-sm" rows="9" id="patman-" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
+              <textarea v-model="item.jobs" class="form-control custom-control input-sm" rows="6" id="patman-" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
@@ -162,6 +153,26 @@ template: `<div>
             </div>
           </div>
         </div>
+        <div class="row" id="Update-Discharge">
+          <div class="col-md-12">
+            <div class="input-group">
+              <span class="input-group-addon input-sm">
+                <input type="checkbox"  class="form-control input-sm" name="is_discharged" aria_label="Discharged" v-model="item.is_discharged">
+              Discharged
+              </span>
+              
+              <input type="text" class="form-control input-sm" aria-label="Discharged" v-model="item.dis_date">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-success btn-sm" v-on:click.prevent="updateClick">Update</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
       </div>
     </div>
     

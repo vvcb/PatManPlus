@@ -39,15 +39,6 @@ div > .patient {
     margin-top: 20px;
 }
 
-button {
-    background-color: #ff7575;
-    color: white;
-    border: none;
-    padding: 7px 20px;
-    border-radius: 3px;
-    margin: 10px 0;
-}
-
 .discharged {
     margin-right: 6px !important;
 }
