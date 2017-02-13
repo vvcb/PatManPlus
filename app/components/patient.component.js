@@ -180,8 +180,8 @@ Vue.component('patient', {   // eslint-disable-line no-undef
 </div>
 `,
   methods: {
-  updateClick: function () {
-  this.$emit('update-click', this.item);
-}
-},
+    updateClick: function () {
+      this.$emit('update-click', this.item);
+    }
+  },
 });
