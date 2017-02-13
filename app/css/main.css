@@ -69,4 +69,15 @@ button {
 }
 
 /* container adjusted */
-.alt-grid .container-fluid {width:100%;max-width:none;padding:0;}
+.alt-grid .container-fluid {
+    width:100%;
+    max-width:none;
+    padding:0;}
+
+.input-group-addon {
+    min-width: 45px;
+    max-width: 45px;
+    padding: 0 !important;
+}
+
+
