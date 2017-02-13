@@ -51,3 +51,7 @@ button {
 .discharged {
     margin-right: 6px !important;
 }
+
+.panel-body{
+    padding-top:0px;
+}

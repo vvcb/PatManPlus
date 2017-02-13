@@ -3,6 +3,8 @@ const path = require('path'),
   JsonSource = require('./json_source');
 const fs = require('fs');
 
+const Database = require('./database');
+
 module.exports = {
 
   consultants: {},
@@ -13,22 +15,21 @@ module.exports = {
 
   teams: {},
 
-  initialize: function (shared_folder) {
-
-    if (!fs.existsSync(shared_folder)) {
-      mkdirp.sync(shared_folder);
+  initialize: function (settings, options) {
+    if (!fs.existsSync(settings.sharedFolder)) {
+      mkdirp.sync(settings.sharedFolder);
     }
 
-    this.patients = require('./patients');
-    this.patients.initialize(path.join(shared_folder, 'patients.sqlite3'));
-
-    var consultants_file = path.join(shared_folder, 'consultants.json');
+    const consultants_file = path.join(settings.sharedFolder, 'consultants.json');
     this.consultants = new JsonSource(consultants_file);
 
-    var wards_file = path.join(shared_folder, 'wards.json');
+    const wards_file = path.join(settings.sharedFolder, 'wards.json');
     this.wards = new JsonSource(wards_file);
 
-    var teams_file = path.join(shared_folder, 'teams.json');
+    const teams_file = path.join(settings.sharedFolder, 'teams.json');
     this.teams = new JsonSource(teams_file);
+
+    const database = new Database(settings.dbFilePath, options);
+    this.patients = database.patients;
   }
 };

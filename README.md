@@ -100,6 +100,7 @@ You will need the following installed:
 - [Git](https://git-scm.com/downloads)
 - [Yarn](https://yarnpkg.com/en/docs/install) (optional, but preferred)
 
+- See the troubleshooting section at the bottom of this page f
 Checkout the project
 - `$ git clone git@github.com:vvcb/PatManPlus.git`
 
@@ -121,3 +122,19 @@ This section explains how to run the application.
 ### Configuration
 
 This section explains how to configure the application, mostly the shared folder where the database file will be stored.
+
+### Troubleshooting
+
+In certain scenarios, the app may either load partly and fail or not load at all. The following steps are aimed at fixing problems that we have encountered and greyed hair over.
+
+If console reports errors with node-gyp or sqlite3, please try the following steps. Run these within the PatManPlus directory to install any missing dependencies. 
+
+- `> npm install --global --production windows-build-tools`
+- `> npm install --global node-gyp`
+
+If package.json has been modified, run the following commands to ensure all dependencies are satisfied.
+
+- `> yarn` (preferred) or `>npm install`
+- `>npm run rebuild` (if app fails to load after previous)
+
+If there are any other problems, please raise an issue on GitHub (and help us fix it).

@@ -8,7 +8,7 @@
         "consultant":"RDES",
         "adm_date":"2017-01-27",
         "dis_date":"2017-01-27",
-        "is_discharged":"yes",
+        "is_discharged":1,
         "problem":"",
         "details":"Jaundice",
         "past_medical_history":"heart disease",
