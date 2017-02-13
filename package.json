@@ -24,7 +24,7 @@
     "build:osx": "npm run pack:osx && build \"dist/osx/NHS-Hack-Day-darwin-x64/NHS-Hack-Day.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
     "build:win": "npm run pack:win && build \"dist/win/NHS-Hack-Day-Todo-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json",
     "rebuild": "./node_modules/.bin/electron-rebuild",
-    "repair:sqlite": "npm uninstall -D sqlite3 && npm i -D sqlite3 && npm run rebuild",
+    "repair:sqlite": "npm uninstall sqlite3 && npm i sqlite3 && npm run rebuild",
     "repair:mocha": "npm uninstall -D mocha && npm i -D mocha"
   },
   "devDependencies": {
