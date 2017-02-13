@@ -158,13 +158,17 @@ template: `<div>
             <div class="input-group">
               <span class="input-group-addon input-sm">
                 <input type="checkbox"  class="form-control input-sm" name="is_discharged" aria_label="Discharged" v-model="item.is_discharged">
-                Discharged
               </span>
               
               <input type="text" class="form-control input-sm" aria-label="Discharged" v-model="item.dis_date">
               <span class="input-group-btn">
-                <button type="button" class="btn btn-default btn-sm" disabled="disabled">Discharge Date</button>
-                <button type="button" class="btn btn-success btn-sm" v-on:click.prevent="updateClick">Update</button>
+                <button type="button" class="btn btn-default btn-sm" disabled="disabled">Discharge</button>
+                <button type="button" class="btn btn-warning btn-sm" v-on:click.prevent="cancelClick">
+                <span class="glyphicon glyphicon-repeat"></span>
+                </button>
+                <button type="button" class="btn btn-success btn-sm" v-on:click.prevent="updateClick">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+                Save</button>
               </span>
             </div>
           </div>
