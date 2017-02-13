@@ -1,6 +1,6 @@
 Vue.component('patient', {   // eslint-disable-line no-undef
-props: ['item'],
-template: `<div>
+  props: ['item'],
+  template: `<div>
   <div class="patient">
     <div class="row">
       <div class="col-md-2" id="PatientDetails">
@@ -179,9 +179,9 @@ template: `<div>
   </div>
 </div>
 `,
-methods: {
-updateClick: function () {
-this.$emit('update-click', this.item);
+  methods: {
+  updateClick: function () {
+  this.$emit('update-click', this.item);
 }
 },
 });
