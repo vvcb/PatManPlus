@@ -31,16 +31,8 @@ div > .patient {
     padding: 2px;
 }
 
-.row {
-    margin-top: 10px;
-}
-
 .container-fluid {
     margin-top: 20px;
-}
-
-.discharged {
-    margin-right: 6px !important;
 }
 
 .panel-body{

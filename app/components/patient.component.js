@@ -4,6 +4,41 @@ Vue.component('patient', {   // eslint-disable-line no-undef
   <div class="patient">
     <div class="row">
       <div class="col-md-2" id="PatientDetails">
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">Name</span>
+              <input type="text" v-model="item.name" class="form-control" id="patman-" placeholder="Name" aria-describedby="sizing-addon3">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">D.O.B</span>
+              <input type="text" v-model="item.dob" class="form-control" id="patman-" placeholder="DOB" aria-describedby="sizing-addon3">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group input-group-sm">
+              <span  class="input-group-addon" id="sizing-addon3">UID :</span>
+              <input type="text" v-model="item.uid" class="form-control" id="patman-" placeholder="Hospital ID" aria-describedby="sizing-addon3">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group input-group-sm">
+              <span  class="input-group-addon" id="sizing-addon3">Adm :</span>
+              <input type="text" v-model="item.adm_date" class="form-control" id="patman-" placeholder="Admission Date" aria-describedby="sizing-addon3">
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-md-7">
             <div class="input-group input-group-sm">
@@ -48,39 +83,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
             
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Name</span>
-              <input type="text" v-model="item.name" class="form-control" id="patman-" placeholder="Name" aria-describedby="sizing-addon3">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">D.O.B</span>
-              <input type="text" v-model="item.dob" class="form-control" id="patman-" placeholder="DOB" aria-describedby="sizing-addon3">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="input-group input-group-sm">
-              <span  class="input-group-addon" id="sizing-addon3">UID :</span>
-              <input type="text" v-model="item.uid" class="form-control" id="patman-" placeholder="Hospital ID" aria-describedby="sizing-addon3">
-            </div>
-          </div>
-        </div>
         
-        <div class="row">
-          <div class="col-md-12">
-            <div class="input-group input-group-sm">
-              <span  class="input-group-addon" id="sizing-addon3">Adm :</span>
-              <input type="text" v-model="item.adm_date" class="form-control" id="patman-" placeholder="Admission Date" aria-describedby="sizing-addon3">
-            </div>
-          </div>
-        </div>
         
         
       </div>
