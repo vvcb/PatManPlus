@@ -110,7 +110,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon input-sm"  id="sizing-addon3">PMH</span>
-              <textarea v-model="item.past_medical_history" class="form-control custom-control input-sm" rows="2" id="patman-" placeholder="PastHistory" aria-describedby="sizing-addon3"></textarea>
+              <textarea v-model="item.past_medical_history" class="form-control custom-control input-sm" rows="3" id="patman-" placeholder="PastHistory" aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
@@ -130,11 +130,12 @@ Vue.component('patient', {   // eslint-disable-line no-undef
             </div>
           </div>
         </div>
+        
         <div class="row" id="Tests">
-          <div class="col-md-12">
+          <div class="col-md-12" >
             <div class="input-group">
               <span class="input-group-addon input-sm"  id="sizing-addon3">Tests</span>
-              <textarea v-model="item.tests" class="form-control custom-control input-sm" rows="8" id="patman-" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
+              <textarea v-model="item.tests" class="form-control custom-control input-sm textarea-tests" rows="8" id="patman-" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
@@ -144,10 +145,11 @@ Vue.component('patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon input-sm"  id="sizing-addon3">Jobs</span>
-              <textarea v-model="item.jobs" class="form-control custom-control input-sm" rows="6" id="patman-" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
+              <textarea v-model="item.jobs" class="form-control custom-control input-sm textarea-jobs" rows="6" id="patman-" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
+        
         <div class="row" id="Adverse Events">
           <div class="col-md-12">
             <div class="input-group">
@@ -156,6 +158,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
             </div>
           </div>
         </div>
+        
         <div class="row" id="Update-Discharge">
           <div class="col-md-12">
             <div class="input-group">
