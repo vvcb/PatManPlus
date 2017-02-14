@@ -105,7 +105,7 @@
 						</h4>
 					</div>
 					<div class="panel-body"  id="new-patient-panel">
-						<div style="background-color: #eee;" class="row">
+						<div class="row">
 							<div class="col-md-2" id="new-patient-details">
 								<div class="row">
 									<div class="col-md-12">
@@ -167,13 +167,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<label> Discharged
-											<input type="checkbox" v-model="newPatient.is_discharged"  id="new-patient-is_discharged">
-										</label>
-									</div>
-								</div>
+								
 							</div>
 							<div class="col-md-3" id="diagnosis-present-past">
 								
@@ -201,7 +195,7 @@
 									<div class="col-md-12">
 										<div class="input-group">
 											<span class="input-group-addon input-sm"  id="sizing-addon3">PMH</span>
-											<textarea v-model="newPatient.past_medical_history" class="form-control custom-control input-sm" rows="2" id="patman-" placeholder="PastHistory" aria-describedby="sizing-addon3"></textarea>
+											<textarea v-model="newPatient.past_medical_history" class="form-control custom-control input-sm" rows="3" id="patman-" placeholder="PastHistory" aria-describedby="sizing-addon3"></textarea>
 										</div>
 									</div>
 								</div>
@@ -230,7 +224,7 @@
 									<div class="col-md-12">
 										<div class="input-group">
 											<span class="input-group-addon input-sm"  id="sizing-addon3">Tests</span>
-											<textarea v-model="newPatient.tests" class="form-control custom-control input-sm" rows="8" id="patman-" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
+											<textarea v-model="newPatient.tests" class="form-control custom-control input-sm textarea-tests" rows="8" id="patman-" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
 										</div>
 									</div>
 								</div>
@@ -243,7 +237,7 @@
 									<div class="col-md-12">
 										<div class="input-group">
 											<span class="input-group-addon input-sm"  id="sizing-addon3">Jobs</span>
-											<textarea v-model="newPatient.jobs" class="form-control custom-control input-sm" rows="6" id="patman-" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
+											<textarea v-model="newPatient.jobs" class="form-control custom-control input-sm textarea-jobs" rows="6" id="patman-" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
 										</div>
 									</div>
 								</div>
