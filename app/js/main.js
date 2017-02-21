@@ -5,74 +5,58 @@ const log = require('electron-log');
 log.transports.console.level = 'debug';
 log.appName = 'PatManPlus';
 
-$(() => {
+const searchCriteria = {
+  uid: null,
+  name: null,
+  is_discharged: null,
+  filters: {
+    wardId: null,
+    consultantId: null,
+    teamId: null,
+  }
+};
 
+$(() => {
   let dbSequence = Promise.all([
     backend.wards.fetchAll().then((wards) => wards.concat({name: null})),
     backend.consultants.fetchAll().then((consultants) => consultants.concat({name: null, initials: null})),
-    backend.teams.fetchAll().then((teams) => teams.concat({name: null, code: null}))
+    backend.teams.fetchAll().then((teams) => teams.concat({name: null, code: null})),
+    backend.patients.search()
   ]);
 
-  $('#new-patient-panel').toggle();
-  $('#filters-panel').toggle();
+  let wards, consultants, teams, patients;
 
-  let searchCriteria;
-
-  dbSequence = dbSequence.then((results) => {
-    searchCriteria = {
-      availableWards: results[0],
-      availableConsultants: results[1],
-      availableTeams: results[2],
-      availableSpecialities: null,
-      uid: null,
-      name: null,
-      is_discharged: null,
-      filters: {
-        wardId: null,
-        consultantId: null,
-        teamId: null,
-      }
-    };
-
-    return backend.patients.search(searchCriteria);
-  });
-
-  dbSequence.then((patients) => {
+  dbSequence.then((results) => {
+    [wards, consultants, teams, patients] = results;
     new Vue({   // eslint-disable-line no-undef
       el: '#app',
       data: {
-        searchCriteria: searchCriteria,
+        backend: backend,
+        criteria: searchCriteria,
+        wards: wards,
+        consultants: consultants,
+        teams: teams,
         patients: patients,
-        newPatient: {}
       },
       methods: {
         search: function () {
-          backend.patients.search(this.searchCriteria).then((patients) => this.patients = patients);
+          backend.patients.search(searchCriteria).then((patients) => this.patients = patients);
         },
-        updatePatient: function (patient) {
-          backend.patients.update(patient).then(() => {
-            return backend.patients.search(this.searchCriteria);
-          }).then((patients) => {
-            this.patients = patients;
-          });
+        patientUpdated: function (patient) {
           showToaster(`Patient '${patient.name}' updated`);   // eslint-disable-line no-undef
+          backend.patients.search(searchCriteria).then((patients) => this.patients = patients);
         },
-        addPatient: function () {
-          backend.patients.insert(this.newPatient);
-          this.patients = backend.patients.search(this.searchCriteria);
-          $('#new-patient-panel').toggle();
-          this.newPatient = {};
+        patientCreated: function (patient) {
+          showToaster(`Patient '${patient.name}' added`);   // eslint-disable-line no-undef
+          backend.patients.search(searchCriteria).then((patients) => this.patients = patients);
         },
         togglePatientList: function () {
           $('#patient-list-panel').toggle();
-        },
-        toggleNewPatient: function () {
-          $('#new-patient-panel').toggle();
-        },
-        toggleFilters: function () {
-          $('#filters-panel').toggle();
         }
       }
     });
+
+    $('#loading').hide();
+    $('#app').toggle();
   });
 });

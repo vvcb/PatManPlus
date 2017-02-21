@@ -25,7 +25,7 @@ class MainPresenter {
     const menu = Menu.buildFromTemplate(createMenuTemplate(this));
     Menu.setApplicationMenu(menu);
 
-    this.mainWindow = loadView('index', { width: 1024, height: 800, show: false });
+    this.mainWindow = loadView('views/index', { width: 1024, height: 800, show: false });
     return this.mainWindow;
   }
 

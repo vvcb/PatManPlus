@@ -1,5 +1,5 @@
 const { app } = require('electron');
-const backend = require('./app/backend/app');
+const App = require('./app/backend/app');
 const Settings = require('./app/backend/settings');
 const logger = require('./app/backend/logger');
 const MainPresenter = require('./app/backend/main_presenter');
@@ -13,8 +13,7 @@ let win;
 function createWindow() {
   new Settings(app).load().then((settings) => {
     global.settings = settings;
-    global.backend = backend;
-    global.backend.initialize(settings);
+    global.backend = new App(settings);
     global.mainPresenter = mainPresenter;
 
     win = mainPresenter.showMainWindow();

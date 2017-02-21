@@ -1,4 +1,4 @@
-/* global GeneralPresenter, WardsPresenter, TeamsPresenter,ConsultantsPresenter,showToaster */
+/* global GeneralPresenter, WardsPresenter, TeamsPresenter, ConsultantsPresenter, showToaster */
 
 $(() => {
   document.addEventListener('keydown', event => {

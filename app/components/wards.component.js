@@ -30,10 +30,10 @@ Vue.component('wards', {   // eslint-disable-line no-undef
 </div>
 `,
   methods: {
-    saveClick: function (item) {
+    saveClick(item) {
       item.save ? this.presenter.update(item) : this.presenter.create(item);
     },
-    addClick: function () {
+    addClick() {
       this.presenter.wards.push({});
     }
   },
