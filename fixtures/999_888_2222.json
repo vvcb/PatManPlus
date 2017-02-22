@@ -1,13 +1,13 @@
 {
 		"uid": "999_888_2222",
 		"name": "Black Widow",
-		"dob": "1995-11-02",
+		"date_of_birth": "1995-11-02",
 		"wardId": 3,
 		"bed": "16",
 		"teamId": 5,
 		"consultantId": 4,
-		"adm_date": "2017-01-15",
-		"dis_date": "2017-01-21",
+		"admission_date": "2017-01-15",
+		"discharge_date": "2017-01-21",
 		"is_discharged": 0,
 		"problem": "Non-specific abdo pain",
 		"details": "RIF pain. No other symptoms.No gynae history.",
@@ -15,6 +15,6 @@
 		"tests": "CRP:2, WCC-8\nUSS - no abnormality",
 		"jobs": "[]Repeat bloods\n[]Discharge if bloods NAD",
 		"treatment": "Conservative",
-		"treatment_date": "",
+		"treatment_date": null,
 		"adverse_events": "No complications"
 }

@@ -1,13 +1,13 @@
 {
         "uid": "111_343_6684",
         "name": "John Smith",
-        "dob": "1954-04-10",
+        "date_of_birth": "1954-04-10",
         "wardId": 4,
         "bed":"2",
         "teamId": 4,
         "consultantId":8,
-        "adm_date":"2017-01-12",
-        "dis_date":null,
+        "admission_date":"2017-01-12",
+        "discharge_date":null,
         "is_discharged":0,
         "problem":"Pneumonia",
         "details":"Admitted with SOB and collapse. Prolonged period on floor at home",
@@ -15,6 +15,6 @@
         "tests":"18.1: CRP 67 (120) , WBC 13",
         "jobs":"Repeat xray",
         "treatment":"Day 3 IV antibiotics",
-        "treatment_date":"Chest drain",
+        "treatment_date":"2017-01-13",
         "adverse_events":""
 }

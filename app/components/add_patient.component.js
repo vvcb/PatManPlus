@@ -38,7 +38,7 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">DOB</span>
-              <input type="text" v-model="patient.dob" class="form-control" id="new-patient-dob" placeholder="DOB">
+              <datepicker v-bind:instance="patient" v-bind:name="'date_of_birth'"></datepicker>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Adm</span>
-              <input type="text" v-model="patient.adm_date" class="form-control" id="new-patient-adm-date" placeholder="Adm Date">
+              <datepicker v-bind:instance="patient" v-bind:name="'admission_date'"></datepicker>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
           <div class="col-md-4">
             <div class="input-group input-group-sm">
               <span  class="input-group-addon" id="sizing-addon3">Dt </span>
-              <input type="text" v-model="patient.treatment_date" class="form-control" id="patman-" placeholder="Rx Date" aria-describedby="sizing-addon3">
+              <datepicker v-bind:instance="patient" v-bind:name="'treatment_date'"></datepicker>
             </div>
           </div>
         </div>
@@ -191,7 +191,7 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
               <span class="input-group-addon input-sm">
                 <input type="checkbox"  class="form-control input-sm" name="is_discharged" aria_label="Discharged" v-model="patient.is_discharged">
               </span>
-              <input type="text" class="form-control input-sm" aria-label="Discharged" v-model="patient.dis_date">
+              <input type="text" class="form-control input-sm" aria-label="Discharged" v-model="patient.discharge_date">
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-sm" disabled=	"disabled">
                   Discharge

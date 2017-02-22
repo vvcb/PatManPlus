@@ -1,13 +1,13 @@
 {
         "uid": "111_222_1231",
         "name": "John Roberts",
-        "dob": "1947-03-02",
+        "date_of_birth": "1947-03-02",
         "wardId": 3,
         "bed":"23",
         "teamId": 1,
         "consultantId":2,
-        "adm_date":"2017-01-27",
-        "dis_date":"2017-01-27",
+        "admission_date":"2017-01-27",
+        "discharge_date":"2017-01-27",
         "is_discharged":1,
         "problem":"",
         "details":"Jaundice",
@@ -15,6 +15,6 @@
         "tests":"CRP 120, Bil 22",
         "jobs":"",
         "treatment":"",
-        "treatment_date":"",
+        "treatment_date":null,
         "adverse_events":""
 }

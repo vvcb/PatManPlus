@@ -1,13 +1,13 @@
 {
         "uid": "111_222_3333",
         "name": "Janey Johnson",
-        "dob": "1933-01-03",
+        "date_of_birth": "1933-01-03",
         "wardId": 2,
         "bed":"83",
         "teamId": 3,
         "consultantId": 6,
-        "adm_date":"2017-01-03",
-        "dis_date": null,
+        "admission_date":"2017-01-03",
+        "discharge_date": null,
         "is_discharged":0,
         "problem":"STEMI",
         "details":"Chest pain. STEMI on ECG. PCI on 10.1.2017, UTI on ward on 15.1.2017",
@@ -15,6 +15,6 @@
         "tests":"18.1: Hb 110, Trop 1.2 (10) , U&Es normal",
         "jobs":"Discuss with discharge coordinator, repeat echo (booked)",
         "treatment":"Day 8 post PCI, UTI on ward - had abx",
-        "treatment_date":"",
+        "treatment_date":null,
         "adverse_events":""
 }
