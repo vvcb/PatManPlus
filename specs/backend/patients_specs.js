@@ -19,7 +19,6 @@ const consultants = [
   { initials: 'RDES', name: 'Mr. Rahul Deshpande', specialty: 'HPB Surgery', teamId: 1, display_order: 2 }
 ];
 
-
 describe('patients', () => {
   beforeEach(() => {
     filename = tmp.fileSync();
@@ -28,17 +27,17 @@ describe('patients', () => {
     return database.createMissingTables()
       .then(() => database.wards.bulkInsert(wards))
       .then(() => database.teams.bulkInsert(teams))
-      .then(() => database.consultants.bulkInsert(consultants));
+      .then(() => database.consultants.bulkInsert(consultants))
+      .then(() => {
+        return patients.bulkInsert([
+          { uid: '99900001', name: 'John Smith', consultantId: 1, wardId: 1, teamId: 1, is_discharged: 1,
+            discharge_date: '2017-01-27' },
+          { uid: '99800002', name: 'Elsa Smith', consultantId: 2, wardId: 2, teamId: 2, is_discharged: 0 }
+        ]);
+      });
   });
 
   describe('#search', () => {
-    beforeEach(() => {
-      return patients.bulkInsert([
-        {uid: '99900001', name: 'John Smith', consultantId: 1, wardId: 1, teamId: 1, is_discharged: 1 },
-        {uid: '99800002', name: 'Elsa Smith', consultantId: 2, wardId: 2, teamId: 2, is_discharged: 0 }
-      ]);
-    });
-
     it('allows searching by name', () => {
       return patients.search({ name: 'oh' }).then((results) => {
         results.length.should.eql(1);
@@ -89,6 +88,33 @@ describe('patients', () => {
       return patients.search({ is_discharged: false }).then((results) => {
         results.length.should.eql(1);
         results[0].uid.should.eql('99800002');
+      });
+    });
+  });
+
+  describe('#update', () => {
+    it('set discharge_date when updating is_discharge', () => {
+      return patients.fetch(2).then((patient) => {
+        patient.is_discharged.should.be.false;
+        patient.is_discharged = true;
+        return patients.update(patient);
+      }).then(() => patients.fetch(2))
+      .then((patient) => {
+        patient.is_discharged.should.be.true;
+        patient.discharge_date.should.not.be.null;
+      });
+    });
+
+    it('sets discharge_date to null when readmitting', () => {
+      return patients.fetch(1).then((patient) => {
+        patient.is_discharged.should.be.true;
+        patient.discharge_date.should.not.be.null;
+        patient.is_discharged = false;
+        return patients.update(patient);
+      }).then(() => patients.fetch(1))
+      .then((patient) => {
+        patient.is_discharged.should.be.false;
+        (patient.discharge_date === null).should.be.true;
       });
     });
   });

@@ -1,3 +1,5 @@
+/*global moment */
+
 Vue.component('patient', {   // eslint-disable-line no-undef
   props: ['patient', 'backend', 'wards', 'teams', 'consultants'],
   template: `<div>
@@ -159,7 +161,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
                 <input type="checkbox"  class="form-control input-sm" name="is_discharged" aria_label="Discharged" v-model="patient.is_discharged">
               </span>
               
-              <input type="text" class="form-control input-sm datepicker" aria-label="Discharged" v-model="patient.discharge_date">
+              <input type="text" class="form-control input-sm datepicker" aria-label="Discharged" readonly="readonly" v-model="formatDate(patient.discharge_date)">
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-sm" disabled="disabled">Discharge</button>
                 <button type="button" class="btn btn-warning btn-sm" v-on:click.prevent="cancelClick">
@@ -183,6 +185,9 @@ Vue.component('patient', {   // eslint-disable-line no-undef
       this.backend.patients.update(this.patient).then(() => {
         this.$emit('patient-updated', this.patient);
       });
+    },
+    formatDate(value) {
+      return value ? moment(value).format('DD-MM-YYYY') : null;
     }
   }
 });

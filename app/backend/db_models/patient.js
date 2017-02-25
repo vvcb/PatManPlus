@@ -61,6 +61,13 @@ class Patient extends Repository {
     options = Object.assign(options || {}, { where: query });
     return this.fetchAll(options);
   }
+
+  update(data, where) {
+    if (data.changed && data.changed() && data.changed().includes('is_discharged'))
+      data.discharge_date = data.is_discharged ? new Date() : null;
+
+    return super.update(data, where);
+  }
 }
 
 module.exports = Patient;
