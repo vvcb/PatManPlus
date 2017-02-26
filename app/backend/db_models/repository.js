@@ -50,6 +50,12 @@ class Repository {
       return this.dbModel.findAll(options);
     });
   }
+
+  reload(instance) {
+    return this.database.runLockingSqliteCommand(() => {
+      return instance.reload();
+    });
+  }
 }
 
 module.exports = Repository;

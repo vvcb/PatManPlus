@@ -64,10 +64,11 @@ describe('repository', () => {
           const db = new sqlite3.Database(filename.name);
           const updatedAt = new Date().toISOString().replace('T', ' ');
           const sql = `UPDATE \`patients\` SET \`updatedAt\` = '${updatedAt}' WHERE \`id\` = 1`;
-          db.serialize(() => {
-            db.run(sql, () => db.close());
+          return new Promise((resolve) => {
+            db.serialize(() => {
+              db.run(sql, () => db.close(() => resolve(patient)));
+            });
           });
-          return patient;
         }).then((patient) => {
           patient.team = 'Orlando Magic';
           return patients.update(patient);
@@ -104,4 +105,27 @@ describe('repository', () => {
     });
   });
 
+  describe('#reload', () => {
+    it('reloads instance properties', () => {
+      let newPatient;
+      return patients.insert({uid: '99800001', name: 'John Smith', team: 'L.A. Lakers'}).then((patient) => {
+        newPatient = patient;
+        const db = new sqlite3.Database(filename.name);
+        const sql = 'UPDATE patients SET name = "Bob Smith" WHERE id = 1';
+
+        return new Promise((resolve) => {
+          db.serialize(() => {
+            db.run(sql, () => {
+              db.close(() => resolve());
+            });
+          });
+        });
+      }).then(() => {
+        newPatient.name.should.eql('John Smith');
+        return patients.reload(newPatient);
+      }).then(() => {
+        newPatient.name.should.eql('Bob Smith');
+      });
+    });
+  });
 });

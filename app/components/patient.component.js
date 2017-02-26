@@ -19,7 +19,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">D.O.B</span>
-              <datepicker v-bind:instance="patient" v-bind:name="'date_of_birth'"></datepicker>
+              <datepicker v-bind:instance="patient" v-bind:name="'date_of_birth'" ref="date_of_birth"></datepicker>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group input-group-sm">
               <span  class="input-group-addon" id="sizing-addon3">Adm :</span>
-              <datepicker v-bind:instance="patient" v-bind:name="'admission_date'"></datepicker>
+              <datepicker v-bind:instance="patient" v-bind:name="'admission_date'" ref="admission_date"></datepicker>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
           <div class="col-md-4">
             <div class="input-group input-group-sm">
               <span  class="input-group-addon" id="sizing-addon3">Dt </span>
-              <datepicker v-bind:instance="patient" v-bind:name="'treatment_date'"></datepicker>
+              <datepicker v-bind:instance="patient" v-bind:name="'treatment_date'" ref="treatment_date"></datepicker>
             </div>
           </div>
         </div>
@@ -164,8 +164,8 @@ Vue.component('patient', {   // eslint-disable-line no-undef
               <input type="text" class="form-control input-sm datepicker" aria-label="Discharged" readonly="readonly" v-model="formatDate(patient.discharge_date)">
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-sm" disabled="disabled">Discharge</button>
-                <button type="button" class="btn btn-warning btn-sm" v-on:click.prevent="cancelClick">
-                <span class="glyphicon glyphicon-repeat"></span>
+                <button type="button" class="btn btn-warning btn-sm" v-on:click.prevent="reloadClick">
+                  <span class="glyphicon glyphicon-repeat"></span>
                 </button>
                 <button type="button" class="btn btn-success btn-sm" v-on:click.prevent="updateClick">
                 <span class="glyphicon glyphicon-floppy-disk"></span>
@@ -184,6 +184,14 @@ Vue.component('patient', {   // eslint-disable-line no-undef
     updateClick() {
       this.backend.patients.update(this.patient).then(() => {
         this.$emit('patient-updated', this.patient);
+      });
+    },
+    reloadClick() {
+      this.backend.patients.reload(this.patient).then(() => {
+        this.$forceUpdate();
+        for (const key in this.$refs)
+          this.$refs[key].$forceUpdate();
+        this.$emit('patient-reloaded', this.patient);
       });
     },
     formatDate(value) {

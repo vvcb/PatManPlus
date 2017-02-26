@@ -2706,9 +2706,13 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
-vue@2.1.10, vue@^2.1.10:
+vue@2.1.10:
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.10.tgz#c9235ca48c7925137be5807832ac4e3ac180427b"
+
+vue@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.2.0.tgz#f4586920ce36d53944ab27ac5236ed9303a46b47"
 
 which@1, which@^1.2.9:
   version "1.2.12"
