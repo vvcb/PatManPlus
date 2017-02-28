@@ -2,7 +2,7 @@
 
 Vue.component('patient', {   // eslint-disable-line no-undef
   props: ['patient', 'backend', 'wards', 'teams', 'consultants'],
-  template: `<div>
+  template: `<form>
   <div class="patient">
     <div class="row">
       <div class="col-md-2">
@@ -11,7 +11,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Name</span>
-              <input type="text" v-model="patient.name" class="form-control" placeholder="Name" aria-describedby="sizing-addon3">
+              <input type="text" v-model="patient.name" class="form-control" data-parsley-required="true" placeholder="Name" aria-describedby="sizing-addon3">
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@ Vue.component('patient', {   // eslint-disable-line no-undef
           <div class="col-md-12">
             <div class="input-group input-group-sm">
               <span  class="input-group-addon" id="sizing-addon3">UID :</span>
-              <input type="text" v-model="patient.uid" class="form-control" placeholder="Hospital ID" aria-describedby="sizing-addon3">
+              <input type="text" v-model="patient.uid" v-bind:data-parsley-duplicateuid="patient.id" data-parsley-required="true" class="form-control" placeholder="Hospital ID" aria-describedby="sizing-addon3">
             </div>
           </div>
         </div>
@@ -178,13 +178,40 @@ Vue.component('patient', {   // eslint-disable-line no-undef
     </div>
     
   </div>
-</div>
+</form>
 `,
-  methods: {
-    updateClick() {
+  mounted() {
+    const options = {
+      errorsContainer: function(ParsleyField) {
+        return ParsleyField.$element.attr('title');
+      },
+      errorsWrapper: false
+    };
+
+    this.validator = $(this.$el).parsley(options);
+    this.validator.on('form:success', () => {
       this.backend.patients.update(this.patient).then(() => {
         this.$emit('patient-updated', this.patient);
       });
+    });
+    this.validator.on('field:error', function(fieldInstance) {
+      const messages = this.getErrorsMessages(fieldInstance);
+      fieldInstance.$element.tooltip('destroy');
+      fieldInstance.$element.tooltip({
+        animation: false,
+        container: 'body',
+        placement: 'top',
+        title: messages
+      });
+    });
+
+    this.validator.on('field:success', function(fieldInstance) {
+      fieldInstance.$element.tooltip('destroy');
+    });
+  },
+  methods: {
+    updateClick() {
+      this.validator.validate();
     },
     reloadClick() {
       this.backend.patients.reload(this.patient).then(() => {

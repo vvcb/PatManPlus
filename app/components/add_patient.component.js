@@ -16,7 +16,7 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
       type: Object
     }
   },
-  template: `<div class="panel panel-default">
+  template: `<form class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title" @click="togglePanel">
     <span class="glyphicon glyphicon-plus-sign"></span>
@@ -25,19 +25,19 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
   </div>
   <div class="panel-body" id="new-patient-panel" style="display:none">
     <div class="row">
-      <div class="col-md-2" id="new-patient-details">
+      <div class="col-md-2">
         <div class="row">
           <div class="col-md-12">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Name</span>
-              <input type="text" v-model="patient.name" class="form-control" id="new-patient-name" placeholder="Name">
+              <span class="input-group-addon">Name</span>
+              <input type="text" v-model="patient.name" data-parsley-required="true" class="form-control" placeholder="Name">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">DOB</span>
+              <span class="input-group-addon">DOB</span>
               <datepicker v-bind:instance="patient" v-bind:name="'date_of_birth'"></datepicker>
             </div>
           </div>
@@ -45,15 +45,15 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
         <div class="row">
           <div class="col-md-12">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">UID</span>
-              <input type="text" v-model="patient.uid" class="form-control" id="new-patient-bed" placeholder="UID">
+              <span class="input-group-addon">UID</span>
+              <input type="text" v-model="patient.uid" data-parsley-duplicateuid data-parsley-required="true" class="form-control" placeholder="UID">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Adm</span>
+              <span class="input-group-addon">Adm</span>
               <datepicker v-bind:instance="patient" v-bind:name="'admission_date'"></datepicker>
             </div>
           </div>
@@ -61,7 +61,7 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
         <div class="row">
           <div class="col-md-7">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Ward</span>
+              <span class="input-group-addon">Ward</span>
               <select class="form-control input-sm" name="wards" v-model="patient.wardId">
                 <option v-for="ward in wards"
                   v-bind:value="ward.id"
@@ -73,15 +73,15 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
           </div>
           <div class="col-md-5">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Bed</span>
-              <input type="text" v-model="patient.bed" class="form-control" id="new-patient-bed" placeholder="Bed">
+              <span class="input-group-addon">Bed</span>
+              <input type="text" v-model="patient.bed" class="form-control" placeholder="Bed">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-7">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Team</span>
+              <span class="input-group-addon">Team</span>
               <select class="form-control input-sm" name="team" v-model="patient.teamId">
                 <option v-for="team in teams"
                   v-bind:value="team.id" aria-describedby="sizing-addon3">
@@ -92,7 +92,7 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
           </div>
           <div class="col-md-5">
             <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon3">Cons</span>
+              <span class="input-group-addon">Cons</span>
               <select class="form-control input-sm"  name="team" v-model="patient.consultantId">
                 <option v-for="consultant in consultants"
                   v-bind:value="consultant.id" aria-describedby="sizing-addon3">
@@ -103,21 +103,21 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
           </div>
         </div>
       </div>
-      <div class="col-md-3" id="diagnosis-present-past">
+      <div class="col-md-3">
         
-        <div class="row" id="diagnosis">
+        <div class="row">
           <div class="col-md-12">
             <div class="input-group input-group-sm">
-              <span  class="input-group-addon" id="sizing-addon3">Dx </span>
-              <input type="text" v-model="patient.problem" class="form-control" id="patman-" placeholder="Diagnosis/Problem" aria-describedby="sizing-addon3">
+              <span  class="input-group-addon">Dx </span>
+              <input type="text" v-model="patient.problem" class="form-control" placeholder="Diagnosis/Problem" aria-describedby="sizing-addon3">
             </div>
           </div>
         </div>
         
-        <div class="row" id="present-history">
+        <div class="row">
           <div class="col-md-12">
             <div class="input-group">
-              <span class="input-group-addon input-sm"  id="sizing-addon3">Details</span>
+              <span class="input-group-addon input-sm">Details</span>
               <textarea v-model="patient.details" class="form-control custom-control input-sm" rows="5" aria-describedby="sizing-addon3"></textarea>
               <div>
               </div>
@@ -125,67 +125,67 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
           </div>
         </div>
         
-        <div class="row" id="past-history">
+        <div class="row">
           <div class="col-md-12">
             <div class="input-group">
-              <span class="input-group-addon input-sm"  id="sizing-addon3">PMH</span>
-              <textarea v-model="patient.past_medical_history" class="form-control custom-control input-sm" rows="3" id="patman-" placeholder="PastHistory" aria-describedby="sizing-addon3"></textarea>
+              <span class="input-group-addon input-sm">PMH</span>
+              <textarea v-model="patient.past_medical_history" class="form-control custom-control input-sm" rows="3" placeholder="PastHistory" aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
       
       </div>
       
-      <div class="col-md-4" id="treatment-treatdate-tests">
+      <div class="col-md-4">
       
-        <div class="row" id="treatment-treatdate">
+        <div class="row">
           <div class="col-md-8">
             <div class="input-group input-group-sm">
-              <span  class="input-group-addon" id="sizing-addon3">Rx </span>
-              <input type="text" v-model="patient.treatment" class="form-control" id="patman-" placeholder="Treatment" aria-describedby="sizing-addon3">
+              <span  class="input-group-addon">Rx </span>
+              <input type="text" v-model="patient.treatment" class="form-control" placeholder="Treatment" aria-describedby="sizing-addon3">
             </div>
           </div>
           
           <div class="col-md-4">
             <div class="input-group input-group-sm">
-              <span  class="input-group-addon" id="sizing-addon3">Dt </span>
+              <span  class="input-group-addon">Dt </span>
               <datepicker v-bind:instance="patient" v-bind:name="'treatment_date'"></datepicker>
             </div>
           </div>
         </div>
         
-        <div class="row" id="tests">
+        <div class="row">
           <div class="col-md-12">
             <div class="input-group">
-              <span class="input-group-addon input-sm"  id="sizing-addon3">Tests</span>
-              <textarea v-model="patient.tests" class="form-control custom-control input-sm textarea-tests" rows="8" id="patman-" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
+              <span class="input-group-addon input-sm">Tests</span>
+              <textarea v-model="patient.tests" class="form-control custom-control input-sm textarea-tests" rows="8" placeholder="Tests" aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
       
       </div>
       
-      <div class="col-md-3" id="jobs-adverse-events-buttons">
+      <div class="col-md-3">
         
-        <div class="row" id="jobs">
+        <div class="row">
           <div class="col-md-12">
             <div class="input-group">
-              <span class="input-group-addon input-sm"  id="sizing-addon3">Jobs</span>
-              <textarea v-model="patient.jobs" class="form-control custom-control input-sm textarea-jobs" rows="6" id="patman-" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
+              <span class="input-group-addon input-sm">Jobs</span>
+              <textarea v-model="patient.jobs" class="form-control custom-control input-sm textarea-jobs" rows="6" placeholder="Jobs"  aria-describedby="sizing-addon3"></textarea>
             </div>
           </div>
         </div>
   
-        <div class="row" id="adverse-events">
+        <div class="row">
           <div class="col-md-12">
             <div class="input-group">
-              <span class="input-group-addon input-sm"  id="sizing-addon3">AE</span>
-              <input type="text" v-model="patient.adverse_events" class="form-control custom-control input-sm" id="patman-" placeholder="Adverse Events">
+              <span class="input-group-addon input-sm">AE</span>
+              <input type="text" v-model="patient.adverse_events" class="form-control custom-control input-sm" placeholder="Adverse Events">
             </div>
           </div>
         </div>
 
-        <div class="row" id="discharge-save">
+        <div class="row">
           <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon input-sm">
@@ -212,18 +212,45 @@ Vue.component('add-patient', {   // eslint-disable-line no-undef
       </div>
     </div>
   </div>
-</div>
+</form>
 `,
-  methods: {
-    togglePanel () {
-      $('#new-patient-panel').toggle();
-    },
-    addPatient() {
+  mounted() {
+    const options = {
+      errorsContainer: function(ParsleyField) {
+        return ParsleyField.$element.attr('title');
+      },
+      errorsWrapper: false
+    };
+
+    this.validator = $(this.$el).parsley(options);
+    this.validator.on('form:success', () => {
       this.backend.patients.insert(this.patient).then((patient) => {
         $('#new-patient-panel').toggle();
         this.patient = {};
         this.$emit('patient-created', patient);
       });
+    });
+    this.validator.on('field:error', function(fieldInstance) {
+      const messages = this.getErrorsMessages(fieldInstance);
+      fieldInstance.$element.tooltip('destroy');
+      fieldInstance.$element.tooltip({
+        animation: false,
+        container: 'body',
+        placement: 'top',
+        title: messages
+      });
+    });
+
+    this.validator.on('field:success', function(fieldInstance) {
+      fieldInstance.$element.tooltip('destroy');
+    });
+  },
+  methods: {
+    togglePanel () {
+      $('#new-patient-panel').toggle();
+    },
+    addPatient() {
+      this.validator.validate();
     }
   },
 });

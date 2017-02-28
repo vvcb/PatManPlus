@@ -16,6 +16,22 @@ const searchCriteria = {
   }
 };
 
+window.Parsley.addValidator('duplicateuid', {
+  validateString: function(uid, patientId) {
+    return new Promise((resolve, reject) => {
+      backend.patients.search({ uid }).then((patients) => {
+        if (patients.length === 1 && patients[0].id === patientId)
+          resolve();
+        else
+          patients.length === 0 ? resolve() : reject();
+      });
+    });
+  },
+  messages: {
+    en: 'Patient with this UID already exists',
+  }
+});
+
 $(() => {
   let dbSequence = Promise.all([
     backend.wards.fetchAll().then((wards) => wards.concat({name: null})),
