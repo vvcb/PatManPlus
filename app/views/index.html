@@ -36,7 +36,7 @@
 					<div id="patient-list-panel" class="container-fluid">
 						<form>
 							<div>
-								<patient v-for="patient in patients" v-bind:patient="patient" v-bind:backend="backend" v-bind:wards="wards" v-bind:consultants="consultants" v-bind:teams="teams" v-on:patient-updated="patientUpdated"></patient>
+								<patient v-for="patient in patients" v-bind:patient="patient" v-bind:backend="backend" v-bind:wards="wards" v-bind:consultants="consultants" v-bind:teams="teams" v-on:patient-updated="patientUpdated" v-on:patient-reloaded="patientReloaded"></patient>
 							</div>
 						</form>
 					</div>

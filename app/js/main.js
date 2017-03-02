@@ -46,6 +46,9 @@ $(() => {
           showToaster(`Patient '${patient.name}' updated`);   // eslint-disable-line no-undef
           backend.patients.search(searchCriteria).then((patients) => this.patients = patients);
         },
+        patientReloaded: function(patient) {
+          showToaster(`Patient '${patient.name}' reloaded`);   // eslint-disable-line no-undef
+        },
         patientCreated: function (patient) {
           showToaster(`Patient '${patient.name}' added`);   // eslint-disable-line no-undef
           backend.patients.search(searchCriteria).then((patients) => this.patients = patients);
