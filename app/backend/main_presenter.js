@@ -33,8 +33,16 @@ class MainPresenter {
     return loadView('views/admin', { parent: this.mainWindow, modal: true, show: false, title: 'Admin' });
   }
 
-  showOpenDialog(options, callback) {
-    dialog.showOpenDialog(this.mainWindow, options, callback);
+  showOpenDialog(options) {
+    return new Promise((resolve) => {
+      dialog.showOpenDialog(this.mainWindow ? this.mainWindow : null, options, (e) => resolve(e));
+    });
+  }
+
+  showMessageDialog(options) {
+    return new Promise((resolve) => {
+      dialog.showMessageBox(this.mainWindow ? this.mainWindow : null, options, (e) => resolve(e));
+    });
   }
 }
 

@@ -19,11 +19,8 @@ class GeneralPresenter { // eslint-disable-line no-unused-vars
   }
 
   updateDbPath() {
-    const filePickerSettings = { properties: ['openFile'] };
-    this.mainPresenter.showOpenDialog(filePickerSettings,  (filePaths) => {
-      this.settings.writeConfigFile(filePaths[0]).then(() => {
-        this.toasterHandler('Database file path updated');
-      });
+    this.settings.showDbFilePicker(false).then(() => {
+      this.toasterHandler('Database file path updated');
     });
   }
 }

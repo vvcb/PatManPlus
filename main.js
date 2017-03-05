@@ -11,7 +11,7 @@ const mainPresenter = new MainPresenter();
 let win;
 
 function createWindow() {
-  new Settings(app).load().then((settings) => {
+  new Settings(app, mainPresenter).load().then((settings) => {
     global.settings = settings;
     global.backend = new App(settings);
     global.mainPresenter = mainPresenter;

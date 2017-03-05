@@ -45,7 +45,9 @@ class Database {
   }
 
   connect() {
-    return this.sequelize.authenticate();
+    return this.sequelize.authenticate().then(() => {
+      return this.sequelize.query('pragma quick_check;');
+    });
   }
 
   close() {

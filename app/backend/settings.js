@@ -1,15 +1,14 @@
-const { dialog } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const logger = require('./logger');
+const Database = require('./database');
 
-class ConfigError extends Error {
-
-}
+class ConfigError extends Error { }
 
 class Settings {
-  constructor(app) {
+  constructor(app, mainPresenter) {
     this.app = app;
+    this.mainPresenter = mainPresenter;
   }
 
   get path() {
@@ -34,7 +33,7 @@ class Settings {
         throw err;
 
       logger.debug(err);
-      return this.showDbFilePicker().then((dbFilePath) => this.writeConfigFile(dbFilePath[0]));
+      return this.showDbFilePicker(true).then((dbFilePath) => this.writeConfigFile(dbFilePath));
     });
   }
 
@@ -69,24 +68,43 @@ class Settings {
     });
   }
 
-  showDbFilePicker() {
-    return new Promise((resolve) => {
+  showDbFilePicker(showError) {
+    let startingPoint = Promise.resolve();
+
+    if (showError) {
       const messageBoxSettings = {
         type: 'warning',
         buttons: ['Ok'],
         title: 'Missing configuration',
-        message: 'Configuration file is missing. Press Ok to configure'
+        message: 'Database file is missing or invalid. Press Ok to configure.'
       };
 
-      dialog.showMessageBox(messageBoxSettings, () => {
-        const filePickerSettings = { properties: ['openFile'] };
+      startingPoint = startingPoint.then(() =>  this.mainPresenter.showMessageDialog(messageBoxSettings));
+    }
 
-        dialog.showOpenDialog(filePickerSettings, (filePaths) => {
-          resolve(filePaths);
-        });
+    return startingPoint.then(() => {
+      const filePickerSettings = {
+        properties: ['openFile'],
+        filters: [
+          { name: 'SQLite DB Files', extensions: ['sqlite3'] },
+          { name: 'All Files', extensions: ['*'] }
+        ]
+      };
+      return this.mainPresenter.showOpenDialog(filePickerSettings);
+    }).then((filePaths) => {
+      const database = new Database(filePaths[0]);
+      return database.connect().then(() => {
+        return database.close();
+      }).then(() => {
+        return filePaths[0];
+      }).catch((err) => {
+        logger.error(err);
+        return this.showDbFilePicker(true);
       });
     });
   }
+
+
 
   setFilePaths(dbFilePath) {
     this.dbFilePath = dbFilePath;

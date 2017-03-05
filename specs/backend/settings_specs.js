@@ -83,7 +83,7 @@ describe('settings', () => {
       const mockStat = { isFile: () => { return false; }, isDirectory: () => { return false; }};
       sinon.stub(fs, 'stat').withArgs(dbFilePath).callsArgWith(1, null, mockStat);
 
-      const dialogExpectation = sinon.stub(settings, 'showDbFilePicker').returns(Promise.resolve([dbFilePath]));
+      const dialogExpectation = sinon.stub(settings, 'showDbFilePicker').withArgs(true).returns(Promise.resolve(dbFilePath));
 
       const expectedContent = JSON.stringify({ dbFilePath: dbFilePath });
       const fileWriteExpectation = sinon.stub(fs, 'writeFile')
