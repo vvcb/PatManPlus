@@ -22,21 +22,17 @@
         <h1>Loading...</h1>
       </div>
 			<div id="app" style="display:none">
-        <search v-on:search-changed="search" v-bind:criteria="searchCriteria" v-bind:wards="wards" v-bind:consultants="consultants" v-bind:teams="teams"></search>
-
-        <patient-add v-on:patient-created="patientCreated" v-bind:backend="backend" v-bind:wards="wards" v-bind:consultants="consultants" v-bind:teams="teams"></patient-add>
-
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h5 class="panel-title" @click="togglePatientList">
+						<h5 class="panel-title">
 						<span class="glyphicon glyphicon-th-list"></span>
-						List of {{patients.length}} patients
+						List of {{ patients.length}} patients
 						</h5>
 					</div>
 					<div id="patient-list-panel" class="container-fluid">
 						<form>
 							<div>
-								<patient v-for="patient in patients" v-bind:patient="patient" v-bind:backend="backend" v-bind:wards="wards" v-bind:consultants="consultants" v-bind:teams="teams" v-on:patient-updated="patientUpdated" v-on:patient-reloaded="patientReloaded"></patient>
+								<patient-print v-for="patient in patients" v-bind:patient="patient" v-bind:backend="backend" v-bind:wards="wards" v-bind:consultants="consultants" v-bind:teams="teams"></patient-print>
 							</div>
 						</form>
 					</div>
@@ -49,14 +45,10 @@
 		<script src="../../node_modules/moment/min/moment.min.js"></script>
 		<script src="../../node_modules/vue/dist/vue.min.js"></script>
 		<script src="../../node_modules/bootstrap-vue/build/bootstrap-vue.js" type="text/javascript"></script>
-		<script src="../../node_modules/parsleyjs/dist/parsley.min.js" type="text/javascript"></script>
-		<script src="../components/search.component.js"></script>
+		<script src="../components/patient_print.component.js"></script>
 		<script src="../components/datepicker.component.js"></script>
-		<script src="../components/patient_add.component.js"></script>
 		<script src="../components/patient.component.js"></script>
-		<script src="../js/lib/toastr.js"></script>
 		<script src="../js/lib/bootstrap-datepicker.min.js"></script>
-		<script src="../js/notification.js"></script>
-		<script src="../js/main.js"></script>
+		<script src="../js/handover.js"></script>
 	</body>
 </html>

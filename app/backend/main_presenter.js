@@ -33,6 +33,11 @@ class MainPresenter {
     return loadView('views/admin', { parent: this.mainWindow, modal: true, show: false, title: 'Admin' });
   }
 
+  showHandover() {
+    return loadView('views/handover', { parent: this.mainWindow, modal: true, show: false, title: 'Handover' });
+
+  }
+
   showOpenDialog(options) {
     return new Promise((resolve) => {
       dialog.showOpenDialog(this.mainWindow ? this.mainWindow : null, options, (e) => resolve(e));

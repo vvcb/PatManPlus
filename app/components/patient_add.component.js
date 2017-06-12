@@ -1,4 +1,4 @@
-Vue.component('add-patient', {   // eslint-disable-line no-undef
+Vue.component('patient-add', {   // eslint-disable-line no-undef
   props: {
     patient: {
       default: {}

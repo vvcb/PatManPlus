@@ -10,11 +10,19 @@ function createMenuTemplate(mainPresenter) {
           role: 'print',
           accelerator: 'CommandOrControl+P',
           click() {
-            mainPresenter.mainWindow.webContents.print();
+            BrowserWindow.getFocusedWindow().webContents.print();
           }
         },
         {
           type: 'separator'
+        },
+        {
+          label: 'Handover',
+          role: 'handover',
+          accelerator: 'CommandOrControl+H',
+          click() {
+            mainPresenter.showHandover();
+          }
         },
         {
           label: 'Settings',
